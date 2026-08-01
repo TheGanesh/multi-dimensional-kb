@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="a2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475569"/></marker>
+    <marker id="a2c" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#00f0ff"/></marker>
+    <filter id="glow2"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="900" height="560" fill="#080c14" rx="16"/>
+  <rect width="900" height="560" fill="url(#grid2)" rx="16"/>
+
+  <text x="450" y="32" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glow2)">MCP Server &amp; Hybrid Search</text>
+  <text x="450" y="50" text-anchor="middle" fill="#475569" font-size="10">graph-mcp/server.py — 25 tools · BM25 + Dense MiniLM (LSA fallback) · no GPU</text>
+
+  <!-- DATA IN -->
+  <rect x="28" y="68" width="172" height="162" rx="10" fill="#0f0a24" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="114" y="90" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="700">DATA IN (startup)</text>
+  <line x1="40" y1="98" x2="188" y2="98" stroke="#8b5cf6" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="40" y="116" fill="#94a3b8" font-size="9">45 services (YAML)</text>
+  <text x="40" y="132" fill="#94a3b8" font-size="9">686 API contracts</text>
+  <text x="40" y="148" fill="#94a3b8" font-size="9">127 capability flows</text>
+  <text x="40" y="164" fill="#00f0ff" font-size="9" font-weight="600">1,291 RAG chunks</text>
+  <text x="40" y="180" fill="#94a3b8" font-size="9">23 wiki · 5 ADRs · 26 NFRs</text>
+  <text x="40" y="196" fill="#94a3b8" font-size="9">102 Bruno pages</text>
+  <text x="40" y="222" fill="#475569" font-size="8">All loaded in-memory at boot</text>
+
+  <line x1="200" y1="148" x2="230" y2="148" stroke="#475569" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <!-- SERVER -->
+  <rect x="230" y="68" width="182" height="162" rx="10" fill="#021a12" stroke="#10b981" stroke-width="1.5"/>
+  <text x="321" y="90" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">SERVER</text>
+  <line x1="242" y1="98" x2="400" y2="98" stroke="#10b981" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="242" y="116" fill="#10b981" font-size="10">FastMCP v2</text>
+  <text x="242" y="132" fill="#94a3b8" font-size="9">SSE :8787 or stdio</text>
+  <text x="242" y="148" fill="#94a3b8" font-size="9">In-memory dicts O(1)</text>
+  <text x="242" y="166" fill="#00f0ff" font-size="9" font-weight="600">BM25 + Dense indexes</text>
+  <text x="242" y="182" fill="#94a3b8" font-size="9">Dense: 384d MiniLM ONNX</text>
+  <text x="242" y="198" fill="#94a3b8" font-size="9">W-RRF α=0.4 β=0.6</text>
+  <text x="242" y="222" fill="#475569" font-size="8">Python 3.10+ · no GPU</text>
+
+  <line x1="412" y1="148" x2="442" y2="148" stroke="#475569" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <!-- 25 TOOLS -->
+  <rect x="442" y="68" width="202" height="162" rx="10" fill="#0a1628" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="543" y="90" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">25 TOOLS</text>
+  <line x1="454" y1="98" x2="632" y2="98" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="454" y="114" fill="#3b82f6" font-size="8">Services (5): list get deps layers compare</text>
+  <text x="454" y="128" fill="#3b82f6" font-size="8">APIs (4): list get detail find-by-path</text>
+  <text x="454" y="142" fill="#3b82f6" font-size="8">Flows (2): list get</text>
+  <text x="454" y="156" fill="#3b82f6" font-size="8">ADR/Meta (4): list+get adrs metadata</text>
+  <text x="454" y="170" fill="#3b82f6" font-size="8">Docs (4): nfr wiki bruno service-wiki</text>
+  <text x="454" y="186" fill="#fbbf24" font-size="8" font-weight="600">Search (4): semantic smart navigate read</text>
+  <text x="454" y="202" fill="#475569" font-size="8">+ health + impact</text>
+  <text x="454" y="222" fill="#475569" font-size="8">+ 3 resources · 3 prompt templates</text>
+
+  <line x1="644" y1="148" x2="674" y2="148" stroke="#475569" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <!-- AI AGENT -->
+  <rect x="674" y="68" width="196" height="162" rx="10" fill="#1a0a02" stroke="#ff6b00" stroke-width="1.5"/>
+  <text x="772" y="90" text-anchor="middle" fill="#ff9f43" font-size="11" font-weight="700">AI AGENT</text>
+  <line x1="686" y1="98" x2="858" y2="98" stroke="#ff6b00" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="686" y="116" fill="#ff9f43" font-size="10">Windsurf / Cascade</text>
+  <text x="686" y="132" fill="#ff9f43" font-size="10">Devin / Claude</text>
+  <text x="686" y="152" fill="#94a3b8" font-size="9">Queries tools via MCP</text>
+  <text x="686" y="168" fill="#94a3b8" font-size="9">→ Stories</text>
+  <text x="686" y="184" fill="#94a3b8" font-size="9">→ Execution plans</text>
+  <text x="686" y="200" fill="#94a3b8" font-size="9">→ Java code + tests</text>
+  <text x="686" y="222" fill="#10b981" font-size="9">→ PR per service repo</text>
+
+  <!-- Search pipeline -->
+  <rect x="28" y="252" width="842" height="280" rx="12" fill="rgba(0,240,255,0.02)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="48" y="276" fill="#00f0ff" font-size="12" font-weight="700" filter="url(#glow2)">graph_semantic_search() — Hybrid BM25 + Dense Pipeline</text>
+  <text x="48" y="292" fill="#475569" font-size="9">ONNX model committed in-repo · no downloads · no GPU · 1,291 chunks indexed in-memory</text>
+
+  <!-- Query -->
+  <rect x="48" y="308" width="108" height="44" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="102" y="328" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Query</text>
+  <text x="102" y="344" text-anchor="middle" fill="#475569" font-size="8">tokenize + filter</text>
+
+  <line x1="156" y1="330" x2="182" y2="330" stroke="#475569" stroke-width="1.2"/>
+  <line x1="182" y1="316" x2="182" y2="355" stroke="#475569" stroke-width="1.2"/>
+
+  <!-- BM25 -->
+  <rect x="192" y="302" width="168" height="50" rx="8" fill="#0a1628" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="276" y="320" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="700">BM25 (Okapi)</text>
+  <text x="276" y="334" text-anchor="middle" fill="#64748b" font-size="8">TF saturation · length norm</text>
+  <text x="276" y="346" text-anchor="middle" fill="#3b82f6" font-size="8">α = 0.4 · lexical</text>
+  <line x1="182" y1="316" x2="192" y2="322" stroke="#475569" stroke-width="1.2"/>
+
+  <!-- Dense (primary) -->
+  <rect x="192" y="362" width="168" height="64" rx="8" fill="#001a1a" stroke="#00f0ff" stroke-width="2"/>
+  <text x="276" y="380" text-anchor="middle" fill="#00f0ff" font-size="10" font-weight="700">Dense (MiniLM-L6-v2)</text>
+  <text x="276" y="394" text-anchor="middle" fill="#94a3b8" font-size="8">ONNX · 384d · cosine sim</text>
+  <text x="276" y="408" text-anchor="middle" fill="#94a3b8" font-size="8">In-repo · CPU-only</text>
+  <text x="276" y="420" text-anchor="middle" fill="#00f0ff" font-size="8">β = 0.6 · semantic (primary)</text>
+  <line x1="182" y1="355" x2="192" y2="388" stroke="#475569" stroke-width="1.2"/>
+
+  <!-- LSA fallback -->
+  <rect x="192" y="434" width="168" height="28" rx="6" fill="#0f0a24" stroke="#6d28d9" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="276" y="444" text-anchor="middle" fill="#7c3aed" font-size="8">LSA fallback (128d SVD)</text>
+  <text x="276" y="456" text-anchor="middle" fill="#475569" font-size="7">when ONNX unavailable</text>
+
+  <!-- Merge to W-RRF -->
+  <line x1="360" y1="327" x2="420" y2="375" stroke="#3b82f6" stroke-width="1.2" marker-end="url(#a2c)"/>
+  <line x1="360" y1="394" x2="420" y2="385" stroke="#00f0ff" stroke-width="1.2" marker-end="url(#a2c)"/>
+
+  <!-- W-RRF -->
+  <rect x="420" y="356" width="178" height="72" rx="8" fill="#021a12" stroke="#00f0ff" stroke-width="2"/>
+  <text x="509" y="377" text-anchor="middle" fill="#00f0ff" font-size="11" font-weight="700" filter="url(#glow2)">W-RRF Fusion</text>
+  <text x="509" y="394" text-anchor="middle" fill="#fbbf24" font-size="9">α=0.4 · β=0.6 · k=60</text>
+  <text x="509" y="408" text-anchor="middle" fill="#94a3b8" font-size="8">0.4/(60+rankA) + 0.6/(60+rankB)</text>
+  <text x="509" y="422" text-anchor="middle" fill="#00f0ff" font-size="8">Dense weighted higher (semantic)</text>
+
+  <line x1="598" y1="392" x2="636" y2="392" stroke="#475569" stroke-width="1.2" marker-end="url(#a2)"/>
+
+  <!-- Top-K -->
+  <rect x="636" y="368" width="204" height="50" rx="8" fill="#1a0a02" stroke="#ff6b00" stroke-width="1.5"/>
+  <text x="738" y="388" text-anchor="middle" fill="#ff9f43" font-size="10" font-weight="700">Top-K Results</text>
+  <text x="738" y="404" text-anchor="middle" fill="#64748b" font-size="8">id · score · entity · section · preview</text>
+
+  <!-- Modes footer -->
+  <rect x="48" y="476" width="822" height="44" rx="8" fill="rgba(255,255,255,0.02)" stroke="#1e293b" stroke-width="1"/>
+  <text x="68" y="494" fill="#94a3b8" font-size="9" font-weight="600">Modes:</text>
+  <text x="120" y="494" fill="#fbbf24" font-size="9" font-weight="700">hybrid</text>
+  <text x="162" y="494" fill="#475569" font-size="9">(BM25+Dense)</text>
+  <text x="260" y="494" fill="#3b82f6" font-size="9" font-weight="700">bm25</text>
+  <text x="290" y="494" fill="#475569" font-size="9">(lexical)</text>
+  <text x="352" y="494" fill="#00f0ff" font-size="9" font-weight="700">dense</text>
+  <text x="392" y="494" fill="#475569" font-size="9">(MiniLM)</text>
+  <text x="456" y="494" fill="#7c3aed" font-size="9" font-weight="700">lsa</text>
+  <text x="476" y="494" fill="#475569" font-size="9">(fallback)</text>
+  <text x="68" y="512" fill="#475569" font-size="8">Entity filter restricts before scoring: entity_type = "service" | "flow" | "api-catalog" | "impact" | "service-overview"</text>
+</svg>

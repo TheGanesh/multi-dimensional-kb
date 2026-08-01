@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475569"/></marker>
+    <filter id="gp"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grd" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="900" height="520" fill="#080c14" rx="16"/>
+  <rect width="900" height="520" fill="url(#grd)" rx="16"/>
+
+  <text x="450" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#gp)">KB Generation Pipeline</text>
+  <text x="450" y="52" text-anchor="middle" fill="#475569" font-size="10">seed.yaml → Ingest → Generate → Serve → Consume</text>
+
+  <!-- 1. INGEST -->
+  <rect x="38" y="76" width="196" height="178" rx="10" fill="#0f0a24" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="136" y="100" text-anchor="middle" fill="#a78bfa" font-size="13" font-weight="700">1. INGEST</text>
+  <text x="136" y="116" text-anchor="middle" fill="#475569" font-size="9">LLM scans sources</text>
+  <line x1="52" y1="124" x2="220" y2="124" stroke="#8b5cf6" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="52" y="144" fill="#a78bfa" font-size="10">/ingest-service</text>
+  <text x="52" y="162" fill="#a78bfa" font-size="10">/ingest-wiki</text>
+  <text x="52" y="180" fill="#a78bfa" font-size="10">/ingest-bruno</text>
+  <text x="52" y="198" fill="#a78bfa" font-size="10">/ingest-auxiliary</text>
+  <text x="52" y="242" fill="#475569" font-size="8">Output: sources/ (YAML)</text>
+
+  <line x1="234" y1="165" x2="272" y2="165" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="253" y="158" text-anchor="middle" fill="#334155" font-size="8">YAML</text>
+
+  <!-- 2. GENERATE -->
+  <rect x="272" y="76" width="196" height="178" rx="10" fill="#0a1628" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="370" y="100" text-anchor="middle" fill="#60a5fa" font-size="13" font-weight="700">2. GENERATE</text>
+  <text x="370" y="116" text-anchor="middle" fill="#475569" font-size="9">Python · no LLM</text>
+  <line x1="286" y1="124" x2="454" y2="124" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="286" y="144" fill="#3b82f6" font-size="10">/generate-kb</text>
+  <text x="286" y="164" fill="#94a3b8" font-size="9">→ services/ (45 pages)</text>
+  <text x="286" y="180" fill="#94a3b8" font-size="9">→ api-catalog/ (45)</text>
+  <text x="286" y="196" fill="#94a3b8" font-size="9">→ capability-flow/ (127)</text>
+  <text x="286" y="212" fill="#00f0ff" font-size="9" font-weight="600">→ chunks/ (1,291 RAG)</text>
+  <text x="286" y="242" fill="#94a3b8" font-size="9">→ Summary.md (index)</text>
+
+  <line x1="468" y1="165" x2="506" y2="165" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="487" y="158" text-anchor="middle" fill="#334155" font-size="8">MD</text>
+
+  <!-- 3. SERVE -->
+  <rect x="506" y="76" width="196" height="178" rx="10" fill="#021a12" stroke="#10b981" stroke-width="1.5"/>
+  <text x="604" y="100" text-anchor="middle" fill="#34d399" font-size="13" font-weight="700">3. SERVE</text>
+  <text x="604" y="116" text-anchor="middle" fill="#475569" font-size="9">MCP Server · no GPU</text>
+  <line x1="520" y1="124" x2="688" y2="124" stroke="#10b981" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="520" y="144" fill="#10b981" font-size="10">graph-mcp/server.py</text>
+  <text x="520" y="162" fill="#94a3b8" font-size="9">25 tools · SSE :8787</text>
+  <text x="520" y="178" fill="#00f0ff" font-size="9" font-weight="600">BM25 + Dense MiniLM</text>
+  <text x="520" y="194" fill="#94a3b8" font-size="9">384d ONNX · in-repo</text>
+  <text x="520" y="210" fill="#94a3b8" font-size="9">1,291 chunks indexed</text>
+  <text x="520" y="242" fill="#475569" font-size="8">W-RRF α=0.4 β=0.6</text>
+
+  <line x1="702" y1="165" x2="740" y2="165" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="721" y="158" text-anchor="middle" fill="#334155" font-size="8">tools</text>
+
+  <!-- 4. USE -->
+  <rect x="740" y="76" width="120" height="178" rx="10" fill="#1a0a02" stroke="#ff6b00" stroke-width="1.5"/>
+  <text x="800" y="100" text-anchor="middle" fill="#ff9f43" font-size="13" font-weight="700">4. USE</text>
+  <text x="800" y="116" text-anchor="middle" fill="#475569" font-size="9">AI Agents</text>
+  <line x1="754" y1="124" x2="846" y2="124" stroke="#ff6b00" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="754" y="148" fill="#ff9f43" font-size="10">Stories</text>
+  <text x="754" y="168" fill="#ff9f43" font-size="10">Plans</text>
+  <text x="754" y="188" fill="#ff9f43" font-size="10">Code</text>
+  <text x="754" y="208" fill="#ff9f43" font-size="10">PRs</text>
+
+  <!-- Sources row -->
+  <rect x="38" y="282" width="822" height="84" rx="10" fill="rgba(255,255,255,0.02)" stroke="#1e293b" stroke-width="1"/>
+  <text x="56" y="304" fill="#94a3b8" font-size="11" font-weight="600">What Gets Scanned</text>
+  <rect x="56" y="316" width="110" height="32" rx="6" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="111" y="336" text-anchor="middle" fill="#cbd5e1" font-size="9">45 Java repos</text>
+  <rect x="180" y="316" width="120" height="32" rx="6" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="240" y="336" text-anchor="middle" fill="#cbd5e1" font-size="9">Confluence wiki</text>
+  <rect x="314" y="316" width="120" height="32" rx="6" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="374" y="336" text-anchor="middle" fill="#cbd5e1" font-size="9">Bruno collections</text>
+  <rect x="448" y="316" width="100" height="32" rx="6" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="498" y="336" text-anchor="middle" fill="#cbd5e1" font-size="9">ADRs / NFRs</text>
+  <rect x="562" y="316" width="100" height="32" rx="6" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="612" y="336" text-anchor="middle" fill="#cbd5e1" font-size="9">Metadata</text>
+  <rect x="676" y="316" width="100" height="32" rx="6" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="726" y="336" text-anchor="middle" fill="#cbd5e1" font-size="9">Graph JSON</text>
+
+  <!-- Key numbers -->
+  <rect x="38" y="392" width="822" height="104" rx="10" fill="rgba(255,255,255,0.02)" stroke="#1e293b" stroke-width="1"/>
+  <text x="56" y="416" fill="#94a3b8" font-size="11" font-weight="600">Key Numbers</text>
+
+  <text x="56" y="452" fill="#00f0ff" font-size="24" font-weight="700">45</text>
+  <text x="56" y="470" fill="#475569" font-size="9">services</text>
+  <text x="150" y="452" fill="#00f0ff" font-size="24" font-weight="700">686</text>
+  <text x="150" y="470" fill="#475569" font-size="9">API contracts</text>
+  <text x="270" y="452" fill="#00f0ff" font-size="24" font-weight="700">127</text>
+  <text x="270" y="470" fill="#475569" font-size="9">flows</text>
+  <text x="370" y="452" fill="#00f0ff" font-size="24" font-weight="700">1,291</text>
+  <text x="370" y="470" fill="#475569" font-size="9">RAG chunks</text>
+  <text x="500" y="452" fill="#00f0ff" font-size="24" font-weight="700">25</text>
+  <text x="500" y="470" fill="#475569" font-size="9">MCP tools</text>
+  <text x="590" y="452" fill="#00f0ff" font-size="24" font-weight="700">384d</text>
+  <text x="590" y="470" fill="#475569" font-size="9">Dense vectors</text>
+  <text x="710" y="452" fill="#00f0ff" font-size="24" font-weight="700">0</text>
+  <text x="710" y="470" fill="#475569" font-size="9">GPUs needed</text>
+  <text x="790" y="452" fill="#00f0ff" font-size="24" font-weight="700">$0</text>
+  <text x="790" y="470" fill="#475569" font-size="9">LLM cost (CI)</text>
+</svg>

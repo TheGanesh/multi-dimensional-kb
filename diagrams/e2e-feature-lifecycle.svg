@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="a4" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569"/>
+    </marker>
+    <filter id="glowe2e"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gride2e" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="900" height="380" fill="#080c14" rx="16"/>
+  <rect width="900" height="380" fill="url(#gride2e)" rx="16"/>
+
+  <text x="450" y="36" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glowe2e)">Feature Lifecycle — KB at Every Stage</text>
+  <text x="450" y="54" text-anchor="middle" fill="#64748b" font-size="11">From business requirement to production code</text>
+
+  <!-- Stage boxes in a horizontal flow -->
+  <!-- 1. Business Req -->
+  <rect x="30" y="80" width="110" height="120" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="85" y="105" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">1. REQ</text>
+  <line x1="42" y1="112" x2="128" y2="112" stroke="#475569" stroke-width="0.5"/>
+  <text x="42" y="128" fill="#94a3b8" font-size="9">ADO Feature ID</text>
+  <text x="42" y="143" fill="#94a3b8" font-size="9">SI doc (optional)</text>
+  <text x="42" y="158" fill="#94a3b8" font-size="9">JIRA ticket</text>
+  <text x="42" y="178" fill="#64748b" font-size="8">KB: not used yet</text>
+  <text x="42" y="191" fill="#64748b" font-size="8">(manual input)</text>
+
+  <line x1="140" y1="140" x2="160" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
+
+  <!-- 2. Design -->
+  <rect x="160" y="80" width="110" height="120" rx="8" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="215" y="105" text-anchor="middle" fill="#c4b5fd" font-size="11" font-weight="700">2. DESIGN</text>
+  <line x1="172" y1="112" x2="258" y2="112" stroke="#7c3aed" stroke-width="0.5"/>
+  <text x="172" y="130" fill="#a78bfa" font-size="9">TDD / LLD</text>
+  <text x="172" y="146" fill="#fbbf24" font-size="8">future: AI-draft</text>
+  <text x="172" y="166" fill="#64748b" font-size="8">KB future use:</text>
+  <text x="172" y="179" fill="#64748b" font-size="8">service catalog +</text>
+  <text x="172" y="192" fill="#64748b" font-size="8">API patterns</text>
+
+  <line x1="270" y1="140" x2="290" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
+
+  <!-- 3. Stories -->
+  <rect x="290" y="80" width="110" height="120" rx="8" fill="#431407" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="345" y="100" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">3. STORIES</text>
+  <line x1="302" y1="108" x2="388" y2="108" stroke="#ea580c" stroke-width="0.5"/>
+  <text x="302" y="121" fill="#fb923c" font-size="9">/create-stories</text>
+  <text x="302" y="135" fill="#34d399" font-size="8">✓ automated</text>
+  <text x="302" y="153" fill="#64748b" font-size="8">KB tools used:</text>
+  <text x="302" y="166" fill="#94a3b8" font-size="8">graph_get_service</text>
+  <text x="302" y="179" fill="#94a3b8" font-size="8">graph_get_api_contract</text>
+  <text x="302" y="192" fill="#94a3b8" font-size="8">graph_semantic_search</text>
+
+  <line x1="400" y1="140" x2="420" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
+
+  <!-- 4. Plans -->
+  <rect x="420" y="80" width="110" height="120" rx="8" fill="#431407" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="475" y="100" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">4. PLANS</text>
+  <line x1="432" y1="108" x2="518" y2="108" stroke="#ea580c" stroke-width="0.5"/>
+  <text x="432" y="121" fill="#fb923c" font-size="9">/compare-dev</text>
+  <text x="432" y="135" fill="#34d399" font-size="8">✓ automated</text>
+  <text x="432" y="153" fill="#64748b" font-size="8">KB tools used:</text>
+  <text x="432" y="166" fill="#94a3b8" font-size="8">graph_get_api_detail</text>
+  <text x="432" y="179" fill="#94a3b8" font-size="8">graph_find_service_</text>
+  <text x="432" y="192" fill="#94a3b8" font-size="8">dependencies</text>
+
+  <line x1="530" y1="140" x2="550" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
+
+  <!-- 5. Code -->
+  <rect x="550" y="80" width="110" height="120" rx="8" fill="#431407" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="605" y="100" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="700">5. CODE</text>
+  <line x1="562" y1="108" x2="648" y2="108" stroke="#ea580c" stroke-width="0.5"/>
+  <text x="562" y="121" fill="#fb923c" font-size="9">/scaffold-dev</text>
+  <text x="562" y="135" fill="#34d399" font-size="8">✓ automated</text>
+  <text x="562" y="153" fill="#64748b" font-size="8">KB tools used:</text>
+  <text x="562" y="166" fill="#94a3b8" font-size="8">graph_semantic_search</text>
+  <text x="562" y="179" fill="#94a3b8" font-size="8">(RAG context for</text>
+  <text x="562" y="192" fill="#94a3b8" font-size="8">code patterns)</text>
+
+  <line x1="660" y1="140" x2="680" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
+
+  <!-- 6. Test -->
+  <rect x="680" y="80" width="90" height="120" rx="8" fill="#172554" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="725" y="100" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">6. TEST</text>
+  <line x1="692" y1="108" x2="758" y2="108" stroke="#2563eb" stroke-width="0.5"/>
+  <text x="692" y="121" fill="#60a5fa" font-size="9">Build gates</text>
+  <text x="692" y="135" fill="#34d399" font-size="8">✓ automated</text>
+  <text x="692" y="153" fill="#64748b" font-size="8">Spock unit tests</text>
+  <text x="692" y="167" fill="#64748b" font-size="8">WireMock component</text>
+  <text x="692" y="181" fill="#64748b" font-size="8">tests included</text>
+
+  <line x1="770" y1="140" x2="790" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
+
+  <!-- 7. PR -->
+  <rect x="790" y="80" width="80" height="120" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1.5"/>
+  <text x="830" y="100" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="700">7. PR</text>
+  <line x1="802" y1="108" x2="858" y2="108" stroke="#059669" stroke-width="0.5"/>
+  <text x="802" y="121" fill="#34d399" font-size="9">1 PR / repo</text>
+  <text x="802" y="135" fill="#34d399" font-size="8">✓ automated</text>
+  <text x="802" y="153" fill="#64748b" font-size="8">Multi-service</text>
+  <text x="802" y="167" fill="#64748b" font-size="8">fans out to</text>
+  <text x="802" y="181" fill="#64748b" font-size="8">parallel sessions</text>
+
+  <!-- KB bar below -->
+  <rect x="160" y="230" width="540" height="60" rx="8" fill="rgba(52,211,153,0.08)" stroke="#059669" stroke-width="1.5"/>
+  <text x="430" y="252" text-anchor="middle" fill="#6ee7b7" font-size="13" font-weight="700">Commerce Knowledge Base</text>
+  <text x="430" y="268" text-anchor="middle" fill="#94a3b8" font-size="10">45 services · 686 API contracts · 127 flows · 1,291 RAG chunks · 25 MCP tools</text>
+  <text x="430" y="282" text-anchor="middle" fill="#64748b" font-size="9">BM25 + Dense MiniLM-L6-v2 384d · W-RRF α=0.4 β=0.6 · no GPU · in-memory</text>
+
+  <!-- Vertical connectors from KB to stages 3-5 -->
+  <line x1="345" y1="200" x2="345" y2="228" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="475" y1="200" x2="475" y2="228" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="605" y1="200" x2="605" y2="228" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Future connector to stage 2 -->
+  <line x1="215" y1="200" x2="215" y2="228" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="215" y="220" text-anchor="middle" fill="#a78bfa" font-size="7">future</text>
+
+  <!-- E2E callout -->
+  <rect x="30" y="305" width="840" height="50" rx="8" fill="rgba(234,88,12,0.06)" stroke="#ea580c" stroke-width="1"/>
+  <text x="450" y="330" text-anchor="middle" fill="#fdba74" font-size="12" font-weight="600">/commerce-end-to-end-feature-implementor — chains stages 3 → 4 → 5 → 7 automatically</text>
+  <text x="450" y="348" text-anchor="middle" fill="#94a3b8" font-size="10">Multi-service features fan out to parallel sessions per repository</text>
+</svg>

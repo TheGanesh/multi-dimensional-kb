@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="a3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569"/>
+    </marker>
+    <filter id="glowft"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gridft" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="900" height="420" fill="#080c14" rx="16"/>
+  <rect width="900" height="420" fill="url(#gridft)" rx="16"/>
+
+  <text x="450" y="36" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glowft)">Future Vision — TDD from SI Documents</text>
+  <text x="450" y="54" text-anchor="middle" fill="#64748b" font-size="11">Today the KB helps after TDD exists. Tomorrow it helps create the TDD.</text>
+
+  <!-- TODAY row -->
+  <rect x="40" y="75" width="820" height="110" rx="10" fill="rgba(52,211,153,0.06)" stroke="#059669" stroke-width="1"/>
+  <text x="60" y="100" fill="#6ee7b7" font-size="14" font-weight="700">TODAY — Working</text>
+
+  <rect x="60" y="115" width="120" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="120" y="138" text-anchor="middle" fill="#f87171" font-size="11" font-weight="600">Manual TDD</text>
+  <text x="120" y="155" text-anchor="middle" fill="#64748b" font-size="9">Human writes</text>
+
+  <line x1="180" y1="140" x2="220" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="220" y="115" width="140" height="50" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+  <text x="290" y="138" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="600">KB Enriches</text>
+  <text x="290" y="155" text-anchor="middle" fill="#94a3b8" font-size="9">2-phase traversal</text>
+
+  <line x1="360" y1="140" x2="400" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="400" y="115" width="100" height="50" rx="8" fill="#431407" stroke="#ea580c" stroke-width="1"/>
+  <text x="450" y="138" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="600">Stories</text>
+  <text x="450" y="155" text-anchor="middle" fill="#94a3b8" font-size="9">automated</text>
+
+  <line x1="500" y1="140" x2="530" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="530" y="115" width="90" height="50" rx="8" fill="#431407" stroke="#ea580c" stroke-width="1"/>
+  <text x="575" y="138" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="600">Plans</text>
+  <text x="575" y="155" text-anchor="middle" fill="#94a3b8" font-size="9">automated</text>
+
+  <line x1="620" y1="140" x2="650" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="650" y="115" width="90" height="50" rx="8" fill="#431407" stroke="#ea580c" stroke-width="1"/>
+  <text x="695" y="138" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="600">Code</text>
+  <text x="695" y="155" text-anchor="middle" fill="#94a3b8" font-size="9">automated</text>
+
+  <line x1="740" y1="140" x2="770" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="770" y="115" width="70" height="50" rx="8" fill="#431407" stroke="#ea580c" stroke-width="1"/>
+  <text x="805" y="144" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="600">PR</text>
+
+  <!-- Bottleneck callout -->
+  <text x="120" y="108" text-anchor="middle" fill="#f87171" font-size="9" font-weight="600">⚠ bottleneck</text>
+
+  <!-- FUTURE row -->
+  <rect x="40" y="210" width="820" height="115" rx="10" fill="rgba(124,58,237,0.06)" stroke="#7c3aed" stroke-width="1"/>
+  <text x="60" y="234" fill="#c4b5fd" font-size="14" font-weight="700">FUTURE — Planned</text>
+
+  <rect x="60" y="248" width="130" height="60" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="125" y="270" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600">SI Document</text>
+  <text x="125" y="285" text-anchor="middle" fill="#64748b" font-size="9">Business requirements</text>
+  <text x="125" y="299" text-anchor="middle" fill="#64748b" font-size="9">or feature brief</text>
+
+  <line x1="190" y1="278" x2="218" y2="278" stroke="#a78bfa" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="220" y="248" width="165" height="75" rx="8" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="302" y="268" text-anchor="middle" fill="#c4b5fd" font-size="11" font-weight="700">KB Generates TDD</text>
+  <text x="302" y="283" text-anchor="middle" fill="#a78bfa" font-size="9">Match SI → 45 service profiles</text>
+  <text x="302" y="298" text-anchor="middle" fill="#a78bfa" font-size="9">Identify impacted services</text>
+  <text x="302" y="313" text-anchor="middle" fill="#a78bfa" font-size="9">Draft API contracts from KB</text>
+
+  <line x1="385" y1="285" x2="410" y2="285" stroke="#a78bfa" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="412" y="256" width="130" height="58" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="477" y="276" text-anchor="middle" fill="#fde68a" font-size="11" font-weight="600">Human Review</text>
+  <text x="477" y="291" text-anchor="middle" fill="#94a3b8" font-size="9">Architect validates</text>
+  <text x="477" y="305" text-anchor="middle" fill="#94a3b8" font-size="9">+ approves draft</text>
+
+  <line x1="542" y1="285" x2="565" y2="285" stroke="#64748b" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="567" y="256" width="273" height="58" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+  <text x="703" y="276" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="600">Existing pipeline takes over</text>
+  <text x="703" y="291" text-anchor="middle" fill="#94a3b8" font-size="9">Stories → Plans → Code → PR</text>
+  <text x="703" y="306" text-anchor="middle" fill="#34d399" font-size="9">✓ already works today</text>
+
+  <!-- What KB provides — enriched -->
+  <rect x="40" y="342" width="820" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="#334155" stroke-width="1"/>
+  <text x="60" y="362" fill="#fbbf24" font-size="11" font-weight="600">KB data already available to power TDD generation:</text>
+  <text x="60" y="378" fill="#94a3b8" font-size="10">686 API contracts with schemas · 45 service dependency graphs · Kafka producer/consumer topology</text>
+  <text x="60" y="393" fill="#94a3b8" font-size="10">127 end-to-end flows · 5 ADRs with design rationale · 45 NFR profiles (latency SLAs, throughput) · 1,291 RAG chunks</text>
+</svg>

@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="ci1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569"/>
+    </marker>
+    <filter id="glowci"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gridci" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="960" height="580" fill="#080c14" rx="16"/>
+  <rect width="960" height="580" fill="url(#gridci)" rx="16"/>
+
+  <text x="480" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glowci)">CI/CD Pipeline — kb-validation.yml</text>
+  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="10">6 jobs · 3 triggers · 5 quality gates · $0 LLM cost · fully deterministic</text>
+
+  <!-- Triggers -->
+  <rect x="30" y="68" width="900" height="60" rx="8" fill="rgba(124,58,237,0.06)" stroke="#7c3aed" stroke-width="1"/>
+  <text x="50" y="88" fill="#c4b5fd" font-size="12" font-weight="700">Triggers</text>
+  <rect x="50" y="96" width="130" height="24" rx="5" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="115" y="112" text-anchor="middle" fill="#a78bfa" font-size="10">pull_request</text>
+  <rect x="200" y="96" width="150" height="24" rx="5" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="275" y="112" text-anchor="middle" fill="#a78bfa" font-size="10">push (main only)</text>
+  <rect x="370" y="96" width="180" height="24" rx="5" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="460" y="112" text-anchor="middle" fill="#a78bfa" font-size="10">schedule (Mon 06:00 UTC)</text>
+  <rect x="570" y="96" width="150" height="24" rx="5" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="645" y="112" text-anchor="middle" fill="#a78bfa" font-size="10">workflow_dispatch</text>
+  <text x="750" y="105" fill="#64748b" font-size="8">Paths: sources/</text>
+  <text x="750" y="117" fill="#64748b" font-size="8">scripts/ · markdown/ · kbcli/</text>
+
+  <!-- Job 1: validate -->
+  <rect x="30" y="140" width="290" height="200" rx="10" fill="#172554" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="175" y="165" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">Job 1: validate</text>
+  <text x="175" y="180" text-anchor="middle" fill="#64748b" font-size="9">Runs on: ubuntu-latest, Python 3.12</text>
+  <line x1="45" y1="188" x2="305" y2="188" stroke="#2563eb" stroke-width="0.5" stroke-opacity="0.4"/>
+
+  <rect x="45" y="195" width="260" height="22" rx="4" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="0.5"/>
+  <text x="55" y="210" fill="#60a5fa" font-size="9">Step 1: Schema validation — 6 schemas</text>
+
+  <rect x="45" y="222" width="260" height="22" rx="4" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="0.5"/>
+  <text x="55" y="237" fill="#60a5fa" font-size="9">Step 2: KB health audit — min-score=60</text>
+
+  <rect x="45" y="249" width="260" height="22" rx="4" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="0.5"/>
+  <text x="55" y="264" fill="#60a5fa" font-size="9">Step 3: OKF conformance (C1-C12 checks)</text>
+
+  <rect x="45" y="276" width="260" height="22" rx="4" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="0.5"/>
+  <text x="55" y="291" fill="#fbbf24" font-size="9">Step 4: Sync gate (regenerate → diff=0)</text>
+
+  <rect x="45" y="303" width="260" height="22" rx="4" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="0.5"/>
+  <text x="55" y="318" fill="#60a5fa" font-size="9">Step 5: Viz build · Step 6: AID coverage</text>
+
+  <!-- Job 2: mcp-tests -->
+  <rect x="340" y="140" width="280" height="120" rx="10" fill="#064e3b" stroke="#059669" stroke-width="1.5"/>
+  <text x="480" y="165" text-anchor="middle" fill="#6ee7b7" font-size="13" font-weight="700">Job 2: mcp-tests</text>
+  <text x="480" y="180" text-anchor="middle" fill="#64748b" font-size="9">Runs in parallel with validate</text>
+  <line x1="355" y1="188" x2="605" y2="188" stroke="#059669" stroke-width="0.5" stroke-opacity="0.4"/>
+
+  <rect x="355" y="195" width="250" height="22" rx="4" fill="rgba(52,211,153,0.1)" stroke="#34d399" stroke-width="0.5"/>
+  <text x="365" y="210" fill="#34d399" font-size="9">Step 1: MCP self-test — 25 tools</text>
+
+  <rect x="355" y="222" width="250" height="22" rx="4" fill="rgba(52,211,153,0.1)" stroke="#34d399" stroke-width="0.5"/>
+  <text x="365" y="237" fill="#34d399" font-size="9">Step 2: Retrieval quality — 54 queries</text>
+
+  <!-- Job 3: cli-smoke -->
+  <rect x="640" y="140" width="280" height="120" rx="10" fill="#431407" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="780" y="165" text-anchor="middle" fill="#fdba74" font-size="13" font-weight="700">Job 3: cli-smoke</text>
+  <text x="780" y="180" text-anchor="middle" fill="#64748b" font-size="9">Runs in parallel — PR + push only</text>
+  <line x1="655" y1="188" x2="905" y2="188" stroke="#ea580c" stroke-width="0.5" stroke-opacity="0.4"/>
+
+  <rect x="655" y="195" width="250" height="22" rx="4" fill="rgba(234,88,12,0.1)" stroke="#fb923c" stroke-width="0.5"/>
+  <text x="665" y="210" fill="#fb923c" font-size="9">Subcommand presence (all 11 commands)</text>
+
+  <rect x="655" y="222" width="250" height="22" rx="4" fill="rgba(234,88,12,0.1)" stroke="#fb923c" stroke-width="0.5"/>
+  <text x="665" y="237" fill="#fb923c" font-size="9">kb search + kb context · wrapper parity</text>
+
+  <!-- Arrows down -->
+  <line x1="175" y1="340" x2="175" y2="365" stroke="#64748b" stroke-width="1.5" marker-end="url(#ci1)"/>
+
+  <!-- Job 4: pr-comment -->
+  <rect x="30" y="370" width="200" height="80" rx="10" fill="#172554" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="130" y="395" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">Job 4: pr-comment</text>
+  <text x="130" y="412" text-anchor="middle" fill="#64748b" font-size="9">needs: validate · PR only</text>
+  <text x="130" y="430" fill="#94a3b8" font-size="9">Posts score + status to PR</text>
+  <text x="130" y="443" fill="#94a3b8" font-size="9">🟢 ≥80 · 🟡 ≥60 · 🔴 &lt;60</text>
+
+  <!-- Job 5: publish -->
+  <rect x="250" y="370" width="220" height="80" rx="10" fill="#064e3b" stroke="#059669" stroke-width="1.5"/>
+  <text x="360" y="395" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="700">Job 5: publish</text>
+  <text x="360" y="412" text-anchor="middle" fill="#64748b" font-size="9">needs: validate · main push only</text>
+  <text x="360" y="430" fill="#94a3b8" font-size="9">Builds viz.html, uploads artifacts</text>
+  <text x="360" y="443" fill="#94a3b8" font-size="9">(audit-report + metrics + viz)</text>
+
+  <!-- Job 6: weekly-audit -->
+  <rect x="490" y="370" width="220" height="80" rx="10" fill="#431407" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="600" y="395" text-anchor="middle" fill="#fdba74" font-size="12" font-weight="700">Job 6: weekly-audit</text>
+  <text x="600" y="412" text-anchor="middle" fill="#64748b" font-size="9">schedule only (Monday 06:00 UTC)</text>
+  <text x="600" y="430" fill="#94a3b8" font-size="9">Full audit with min-score=60</text>
+  <text x="600" y="443" fill="#f87171" font-size="9">Opens kb-health issue on failure</text>
+
+  <!-- Quality gates summary -->
+  <rect x="30" y="470" width="900" height="90" rx="10" fill="rgba(255,255,255,0.03)" stroke="#334155" stroke-width="1"/>
+  <text x="50" y="493" fill="#fbbf24" font-size="12" font-weight="700">Quality Gates (all deterministic, $0 LLM cost)</text>
+
+  <text x="50" y="515" fill="#60a5fa" font-size="10" font-weight="600">Schema: 6 JSON schemas</text>
+  <text x="50" y="530" fill="#64748b" font-size="9">validate_catalog.py</text>
+
+  <text x="210" y="515" fill="#60a5fa" font-size="10" font-weight="600">Audit: AUD-01…25</text>
+  <text x="210" y="530" fill="#64748b" font-size="9">audit_kb.py --min-score=60</text>
+
+  <text x="380" y="515" fill="#60a5fa" font-size="10" font-weight="600">OKF: C1-C12</text>
+  <text x="380" y="530" fill="#64748b" font-size="9">okf_conformance_check.py</text>
+
+  <text x="520" y="515" fill="#fbbf24" font-size="10" font-weight="600">Sync: diff = 0</text>
+  <text x="520" y="530" fill="#64748b" font-size="9">generate → git diff</text>
+
+  <text x="660" y="515" fill="#34d399" font-size="10" font-weight="600">Retrieval: 54 golden queries</text>
+  <text x="660" y="530" fill="#64748b" font-size="9">test_retrieval.py (R@10=1.0)</text>
+
+  <text x="50" y="550" fill="#64748b" font-size="9">D1-D10 deterministic metrics → audit-metrics.json: page count, freshness, cross-link density, orphan rate, provenance, trust distribution, API quality, empty-body rate</text>
+</svg>

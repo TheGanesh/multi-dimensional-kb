@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" font-family="'SF Mono','Fira Code','Cascadia Code',monospace">
+  <defs>
+    <marker id="p2a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#475569"/></marker>
+    <marker id="p2b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#10b981"/></marker>
+    <marker id="p2c" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#f59e0b"/></marker>
+    <marker id="p2d" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#00f0ff"/></marker>
+    <filter id="p2glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="p2grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="960" height="780" fill="#080c14" rx="16"/>
+  <rect width="960" height="780" fill="url(#p2grid)" rx="16"/>
+
+  <!-- Title -->
+  <text x="480" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#p2glow)">Phase 2 Target Architecture</text>
+  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="10">central index + orchestrator + online judge &#x00b7; same contracts (bundle, kb:// URI, MCP) &#x00b7; adopt per measured trigger</text>
+
+  <!-- ===== domain CIs (unchanged) ===== -->
+  <text x="130" y="84" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700">domain repos (unchanged)</text>
+  <rect x="30" y="94" width="200" height="38" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
+  <text x="130" y="111" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">commerce-kb CI</text>
+  <text x="130" y="125" text-anchor="middle" fill="#64748b" font-size="8">6 gates &#x2192; publish</text>
+  <rect x="30" y="142" width="200" height="38" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
+  <text x="130" y="159" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">customer-kb CI</text>
+  <text x="130" y="173" text-anchor="middle" fill="#64748b" font-size="8">6 gates &#x2192; publish</text>
+  <rect x="30" y="190" width="200" height="38" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
+  <text x="130" y="207" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">order-kb CI</text>
+  <text x="130" y="221" text-anchor="middle" fill="#64748b" font-size="8">6 gates &#x2192; publish</text>
+
+  <line x1="230" y1="161" x2="290" y2="161" stroke="#10b981" stroke-width="1.2" marker-end="url(#p2b)"/>
+
+  <!-- ===== Artifactory ===== -->
+  <rect x="290" y="94" width="300" height="134" rx="10" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="440" y="116" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">Artifactory &#x2014; bundle artifacts</text>
+  <text x="306" y="138" fill="#94a3b8" font-size="9">commerce@7.1.0   (OKF bundle tarball)</text>
+  <text x="306" y="154" fill="#94a3b8" font-size="9">customer@1.3.0</text>
+  <text x="306" y="170" fill="#94a3b8" font-size="9">order@0.9.0</text>
+  <text x="306" y="192" fill="#475569" font-size="8">versioned &#x00b7; pinnable by consumers &#x00b7; the</text>
+  <text x="306" y="206" fill="#475569" font-size="8">bundle stays the product; indexes are caches</text>
+
+  <!-- ===== Kestra ===== -->
+  <rect x="640" y="94" width="290" height="170" rx="10" fill="#1a1400" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="785" y="116" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">Orchestrator &#x2014; Kestra</text>
+  <text x="785" y="130" text-anchor="middle" fill="#475569" font-size="8">kestra/kestra:v1.3.21 + postgres:18 (docker)</text>
+  <text x="656" y="150" fill="#94a3b8" font-size="8">refresh-&lt;domain&gt;  nightly &#x00b7; dirty-list driven</text>
+  <text x="656" y="166" fill="#94a3b8" font-size="8">load-bundle       on new artifact version</text>
+  <text x="656" y="182" fill="#94a3b8" font-size="8">weekly-audit      SLO check &#x2192; notify owners</text>
+  <text x="656" y="198" fill="#94a3b8" font-size="8">eval-suite        E1&#x2013;E5 scorecard per release</text>
+  <text x="656" y="220" fill="#475569" font-size="8">alt: ADO scheduled pipelines, same flow design</text>
+  <text x="656" y="234" fill="#475569" font-size="8">secrets via platform store, never in flow YAML</text>
+  <text x="656" y="252" fill="#f59e0b" font-size="8" font-weight="600">trigger: &gt;3 domains or CI cron outgrown</text>
+
+  <line x1="590" y1="161" x2="640" y2="161" stroke="#475569" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="615" y="153" text-anchor="middle" fill="#475569" font-size="7">watches</text>
+
+  <!-- Artifactory -> pgvector via load-bundle -->
+  <line x1="440" y1="228" x2="440" y2="290" stroke="#f59e0b" stroke-width="1.2" marker-end="url(#p2c)"/>
+  <text x="452" y="252" fill="#fbbf24" font-size="8">load-bundle flow:</text>
+  <text x="452" y="266" fill="#64748b" font-size="8">parse chunks &#x2192; embed (vendored ONNX,</text>
+  <text x="452" y="280" fill="#64748b" font-size="8">baked at build) &#x2192; upsert by kb:// URI</text>
+
+  <!-- ===== pgvector ===== -->
+  <rect x="290" y="290" width="300" height="150" rx="10" fill="#021a12" stroke="#10b981" stroke-width="1.5"/>
+  <text x="440" y="312" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">pgvector &#x2014; central dense index</text>
+  <text x="440" y="326" text-anchor="middle" fill="#475569" font-size="8">pgvector/pgvector:pg17 (docker) &#x00b7; all domains</text>
+  <text x="306" y="346" fill="#94a3b8" font-size="8">chunks(uri PK, domain, type, entity,</text>
+  <text x="306" y="360" fill="#94a3b8" font-size="8">  disclosure, confidence, stale_after,</text>
+  <text x="306" y="374" fill="#94a3b8" font-size="8">  bundle_ver, body, embedding vector(384))</text>
+  <text x="306" y="392" fill="#94a3b8" font-size="8">HNSW (cosine) &#x00b7; WHERE domain/type/freshness</text>
+  <text x="306" y="406" fill="#94a3b8" font-size="8">idempotent upsert &#x00b7; rebuildable from artifacts</text>
+  <text x="306" y="426" fill="#10b981" font-size="8" font-weight="600">trigger: &gt;~50K chunks or startup &gt;30s</text>
+
+  <!-- ===== per-domain MCP ===== -->
+  <rect x="30" y="300" width="200" height="130" rx="10" fill="#0a1628" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="130" y="322" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="700">per-domain MCP</text>
+  <text x="130" y="336" text-anchor="middle" fill="#475569" font-size="8">unchanged from Phase 1</text>
+  <text x="46" y="356" fill="#94a3b8" font-size="8">commerce :8787  BM25 in-process</text>
+  <text x="46" y="372" fill="#94a3b8" font-size="8">customer :8788  25 graph tools</text>
+  <text x="46" y="388" fill="#94a3b8" font-size="8">order    :8789  deterministic O(1)</text>
+  <text x="46" y="410" fill="#60a5fa" font-size="8" font-weight="600">keyword search stays local &#x2014;</text>
+  <text x="46" y="422" fill="#60a5fa" font-size="8" font-weight="600">only dense goes central</text>
+
+  <!-- arrows into gateway -->
+  <line x1="130" y1="430" x2="130" y2="490" stroke="#3b82f6" stroke-width="1.2" marker-end="url(#p2a)"/>
+  <text x="140" y="464" fill="#475569" font-size="8">BM25 ranked lists</text>
+  <line x1="440" y1="440" x2="440" y2="490" stroke="#10b981" stroke-width="1.2" marker-end="url(#p2b)"/>
+  <text x="450" y="470" fill="#475569" font-size="8">dense top-k (SQL, domain-filtered)</text>
+
+  <!-- ===== gateway pipeline ===== -->
+  <rect x="30" y="490" width="900" height="120" rx="12" fill="rgba(0,240,255,0.03)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="54" y="514" fill="#00f0ff" font-size="12" font-weight="700">kb-gateway MCP &#x2014; retrieval pipeline v2</text>
+
+  <rect x="54" y="530" width="120" height="44" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="114" y="549" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">route</text>
+  <text x="114" y="563" text-anchor="middle" fill="#64748b" font-size="7">domain(s) via registry</text>
+  <line x1="174" y1="552" x2="204" y2="552" stroke="#475569" stroke-width="1.2" marker-end="url(#p2a)"/>
+
+  <rect x="204" y="530" width="150" height="44" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="279" y="549" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">fan-out &#x2264;2 domains</text>
+  <text x="279" y="563" text-anchor="middle" fill="#64748b" font-size="7">BM25 local + dense central</text>
+  <line x1="354" y1="552" x2="384" y2="552" stroke="#475569" stroke-width="1.2" marker-end="url(#p2a)"/>
+
+  <rect x="384" y="530" width="140" height="44" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="454" y="549" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">W-RRF merge</text>
+  <text x="454" y="563" text-anchor="middle" fill="#64748b" font-size="7">URI-keyed &#x00b7; k=60</text>
+  <line x1="524" y1="552" x2="554" y2="552" stroke="#475569" stroke-width="1.2" marker-end="url(#p2a)"/>
+
+  <rect x="554" y="530" width="130" height="44" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="619" y="549" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">lexical rerank</text>
+  <text x="619" y="563" text-anchor="middle" fill="#64748b" font-size="7">entity/section/disclosure</text>
+  <line x1="684" y1="552" x2="714" y2="552" stroke="#475569" stroke-width="1.2" marker-end="url(#p2a)"/>
+
+  <rect x="714" y="530" width="90" height="44" rx="8" fill="#1a1400" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="759" y="549" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600">0 results?</text>
+  <text x="759" y="563" text-anchor="middle" fill="#64748b" font-size="7">LLM rewrite &#x00d7;1</text>
+  <line x1="804" y1="552" x2="834" y2="552" stroke="#475569" stroke-width="1.2" marker-end="url(#p2a)"/>
+
+  <rect x="834" y="530" width="82" height="44" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
+  <text x="875" y="549" text-anchor="middle" fill="#34d399" font-size="9" font-weight="600">top-K</text>
+  <text x="875" y="563" text-anchor="middle" fill="#64748b" font-size="7">disclosure-first</text>
+
+  <text x="54" y="596" fill="#475569" font-size="8">rewrite loop bounded (max 1) &#x00b7; win-rate measured on dashboard &#x00b7; confidence + stale_after flow through to consumers</text>
+
+  <!-- gateway -> monitoring -->
+  <line x1="300" y1="610" x2="300" y2="646" stroke="#00f0ff" stroke-width="1.2" marker-end="url(#p2d)"/>
+  <text x="312" y="634" fill="#475569" font-size="8">answers + trajectories logged</text>
+
+  <!-- ===== monitoring ===== -->
+  <rect x="30" y="646" width="560" height="110" rx="12" fill="rgba(0,240,255,0.03)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="54" y="670" fill="#00f0ff" font-size="11" font-weight="700">Monitoring + Online Judge</text>
+  <text x="290" y="670" fill="#475569" font-size="8">postgres:17 + grafana (from Phase 1)</text>
+  <text x="54" y="690" fill="#94a3b8" font-size="8">conversations + feedback &#x2192; async judge, 1-in-10 sample (never in answer path)</text>
+  <text x="54" y="706" fill="#94a3b8" font-size="8">thumbs from consumer workflows (source='user') vs judge (source='judge')</text>
+  <text x="54" y="722" fill="#94a3b8" font-size="8">Grafana: judge trend &#x00b7; agreement &#x00b7; zero-result backlog &#x00b7; SLO &#x00b7; judge cost</text>
+  <text x="54" y="742" fill="#00f0ff" font-size="8" font-weight="600">trigger: adopt FIRST &#x2014; nearly free once real traffic exists</text>
+
+  <!-- ===== consumers ===== -->
+  <rect x="620" y="646" width="310" height="110" rx="10" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="775" y="670" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">Consumers</text>
+  <text x="636" y="690" fill="#94a3b8" font-size="8">story gen &#x00b7; plans &#x00b7; scaffold &#x00b7; draft-TDD (now viable)</text>
+  <text x="636" y="706" fill="#94a3b8" font-size="8">may pin bundles: commerce@7.1.0 &#x2192; reproducible runs</text>
+  <text x="636" y="722" fill="#94a3b8" font-size="8">in-domain &#x2192; domain MCP &#x00b7; cross-domain &#x2192; gateway</text>
+  <text x="636" y="742" fill="#475569" font-size="8">trajectory logging feeds E5 eval on real sessions</text>
+
+  <line x1="775" y1="646" x2="775" y2="610" stroke="#475569" stroke-width="1.2" marker-end="url(#p2a)"/>
+</svg>

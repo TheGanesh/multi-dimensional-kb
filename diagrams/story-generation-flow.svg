@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="a1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569"/>
+    </marker>
+    <filter id="glowsg"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gridsg" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="900" height="650" fill="#080c14" rx="16"/>
+  <rect width="900" height="650" fill="url(#gridsg)" rx="16"/>
+
+  <text x="450" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glowsg)">Story Generation — How the KB Is Used</text>
+  <text x="450" y="52" text-anchor="middle" fill="#64748b" font-size="11">/commerce-create-stories-from-feature  ·  TDD + KB → per-endpoint GHERKIN stories</text>
+
+  <!-- INPUT -->
+  <rect x="30" y="70" width="185" height="160" rx="10" fill="#431407" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="122" y="95" text-anchor="middle" fill="#fdba74" font-size="13" font-weight="700">INPUT</text>
+  <line x1="48" y1="104" x2="200" y2="104" stroke="#ea580c" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="48" y="122" fill="#fb923c" font-size="10">ADO Feature ID</text>
+  <text x="48" y="140" fill="#fbbf24" font-size="10" font-weight="600">TDD / LLD (mandatory)</text>
+  <text x="48" y="156" fill="#94a3b8" font-size="10">SI doc (optional)</text>
+  <text x="48" y="176" fill="#64748b" font-size="9">TDD is the absolute</text>
+  <text x="48" y="190" fill="#64748b" font-size="9">source of truth.</text>
+  <text x="48" y="204" fill="#64748b" font-size="9">KB enriches — never</text>
+  <text x="48" y="218" fill="#64748b" font-size="9">overrides TDD values.</text>
+
+  <!-- Arrow to KB traversal -->
+  <line x1="215" y1="150" x2="248" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
+
+  <!-- KB TRAVERSAL — expanded for tri-channel -->
+  <rect x="250" y="70" width="380" height="415" rx="10" fill="#172554" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="440" y="95" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">KB TRAVERSAL — TRI-CHANNEL</text>
+  <text x="440" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">Phase 1 (Markdown) · Phase 1.5 (RAG) · Phase 2 (MCP) — independently resilient</text>
+
+  <!-- Phase 1 — Markdown -->
+  <rect x="268" y="125" width="344" height="115" rx="8" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1.2"/>
+  <text x="278" y="144" fill="#93c5fd" font-size="11" font-weight="700">Phase 1 — Markdown (always runs, offline-capable)</text>
+  <text x="278" y="161" fill="#94a3b8" font-size="10">Start: Commerce-Services-Summary.md (master index)</text>
+  <text x="278" y="177" fill="#94a3b8" font-size="10">Follow links → markdown/services/ · capability-flow/ · adrs/</text>
+  <text x="278" y="193" fill="#f87171" font-size="10" font-weight="600">Recursive: follow all linked pages until none remain</text>
+  <text x="278" y="209" fill="#94a3b8" font-size="10">Collects: API schemas · Kafka topics · outbound deps · flows</text>
+  <text x="278" y="224" fill="#64748b" font-size="9">No external dependency — runs even if MCP server is down</text>
+
+  <!-- Phase 1.5 — RAG Enrichment (NEW) -->
+  <rect x="268" y="249" width="344" height="80" rx="8" fill="rgba(250,204,21,0.07)" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="278" y="268" fill="#fcd34d" font-size="11" font-weight="700">Phase 1.5 — RAG Enrichment (offline · no server · kb CLI)</text>
+  <text x="278" y="284" fill="#fbbf24" font-size="9">kb context "{service} inbound APIs outbound architecture" --tokens 4000 --type service</text>
+  <text x="278" y="299" fill="#fbbf24" font-size="9">kb search "{scenario} {service}" --top 10 --type api-catalog --json</text>
+  <text x="278" y="314" fill="#64748b" font-size="9">Semantic discovery across 1,291 chunks · −37% KB-INFERRED vs markdown-only</text>
+  <text x="278" y="327" fill="#64748b" font-size="9">Step 0.4 pre-flight · Step 2.3.5 enrichment · 50k-token budget guard · HS-16</text>
+
+  <!-- Phase 2 — MCP Enrichment (shifted down) -->
+  <rect x="268" y="340" width="344" height="130" rx="8" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1.2"/>
+  <text x="278" y="359" fill="#6ee7b7" font-size="11" font-weight="700">Phase 2 — MCP Enrichment (mandatory attempt, graceful fallback)</text>
+  <text x="278" y="376" fill="#34d399" font-size="10">graph_get_service(name) → full service profile</text>
+  <text x="278" y="392" fill="#34d399" font-size="10">graph_get_api_detail(service, operationId) → field schemas + scenarios</text>
+  <text x="278" y="408" fill="#34d399" font-size="10">graph_find_service_dependencies(name) → dependency graph</text>
+  <text x="278" y="424" fill="#34d399" font-size="10">graph_semantic_search(query) → MCP-hosted RAG chunks</text>
+  <text x="278" y="441" fill="#64748b" font-size="9">Structured JSON; −49% KB-INFERRED cumulative · attestation: "unreachable" if down</text>
+  <text x="278" y="454" fill="#64748b" font-size="9">If MCP down → Markdown + RAG fallback; stories still generated</text>
+
+  <!-- Arrow to Output -->
+  <line x1="630" y1="250" x2="660" y2="250" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
+
+  <!-- OUTPUT -->
+  <rect x="660" y="70" width="205" height="215" rx="10" fill="#064e3b" stroke="#059669" stroke-width="1.5"/>
+  <text x="762" y="95" text-anchor="middle" fill="#6ee7b7" font-size="13" font-weight="700">OUTPUT</text>
+  <line x1="678" y1="104" x2="850" y2="104" stroke="#059669" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="678" y="122" fill="#34d399" font-size="10">features/{ID}/stories/</text>
+  <text x="678" y="138" fill="#94a3b8" font-size="10">One .md per endpoint:</text>
+  <text x="678" y="154" fill="#94a3b8" font-size="9">• Story ID + title</text>
+  <text x="678" y="169" fill="#94a3b8" font-size="9">• Business context</text>
+  <text x="678" y="184" fill="#94a3b8" font-size="9">• GHERKIN Given/When/Then</text>
+  <text x="678" y="199" fill="#94a3b8" font-size="9">• API contract (req/resp)</text>
+  <text x="678" y="214" fill="#94a3b8" font-size="9">• Error scenarios</text>
+  <text x="678" y="229" fill="#fbbf24" font-size="9">• KB-INFERRED tags on</text>
+  <text x="678" y="244" fill="#fbbf24" font-size="9">  non-TDD values</text>
+  <text x="678" y="264" fill="#64748b" font-size="9">+ feature-execution-summary.md</text>
+
+  <!-- Precedence rule -->
+  <rect x="660" y="300" width="205" height="62" rx="8" fill="rgba(148,163,184,0.05)" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="318" fill="#94a3b8" font-size="9" font-weight="600">Precedence:</text>
+  <text x="670" y="333" fill="#fbbf24" font-size="9">TDD > MCP contract</text>
+  <text x="670" y="348" fill="#94a3b8" font-size="9">> markdown prose</text>
+  <text x="670" y="363" fill="#94a3b8" font-size="9">> RAG enrichment</text>
+
+  <!-- TDD Primacy rule -->
+  <rect x="30" y="500" width="840" height="50" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="50" y="520" fill="#fde68a" font-size="12" font-weight="700">Key Rule: TDD Always Wins</text>
+  <text x="50" y="538" fill="#94a3b8" font-size="10">If TDD and KB disagree on a value (flag name, error code, API path, field type) — TDD wins, no exceptions. KB-only values are tagged <tspan fill="#f87171" font-weight="600">⚠️ KB-INFERRED</tspan>.</text>
+
+  <!-- GAP rule -->
+  <rect x="30" y="560" width="840" height="68" rx="8" fill="rgba(255,255,255,0.02)" stroke="#334155" stroke-width="1"/>
+  <text x="50" y="580" fill="#94a3b8" font-size="11" font-weight="600">KB-INFERRED  vs  GAP Items</text>
+  <text x="50" y="598" fill="#94a3b8" font-size="10"><tspan fill="#fbbf24" font-weight="600">KB-INFERRED:</tspan>  Value present in KB but not in TDD — included with tag, reviewer verifies.</text>
+  <text x="50" y="614" fill="#94a3b8" font-size="10"><tspan fill="#f87171" font-weight="600">GAP:</tspan>  Neither TDD nor KB has the value — marked as <tspan fill="#f87171">GAP: [description]</tspan> for architect to resolve.</text>
+</svg>

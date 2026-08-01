@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="aw" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#f87171"/>
+    </marker>
+    <marker id="ar" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#34d399"/>
+    </marker>
+    <filter id="glowwf"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gridwf" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="1000" height="540" fill="#080c14" rx="16"/>
+  <rect width="1000" height="540" fill="url(#gridwf)" rx="16"/>
+
+  <text x="500" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glowwf)">Workflow → Folder Map</text>
+  <text x="500" y="52" text-anchor="middle" fill="#64748b" font-size="11">Each workflow reads specific sources and writes to specific output folders</text>
+
+  <!-- Column headers -->
+  <rect x="15" y="62" width="970" height="26" rx="4" fill="#1e293b"/>
+  <text x="110" y="79" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="700">WORKFLOW</text>
+  <text x="355" y="79" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">WRITES TO  (output)</text>
+  <text x="660" y="79" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">READS FROM  (input)</text>
+  <text x="910" y="79" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="700">PRODUCES</text>
+
+  <!-- Divider lines -->
+  <line x1="215" y1="62" x2="215" y2="500" stroke="#1e293b" stroke-width="2"/>
+  <line x1="510" y1="62" x2="510" y2="500" stroke="#1e293b" stroke-width="2"/>
+  <line x1="810" y1="62" x2="810" y2="500" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- INGEST SECTION -->
+  <rect x="15" y="90" width="970" height="168" rx="0" fill="rgba(124,58,237,0.04)"/>
+  <rect x="15" y="90" width="4" height="168" rx="0" fill="#7c3aed"/>
+  
+
+  <!-- Row 1: /ingest-service -->
+  <rect x="15" y="92" width="970" height="40" rx="0" fill="rgba(124,58,237,0.07)"/>
+  <text x="25" y="109" fill="#a78bfa" font-size="11" font-weight="600">/ingest-service</text>
+  <text x="25" y="124" fill="#64748b" font-size="9">Scans one service repo</text>
+  <text x="225" y="109" fill="#fca5a5" font-size="10">sources/services/{name}/catalog-info.yaml</text>
+  <text x="225" y="124" fill="#fca5a5" font-size="9">sources/api-contracts/{name}/*.yaml</text>
+  <text x="520" y="109" fill="#6ee7b7" font-size="10">pom.xml · *.java controllers · application.yml</text>
+  <text x="520" y="124" fill="#6ee7b7" font-size="9">OpenAPI spec (if present)</text>
+  <text x="820" y="113" fill="#94a3b8" font-size="8">catalog-info + API contracts per svc</text>
+
+  <!-- Row 2: /ingest-wiki -->
+  <rect x="15" y="132" width="970" height="40" rx="0" fill="rgba(124,58,237,0.03)"/>
+  <text x="25" y="149" fill="#a78bfa" font-size="11" font-weight="600">/ingest-wiki</text>
+  <text x="25" y="164" fill="#64748b" font-size="9">Deep-crawls Confluence</text>
+  <text x="225" y="149" fill="#fca5a5" font-size="10">sources/wiki-crawled/*.md</text>
+  <text x="225" y="164" fill="#fca5a5" font-size="9">sources/wiki-attachments/*.json</text>
+  <text x="520" y="149" fill="#6ee7b7" font-size="10">Confluence pages via LevelUp MCP</text>
+  <text x="520" y="164" fill="#6ee7b7" font-size="9">Child pages + JSON attachments (AID pages)</text>
+  <text x="820" y="155" fill="#94a3b8" font-size="8">~23 wiki pages + JSON attachments</text>
+
+  <!-- Row 3: /ingest-bruno -->
+  <rect x="15" y="172" width="970" height="40" rx="0" fill="rgba(124,58,237,0.07)"/>
+  <text x="25" y="189" fill="#a78bfa" font-size="11" font-weight="600">/ingest-bruno</text>
+  <text x="25" y="204" fill="#64748b" font-size="9">Parses API collections</text>
+  <text x="225" y="189" fill="#fca5a5" font-size="10">sources/capability-flow/*.yaml</text>
+  <text x="225" y="204" fill="#fca5a5" font-size="9">sources/bruno-parsed/**/*.md</text>
+  <text x="520" y="189" fill="#6ee7b7" font-size="10">Bruno .bru collection files</text>
+  <text x="520" y="204" fill="#6ee7b7" font-size="9">commerce-services-api-collections repo</text>
+  <text x="820" y="195" fill="#94a3b8" font-size="8">127 flows + 102 Bruno markdown</text>
+
+  <!-- Row 4: /ingest-auxiliary -->
+  <rect x="15" y="212" width="970" height="42" rx="0" fill="rgba(124,58,237,0.03)"/>
+  <text x="25" y="228" fill="#a78bfa" font-size="11" font-weight="600">/ingest-auxiliary</text>
+  <text x="25" y="243" fill="#64748b" font-size="9">ADRs, NFRs, graph data</text>
+  <text x="225" y="228" fill="#fca5a5" font-size="10">sources/adrs/*.yaml · nfrs/*.yaml</text>
+  <text x="225" y="243" fill="#fca5a5" font-size="9">graph-metadata/*.json</text>
+  <text x="520" y="228" fill="#6ee7b7" font-size="10">Architecture Decision Records (ADR docs)</text>
+  <text x="520" y="243" fill="#6ee7b7" font-size="9">NFR specs · domain capability metadata</text>
+  <text x="820" y="234" fill="#94a3b8" font-size="8">5 ADRs · 26 NFRs · 15 metadata</text>
+
+  <!-- GENERATE SECTION -->
+  <line x1="15" y1="258" x2="985" y2="258" stroke="#334155" stroke-width="1.5"/>
+  <rect x="15" y="258" width="970" height="52" rx="0" fill="rgba(37,99,235,0.06)"/>
+  <rect x="15" y="258" width="4" height="52" rx="0" fill="#2563eb"/>
+  <text x="25" y="275" fill="#60a5fa" font-size="11" font-weight="600">/generate-kb</text>
+  <text x="25" y="291" fill="#64748b" font-size="9">Deterministic, no LLM</text>
+  <text x="25" y="304" fill="#64748b" font-size="9">~30s for full corpus</text>
+  <text x="225" y="272" fill="#fca5a5" font-size="10">markdown/services/ (45) · api-catalog/ (45)</text>
+  <text x="225" y="286" fill="#fca5a5" font-size="10">capability-flow/ (127) · impact/ (45)</text>
+  <text x="225" y="300" fill="#fbbf24" font-size="10" font-weight="600">markdown/chunks/ (1,291 RAG) · Summary.md</text>
+  <text x="520" y="272" fill="#6ee7b7" font-size="10">All sources/**/*.yaml (YAML is authoritative)</text>
+  <text x="520" y="286" fill="#6ee7b7" font-size="10">wiki-crawled/ · bruno-parsed/ · graph-metadata/</text>
+  <text x="520" y="300" fill="#6ee7b7" font-size="9">seed.yaml declares versions + kb-version tag</text>
+  <text x="820" y="278" fill="#fbbf24" font-size="8" font-weight="600">Full KB: ~800 markdown files</text>
+  <text x="820" y="293" fill="#94a3b8" font-size="8">1,291 RAG chunks for indexing</text>
+  <text x="820" y="308" fill="#94a3b8" font-size="8">CHANGELOG.md per run</text>
+
+  <!-- CONSUMER SECTION -->
+  <line x1="15" y1="314" x2="985" y2="314" stroke="#334155" stroke-width="1.5"/>
+  <rect x="15" y="314" width="4" height="186" rx="0" fill="#ea580c"/>
+
+  <!-- Row 6: /create-stories -->
+  <rect x="15" y="316" width="970" height="50" rx="0" fill="rgba(234,88,12,0.06)"/>
+  <text x="25" y="333" fill="#fb923c" font-size="11" font-weight="600">/create-stories</text>
+  <text x="25" y="348" fill="#64748b" font-size="9">TDD + KB → GHERKIN</text>
+  <text x="25" y="360" fill="#64748b" font-size="9">1 story per endpoint</text>
+  <text x="225" y="333" fill="#fca5a5" font-size="10">features/{ID}/stories/{story-id}.md</text>
+  <text x="225" y="348" fill="#fca5a5" font-size="9">features/{ID}/feature-execution-summary.md</text>
+  <text x="520" y="333" fill="#6ee7b7" font-size="10">Commerce-Services-Summary.md → KB markdown</text>
+  <text x="520" y="348" fill="#6ee7b7" font-size="9">MCP: graph_get_service / graph_get_api_contract</text>
+  <text x="520" y="360" fill="#fbbf24" font-size="9">TDD/LLD (mandatory, source of truth)</text>
+  <text x="820" y="340" fill="#94a3b8" font-size="8">N stories (1 per endpoint)</text>
+  <text x="820" y="355" fill="#94a3b8" font-size="8">GHERKIN Given/When/Then ACs</text>
+
+  <!-- Row 7: /compare-dev -->
+  <rect x="15" y="366" width="970" height="46" rx="0" fill="rgba(234,88,12,0.03)"/>
+  <text x="25" y="383" fill="#fb923c" font-size="11" font-weight="600">/compare-dev</text>
+  <text x="25" y="398" fill="#64748b" font-size="9">Stories → 7-section plan</text>
+  <text x="25" y="410" fill="#64748b" font-size="9">Brownfield-aware</text>
+  <text x="225" y="383" fill="#fca5a5" font-size="10">{repo}/docs/{JIRA}/execution-plan.md</text>
+  <text x="225" y="398" fill="#fca5a5" font-size="8">scope · design · impl · test · config · PR · risk</text>
+  <text x="520" y="383" fill="#6ee7b7" font-size="10">Stories + KB markdown + service repo code</text>
+  <text x="520" y="398" fill="#6ee7b7" font-size="9">MCP: graph_get_service, graph_get_api_detail</text>
+  <text x="820" y="391" fill="#94a3b8" font-size="8">1 execution plan per service</text>
+
+  <!-- Row 8: /scaffold-dev -->
+  <rect x="15" y="412" width="970" height="46" rx="0" fill="rgba(234,88,12,0.06)"/>
+  <text x="25" y="429" fill="#fb923c" font-size="11" font-weight="600">/scaffold-dev</text>
+  <text x="25" y="444" fill="#64748b" font-size="9">Plans → production code</text>
+  <text x="25" y="456" fill="#64748b" font-size="9">Section-by-section, gated</text>
+  <text x="225" y="429" fill="#fca5a5" font-size="10">{repo}/src/main/java/**/*.java</text>
+  <text x="225" y="444" fill="#fca5a5" font-size="9">{repo}/src/test/groovy/**/*Spec.groovy</text>
+  <text x="225" y="456" fill="#fca5a5" font-size="9">application.yml · openapi changes</text>
+  <text x="520" y="429" fill="#6ee7b7" font-size="10">Execution plan (7-section template)</text>
+  <text x="520" y="444" fill="#6ee7b7" font-size="9">KB coding patterns + service repo</text>
+  <text x="520" y="456" fill="#6ee7b7" font-size="9">MCP: graph_semantic_search (RAG context)</text>
+  <text x="820" y="436" fill="#94a3b8" font-size="8">Java src + Spock tests + config</text>
+  <text x="820" y="451" fill="#34d399" font-size="8">Build gate after each section</text>
+
+  <!-- Legend -->
+  <rect x="15" y="462" width="970" height="26" rx="4" fill="#1e293b"/>
+  <rect x="30" y="469" width="10" height="10" rx="2" fill="#7c3aed" opacity="0.7"/>
+  <text x="46" y="479" fill="#64748b" font-size="9">Ingest (LLM scans source)</text>
+  <rect x="200" y="469" width="10" height="10" rx="2" fill="#2563eb" opacity="0.7"/>
+  <text x="216" y="479" fill="#64748b" font-size="9">Generate (Python, deterministic)</text>
+  <rect x="390" y="469" width="10" height="10" rx="2" fill="#ea580c" opacity="0.7"/>
+  <text x="406" y="479" fill="#64748b" font-size="9">Consumer (LLM uses KB)</text>
+  <text x="600" y="479" fill="#64748b" font-size="9">All YAML in sources/ is authoritative — never edit markdown/ directly</text>
+</svg>

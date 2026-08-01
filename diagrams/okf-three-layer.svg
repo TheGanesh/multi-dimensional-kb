@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace">
+  <defs>
+    <marker id="ol1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569"/>
+    </marker>
+    <marker id="ol2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#34d399"/>
+    </marker>
+    <filter id="glowol"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gridol" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="960" height="520" fill="#080c14" rx="16"/>
+  <rect width="960" height="520" fill="url(#gridol)" rx="16"/>
+
+  <text x="480" y="36" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glowol)">Three-Layer Architecture (OKF v0.2 + LLM-Wiki)</text>
+  <text x="480" y="56" text-anchor="middle" fill="#64748b" font-size="11">Industry patterns adapted for corporate-network constraints — no GPU, no model downloads, deterministic</text>
+
+  <!-- Layer 1: Raw Sources -->
+  <rect x="30" y="80" width="280" height="180" rx="10" fill="#1e1b4b" stroke="#7c3aed" stroke-width="2"/>
+  <text x="170" y="105" text-anchor="middle" fill="#c4b5fd" font-size="14" font-weight="700">Layer 1 — Raw Sources</text>
+  <text x="170" y="121" text-anchor="middle" fill="#a78bfa" font-size="10">sources/ (system of record)</text>
+  <line x1="45" y1="130" x2="295" y2="130" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="45" y="150" fill="#94a3b8" font-size="10">services/{name}/catalog-info.yaml</text>
+  <text x="45" y="167" fill="#94a3b8" font-size="10">api-contracts/{svc}/*.yaml</text>
+  <text x="45" y="184" fill="#94a3b8" font-size="10">capability-flow/*.yaml</text>
+  <text x="45" y="201" fill="#94a3b8" font-size="10">adrs/ · nfrs/ · metadata/</text>
+  <text x="45" y="218" fill="#94a3b8" font-size="10">wiki-crawled/ · bruno-parsed/</text>
+  <text x="45" y="238" fill="#fbbf24" font-size="9" font-weight="600">EDIT HERE — only source of truth</text>
+  <text x="45" y="252" fill="#64748b" font-size="9">OKF: stable resource identity</text>
+
+  <!-- Arrow L1 → L2 -->
+  <line x1="310" y1="170" x2="350" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#ol1)"/>
+  <text x="330" y="162" text-anchor="middle" fill="#475569" font-size="8">generate</text>
+
+  <!-- Layer 2: Generated Wiki -->
+  <rect x="350" y="80" width="280" height="180" rx="10" fill="#064e3b" stroke="#059669" stroke-width="2"/>
+  <text x="490" y="105" text-anchor="middle" fill="#6ee7b7" font-size="14" font-weight="700">Layer 2 — Generated Wiki</text>
+  <text x="490" y="121" text-anchor="middle" fill="#34d399" font-size="10">markdown/ (OKF v0.2 bundle)</text>
+  <line x1="365" y1="130" x2="615" y2="130" stroke="#059669" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="365" y="150" fill="#94a3b8" font-size="10">index.md (bundle root, okf_version: "0.2")</text>
+  <text x="365" y="167" fill="#94a3b8" font-size="10">services/ · api-catalog/ · impact/</text>
+  <text x="365" y="184" fill="#94a3b8" font-size="10">capability-flow/ · adrs/ · nfrs/</text>
+  <text x="365" y="201" fill="#94a3b8" font-size="10">chunks/ (1,291 RAG chunks)</text>
+  <text x="365" y="218" fill="#94a3b8" font-size="10">log.md · CHANGELOG.md</text>
+  <text x="365" y="238" fill="#f87171" font-size="9" font-weight="600">NEVER HAND-EDIT — regenerate only</text>
+  <text x="365" y="252" fill="#64748b" font-size="9">OKF: progressive disclosure, frontmatter</text>
+
+  <!-- Arrow L2 → L3 -->
+  <line x1="630" y1="170" x2="670" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#ol1)"/>
+  <text x="650" y="162" text-anchor="middle" fill="#475569" font-size="8">governs</text>
+
+  <!-- Layer 3: Schema / Config -->
+  <rect x="670" y="80" width="260" height="180" rx="10" fill="#172554" stroke="#2563eb" stroke-width="2"/>
+  <text x="800" y="105" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="700">Layer 3 — Schema / Config</text>
+  <text x="800" y="121" text-anchor="middle" fill="#60a5fa" font-size="10">governs layers 1 &amp; 2</text>
+  <line x1="685" y1="130" x2="915" y2="130" stroke="#2563eb" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="685" y="150" fill="#94a3b8" font-size="9">06-schema-reference.md (frontmatter)</text>
+  <text x="685" y="167" fill="#94a3b8" font-size="10">templates/seed.yaml (single input)</text>
+  <text x="685" y="184" fill="#94a3b8" font-size="10">templates/schema/*.schema.json</text>
+  <text x="685" y="201" fill="#94a3b8" font-size="10">scripts/ (generate, validate, audit)</text>
+  <text x="685" y="218" fill="#94a3b8" font-size="10">workflows/ (10 workflow files)</text>
+  <text x="685" y="238" fill="#fbbf24" font-size="9" font-weight="600">Rules that control everything</text>
+  <text x="685" y="252" fill="#64748b" font-size="9">OKF: conformance checks C1-C12</text>
+
+  <!-- OKF Patterns row -->
+  <rect x="30" y="285" width="900" height="100" rx="10" fill="rgba(52,211,153,0.05)" stroke="#059669" stroke-width="1"/>
+  <text x="50" y="308" fill="#6ee7b7" font-size="13" font-weight="700">OKF v0.2 Patterns Adopted</text>
+  <text x="50" y="327" fill="#94a3b8" font-size="10">Deterministic-first retrieval · Stable URI identity (commerce://entity/type) · Standardized frontmatter (type, title, generated, sources)</text>
+  <text x="50" y="344" fill="#94a3b8" font-size="10">Progressive disclosure (index.md → dir/index.md → concept) · One concept per chunk (8 KB ceiling) · Provenance/confidence categories</text>
+  <text x="50" y="361" fill="#94a3b8" font-size="10">Hierarchical bundle indexes (§8) · Operation log format (§9) · Trust tiers (machine-confirmed / human-reviewed / unverified)</text>
+  <text x="50" y="378" fill="#94a3b8" font-size="10">Conformance gate (C1-C12) · Deterministic quality metrics (D1-D10) · Freshness tracking (stale_after per-type TTL)</text>
+
+  <!-- LLM-Wiki Patterns row -->
+  <rect x="30" y="400" width="900" height="100" rx="10" fill="rgba(124,58,237,0.05)" stroke="#7c3aed" stroke-width="1"/>
+  <text x="50" y="423" fill="#c4b5fd" font-size="13" font-weight="700">LLM-Wiki Patterns Adopted</text>
+  <text x="50" y="442" fill="#94a3b8" font-size="10">Append-only operation log (log.md — timestamped records of every generate/audit run)</text>
+  <text x="50" y="459" fill="#94a3b8" font-size="10">Index-first navigation (agents start at index.md, not grep) · Maintenance visibility / self-checks (AUD-22…25 report-only lint)</text>
+  <text x="50" y="476" fill="#94a3b8" font-size="10">Freshness tracking (.fingerprints.json manifest v2) · Compound knowledge (durable analyses in markdown/analysis/)</text>
+  <text x="50" y="493" fill="#64748b" font-size="10">Deliberately omitted: external embedding models, vector DB, GPU, git hooks across 45 repos, ML query classifier, A/B index swap</text>
+</svg>

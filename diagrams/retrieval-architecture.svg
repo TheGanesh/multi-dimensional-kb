@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" font-family="'SF Mono','Fira Code','Cascadia Code',monospace">
+  <defs>
+    <marker id="ra1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#475569"/></marker>
+    <marker id="ra2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#00f0ff"/></marker>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="#1e293b"/></pattern>
+  </defs>
+
+  <rect width="960" height="700" fill="#080c14" rx="16"/>
+  <rect width="960" height="700" fill="url(#grid)" rx="16"/>
+
+  <!-- Title -->
+  <text x="480" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glow)">Retrieval Architecture</text>
+  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="10">graph_smart_query &#x2014; rule-based classifier &#x2192; deterministic-first &#x2192; hybrid BM25 + Dense</text>
+
+  <!-- TOP SECTION: Classifier + Routes (all below y=70) -->
+
+  <!-- Query -->
+  <rect x="24" y="118" width="130" height="50" rx="10" fill="#1a0a02" stroke="#ff6b00" stroke-width="1.5"/>
+  <text x="89" y="141" text-anchor="middle" fill="#ff9f43" font-size="13" font-weight="700">Query</text>
+  <text x="89" y="158" text-anchor="middle" fill="#64748b" font-size="9">Natural language</text>
+  <line x1="154" y1="143" x2="186" y2="143" stroke="#475569" stroke-width="1.5" marker-end="url(#ra1)"/>
+
+  <!-- Classifier -->
+  <rect x="186" y="112" width="196" height="62" rx="10" fill="#0a1628" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="284" y="135" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="700">Rule-Based Classifier</text>
+  <text x="284" y="151" text-anchor="middle" fill="#3b82f6" font-size="9">&gt;95% accuracy &#x00b7; test_smart_query.py</text>
+  <text x="284" y="165" text-anchor="middle" fill="#475569" font-size="8">Pattern match &#x2192; 4 intent classes</text>
+
+  <!-- Connector from classifier to vertical rail -->
+  <line x1="382" y1="143" x2="414" y2="143" stroke="#475569" stroke-width="1"/>
+
+  <!-- Vertical rail connecting to 4 routes -->
+  <line x1="414" y1="94" x2="414" y2="244" stroke="#475569" stroke-width="1"/>
+
+  <!-- Route 1: ANALYTICAL (y=74) -->
+  <line x1="414" y1="94" x2="430" y2="94" stroke="#8b5cf6" stroke-width="1"/>
+  <rect x="430" y="74" width="220" height="40" rx="8" fill="#0f0a24" stroke="#8b5cf6" stroke-width="1.2"/>
+  <text x="540" y="91" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="700">ANALYTICAL</text>
+  <text x="540" y="106" text-anchor="middle" fill="#64748b" font-size="8">impact / blast radius &#x2192; graph traversal</text>
+
+  <!-- Route 2: NAVIGATIONAL (y=124) -->
+  <line x1="414" y1="144" x2="430" y2="144" stroke="#10b981" stroke-width="1"/>
+  <rect x="430" y="124" width="220" height="40" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
+  <text x="540" y="141" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700">NAVIGATIONAL</text>
+  <text x="540" y="156" text-anchor="middle" fill="#64748b" font-size="8">"list APIs of X" &#x2192; catalog lookup</text>
+
+  <!-- Route 3: FACTUAL (y=174) -->
+  <line x1="414" y1="194" x2="430" y2="194" stroke="#10b981" stroke-width="1"/>
+  <rect x="430" y="174" width="220" height="40" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
+  <text x="540" y="191" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700">FACTUAL</text>
+  <text x="540" y="206" text-anchor="middle" fill="#64748b" font-size="8">service + operationId &#x2192; detail lookup</text>
+
+  <!-- Route 4: EXPLORATORY (y=224) -->
+  <line x1="414" y1="244" x2="430" y2="244" stroke="#f59e0b" stroke-width="1"/>
+  <rect x="430" y="224" width="220" height="40" rx="8" fill="#1a1400" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="540" y="241" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">EXPLORATORY</text>
+  <text x="540" y="256" text-anchor="middle" fill="#64748b" font-size="8">how / why &#x2192; hybrid BM25 + Dense</text>
+
+  <!-- Deterministic results box -->
+  <rect x="700" y="74" width="236" height="150" rx="10" fill="rgba(0,240,255,0.03)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="818" y="96" text-anchor="middle" fill="#00f0ff" font-size="11" font-weight="700">Deterministic Results</text>
+  <text x="718" y="116" fill="#64748b" font-size="9">O(1) dict lookups</text>
+  <text x="718" y="133" fill="#94a3b8" font-size="9">graph_get_service</text>
+  <text x="718" y="149" fill="#94a3b8" font-size="9">graph_list_api_contracts</text>
+  <text x="718" y="165" fill="#94a3b8" font-size="9">graph_get_api_detail</text>
+  <text x="718" y="181" fill="#94a3b8" font-size="9">graph_get_impact</text>
+  <text x="718" y="210" fill="#00f0ff" font-size="8">OKF: exact answers first</text>
+  <line x1="650" y1="144" x2="700" y2="144" stroke="#00f0ff" stroke-width="1" marker-end="url(#ra2)"/>
+
+  <!-- HYBRID SEARCH PIPELINE PANEL -->
+  <rect x="24" y="290" width="912" height="310" rx="12" fill="rgba(245,158,11,0.03)" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.4"/>
+
+  <text x="48" y="314" fill="#fbbf24" font-size="13" font-weight="700">Hybrid Search Pipeline</text>
+  <text x="280" y="314" fill="#475569" font-size="10">exploratory route &#x00b7; ONNX in-repo &#x00b7; no GPU &#x00b7; 1,291 chunks</text>
+
+  <!-- Tokenize -->
+  <rect x="48" y="332" width="110" height="44" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="103" y="351" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Tokenize</text>
+  <text x="103" y="365" text-anchor="middle" fill="#475569" font-size="8">+ entity filter</text>
+
+  <line x1="158" y1="354" x2="182" y2="354" stroke="#475569" stroke-width="1.2"/>
+  <line x1="182" y1="338" x2="182" y2="376" stroke="#475569" stroke-width="1.2"/>
+
+  <!-- BM25 -->
+  <rect x="196" y="324" width="170" height="56" rx="8" fill="#0a1628" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="281" y="344" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">BM25 (Okapi)</text>
+  <text x="281" y="359" text-anchor="middle" fill="#64748b" font-size="8">TF saturation &#x00b7; length norm</text>
+  <text x="281" y="372" text-anchor="middle" fill="#3b82f6" font-size="8">&#x03b1; = 0.4 &#x00b7; lexical matching</text>
+  <line x1="182" y1="338" x2="196" y2="342" stroke="#475569" stroke-width="1.2"/>
+
+  <!-- Dense (PRIMARY) -->
+  <rect x="196" y="392" width="170" height="76" rx="8" fill="#001a1a" stroke="#00f0ff" stroke-width="2"/>
+  <text x="281" y="412" text-anchor="middle" fill="#00f0ff" font-size="11" font-weight="700">Dense (MiniLM-L6-v2)</text>
+  <text x="281" y="428" text-anchor="middle" fill="#94a3b8" font-size="8">ONNX &#x00b7; 384d embeddings</text>
+  <text x="281" y="442" text-anchor="middle" fill="#94a3b8" font-size="8">In-repo model &#x00b7; no downloads</text>
+  <text x="281" y="458" text-anchor="middle" fill="#00f0ff" font-size="8">&#x03b2; = 0.6 &#x00b7; semantic (primary)</text>
+  <line x1="182" y1="376" x2="196" y2="426" stroke="#00f0ff" stroke-width="1.2"/>
+
+  <!-- LSA fallback -->
+  <rect x="196" y="480" width="170" height="36" rx="8" fill="#0f0a24" stroke="#6d28d9" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="281" y="496" text-anchor="middle" fill="#7c3aed" font-size="9" font-weight="600">LSA fallback (128d SVD)</text>
+  <text x="281" y="508" text-anchor="middle" fill="#475569" font-size="7">Used when ONNX unavailable</text>
+
+  <!-- W-RRF Fusion -->
+  <rect x="428" y="370" width="178" height="84" rx="8" fill="#021a12" stroke="#00f0ff" stroke-width="2"/>
+  <text x="517" y="392" text-anchor="middle" fill="#00f0ff" font-size="12" font-weight="700" filter="url(#glow)">W-RRF Fusion</text>
+  <text x="517" y="410" text-anchor="middle" fill="#fbbf24" font-size="10">&#x03b1;=0.4 &#x00b7; &#x03b2;=0.6 &#x00b7; k=60</text>
+  <text x="517" y="427" text-anchor="middle" fill="#94a3b8" font-size="8">0.4/(60+rank_BM25)</text>
+  <text x="517" y="442" text-anchor="middle" fill="#94a3b8" font-size="8">+ 0.6/(60+rank_Dense)</text>
+
+  <line x1="366" y1="352" x2="428" y2="390" stroke="#3b82f6" stroke-width="1.2" marker-end="url(#ra1)"/>
+  <line x1="366" y1="430" x2="428" y2="416" stroke="#00f0ff" stroke-width="1.2" marker-end="url(#ra2)"/>
+
+  <!-- Lexical Rerank -->
+  <rect x="656" y="370" width="130" height="84" rx="8" fill="#0a1628" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="721" y="391" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="600">Lexical Rerank</text>
+  <text x="721" y="410" text-anchor="middle" fill="#64748b" font-size="8">entity  +0.30</text>
+  <text x="721" y="426" text-anchor="middle" fill="#64748b" font-size="8">section +0.15</text>
+  <text x="721" y="442" text-anchor="middle" fill="#64748b" font-size="8">disclosure +0.10</text>
+  <line x1="606" y1="412" x2="656" y2="412" stroke="#475569" stroke-width="1.2" marker-end="url(#ra1)"/>
+
+  <!-- Top-K -->
+  <rect x="834" y="376" width="90" height="72" rx="8" fill="#1a0a02" stroke="#ff6b00" stroke-width="1.5"/>
+  <text x="879" y="399" text-anchor="middle" fill="#ff9f43" font-size="11" font-weight="700">Top-K</text>
+  <text x="879" y="417" text-anchor="middle" fill="#64748b" font-size="8">uri</text>
+  <text x="879" y="431" text-anchor="middle" fill="#64748b" font-size="8">confidence</text>
+  <text x="879" y="445" text-anchor="middle" fill="#64748b" font-size="8">disclosure</text>
+  <line x1="786" y1="412" x2="834" y2="412" stroke="#475569" stroke-width="1.2" marker-end="url(#ra1)"/>
+
+  <!-- FOOTER -->
+  <rect x="48" y="618" width="876" height="66" rx="8" fill="rgba(255,255,255,0.02)" stroke="#1e293b" stroke-width="1"/>
+  <text x="68" y="638" fill="#fbbf24" font-size="10" font-weight="600">Quality (54 golden queries):</text>
+  <text x="280" y="638" fill="#94a3b8" font-size="9">Recall@5 = 0.982 &#x00b7; Recall@10 = 1.0 &#x00b7; MRR = 0.912 &#x00b7; 1,291 chunks</text>
+  <text x="68" y="656" fill="#00f0ff" font-size="10" font-weight="600">Dense tier:</text>
+  <text x="160" y="656" fill="#94a3b8" font-size="9">MiniLM-L6-v2 ONNX &#x00b7; 384d &#x00b7; in-repo &#x00b7; CPU-only</text>
+  <text x="500" y="656" fill="#7c3aed" font-size="9">LSA fallback:</text>
+  <text x="600" y="656" fill="#475569" font-size="8">128d SVD &#x2014; when onnxruntime unavailable</text>
+  <text x="68" y="674" fill="#475569" font-size="9">routeTrace: classification &#x00b7; retrieval stages &#x00b7; candidates &#x00b7; fallback flag</text>
+</svg>
