@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Chalkboard SE','Comic Sans MS','Segoe Print',cursive">
+  <rect width="900" height="500" fill="#fdf8ec" rx="18"/>
+
+  <text x="450" y="40" text-anchor="middle" fill="#33302b" font-size="24" font-weight="700">The Librarian at the Front Desk</text>
+
+  <!-- librarian -->
+  <g stroke="#33302b" stroke-width="3" fill="none" stroke-linecap="round">
+    <rect x="130" y="250" width="180" height="16" fill="#c9a06a" stroke="#33302b"/>       <!-- desk top -->
+    <rect x="150" y="266" width="140" height="70" fill="#e2c391" stroke="#33302b"/>       <!-- desk body -->
+    <circle cx="220" cy="190" r="34" fill="#ffffff"/>
+    <path d="M 188 178 Q 220 148 252 178"/>
+    <circle cx="208" cy="188" r="3" fill="#33302b"/>
+    <circle cx="232" cy="188" r="3" fill="#33302b"/>
+    <path d="M 206 206 Q 220 216 234 206"/>
+    <!-- glasses -->
+    <circle cx="208" cy="188" r="9" fill="none" stroke-width="2"/>
+    <circle cx="232" cy="188" r="9" fill="none" stroke-width="2"/>
+    <line x1="217" y1="188" x2="223" y2="188" stroke-width="2"/>
+    <line x1="220" y1="224" x2="220" y2="250"/>
+  </g>
+  <text x="220" y="362" text-anchor="middle" fill="#8a5cc0" font-size="14" font-weight="700">the router (rule-based, no AI, &gt;95% right)</text>
+
+  <!-- incoming question bubbles -->
+  <g>
+    <rect x="30" y="70" width="250" height="46" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="14"/>
+    <text x="155" y="99" text-anchor="middle" fill="#33302b" font-size="14" font-weight="700">"List the APIs of cartms"</text>
+  </g>
+  <g>
+    <rect x="30" y="126" width="250" height="46" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="14"/>
+    <text x="155" y="155" text-anchor="middle" fill="#33302b" font-size="14" font-weight="700">"How does checkout work?"</text>
+  </g>
+  <path d="M 280 120 Q 310 150 300 180" stroke="#8a8478" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="6 5"/>
+
+  <!-- corridor 1: card catalog -->
+  <g>
+    <rect x="430" y="90" width="200" height="100" fill="#dff2e4" stroke="#3fa060" stroke-width="3" rx="12"/>
+    <text x="530" y="120" text-anchor="middle" fill="#2a7a48" font-size="16" font-weight="700">CARD CATALOG</text>
+    <text x="530" y="144" text-anchor="middle" fill="#2a7a48" font-size="12.5">exact questions &#x2192; exact answers</text>
+    <text x="530" y="164" text-anchor="middle" fill="#2a7a48" font-size="12.5">instant &#x00b7; complete &#x00b7; no guessing</text>
+  </g>
+  <path d="M 310 240 Q 380 180 428 140" stroke="#3fa060" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <polygon points="428,140 412,142 420,154" fill="#3fa060"/>
+  <text x="352" y="172" fill="#2a7a48" font-size="12" font-weight="700">"no search needed, dear"</text>
+
+  <!-- corridor 2: impact graph -->
+  <g>
+    <rect x="430" y="210" width="200" height="90" fill="#e9defa" stroke="#8a5cc0" stroke-width="3" rx="12"/>
+    <text x="530" y="240" text-anchor="middle" fill="#6a3fa0" font-size="16" font-weight="700">IMPACT MAPS</text>
+    <text x="530" y="262" text-anchor="middle" fill="#6a3fa0" font-size="12.5">"what breaks if X changes?"</text>
+    <text x="530" y="282" text-anchor="middle" fill="#6a3fa0" font-size="12.5">follow the dependency strings</text>
+  </g>
+  <path d="M 312 256 L 426 256" stroke="#8a5cc0" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <polygon points="426,256 410,249 410,263" fill="#8a5cc0"/>
+
+  <!-- corridor 3: the stacks -->
+  <g>
+    <rect x="430" y="320" width="200" height="110" fill="#ffe9d6" stroke="#e0533d" stroke-width="3" rx="12"/>
+    <text x="530" y="350" text-anchor="middle" fill="#b03621" font-size="16" font-weight="700">THE STACKS</text>
+    <text x="530" y="372" text-anchor="middle" fill="#b03621" font-size="12.5">real search, for real questions</text>
+    <text x="530" y="392" text-anchor="middle" fill="#b03621" font-size="12.5">BM25 = label-reader (default)</text>
+    <text x="530" y="412" text-anchor="middle" fill="#b03621" font-size="12.5">dense = vibes (must earn it)</text>
+  </g>
+  <path d="M 310 280 Q 380 330 428 368" stroke="#e0533d" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <polygon points="428,368 412,364 418,376" fill="#e0533d"/>
+  <text x="330" y="342" fill="#b03621" font-size="12" font-weight="700">"THAT one's a search"</text>
+
+  <!-- bench with dense model -->
+  <g stroke="#33302b" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <rect x="700" y="368" width="150" height="14" fill="#c9a06a" stroke="#33302b"/>
+    <line x1="712" y1="382" x2="712" y2="416"/>
+    <line x1="838" y1="382" x2="838" y2="416"/>
+  </g>
+  <g stroke="#33302b" stroke-width="2.5" fill="#ffffff" stroke-linecap="round">
+    <circle cx="775" cy="330" r="20"/>
+    <circle cx="768" cy="327" r="2.5" fill="#33302b"/>
+    <circle cx="782" cy="327" r="2.5" fill="#33302b"/>
+    <path d="M 768 340 Q 775 336 782 340" fill="none"/>
+    <line x1="775" y1="350" x2="775" y2="368"/>
+  </g>
+  <text x="775" y="404" text-anchor="middle" fill="#8a8478" font-size="11.5">dense embeddings,</text>
+  <text x="775" y="420" text-anchor="middle" fill="#8a8478" font-size="11.5">waiting for a tryout</text>
+  <g>
+    <rect x="660" y="264" width="228" height="42" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="12"/>
+    <polygon points="762,306 778,306 770,322" fill="#ffffff" stroke="#33302b" stroke-width="2.5"/>
+    <rect x="764" y="303" width="12" height="5" fill="#ffffff"/>
+    <text x="774" y="290" text-anchor="middle" fill="#33302b" font-size="12.5" font-weight="700">"Beat BM25 on the exam, kid."</text>
+  </g>
+
+  <!-- footer moral -->
+  <text x="450" y="478" text-anchor="middle" fill="#8a8478" font-size="13">deterministic first &#x00b7; search second &#x00b7; fancy search only after it wins on the scoreboard</text>
+</svg>

@@ -14,7 +14,7 @@ choice maps to a named, citable industry standard that is current as of 2026:
 |---|---|---|
 | Markdown + YAML frontmatter bundle, stable URIs, progressive disclosure | **[Open Knowledge Format v0.2](https://github.com/GoogleCloudPlatform/knowledge-catalog)** — Google Cloud's vendor-neutral spec (June 2026) | Conformant (C1–C12 gate) |
 | Three layers: raw sources → generated wiki → schema | **[Karpathy's LLM-Wiki pattern](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing)** (`raw/`, `wiki/`, schema file) — the pattern OKF formalized | Adopted |
-| 25 structured tools over the KB via MCP | **[Model Context Protocol](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)** — donated to the Linux Foundation's Agentic AI Foundation (Dec 2025); adopted by OpenAI, Google, Microsoft, AWS, IBM | Adopted |
+| Structured tools over the KB via MCP (25 today, consolidating to 9 — [S1.2](./simplification/01-tier-1-cut-outright.md#s12--collapse-25-mcp-tools-to-9)) | **[Model Context Protocol](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)** — donated to the Linux Foundation's Agentic AI Foundation (Dec 2025); adopted by OpenAI, Google, Microsoft, AWS, IBM | Adopted |
 | `catalog-info.yaml` service descriptors, team-maintained | **[Backstage Software Catalog](https://backstage.io/docs/features/software-catalog/)** (CNCF) descriptor convention — metadata-next-to-code, centrally aggregated | Adopted |
 | Serving markdown (not HTML/wiki markup) to agents | **[llms.txt](https://www.mintlify.com/blog/what-is-llms-txt)** movement (Cloudflare, Stripe, Anthropic, Mintlify) — up to ~10× token reduction vs HTML | Aligned |
 | Golden-query retrieval gates (Recall@K, MRR) in CI | Standard RAG evaluation practice ([Ragas](https://blog.premai.io/rag-evaluation-metrics-frameworks-testing-2026/)/DeepEval ecosystem; golden datasets of 50–100 queries) | Adopted — needs upgrades, see [Chapter 06](./06-freshness-and-evaluation.md) |
@@ -25,6 +25,12 @@ team cannot own Customer's knowledge, Commerce's CI cannot gate Order's sources,
 giant index would pollute every consumer's context with 10 domains of chunks. This chapter
 defines that scaling layer. The corrections to the *existing* single-domain design are in
 [Chapter 06](./06-freshness-and-evaluation.md#corrections-to-the-original-design).
+
+> **Simplification applied.** This chapter incorporates the
+> [simplification program](./simplification/README.md): the consolidated 9-tool MCP
+> surface (S1.2), two version planes (S1.4), a registry that starts as a stub (S3.1),
+> and a gateway that is designed but deliberately deferred (S3.1). Where a heavier
+> variant exists, its activation trigger is stated inline.
 
 ---
 
@@ -76,13 +82,16 @@ Applied here:
 |------|----------|----------|---------|
 | **`kb-framework`** | `scripts/`, `kbcli/`, `graph-mcp/`, JSON schemas, `templates/`, eval harness, workflow definitions | Architecture council (platform team) | Semver releases to internal PyPI/Artifactory |
 | **`<domain>-kb`** (one per domain) | `seed.yaml`, `sources/`, generated `markdown/` bundle, domain golden eval set, ADRs/NFRs | **The domain team** (CODEOWNERS) | Continuous — same 6-job CI, installed from the framework package |
-| **`kb-registry`** | `registry.yaml`, federation CI, gateway MCP config | Architecture council | Changes only when a domain onboards or bumps |
+| **`kb-registry`** | `registry.yaml`, federation CI, gateway MCP config. **Created only when the 2nd domain onboards** — until then `registry.yaml` lives in `kb-framework` ([S3.1](./simplification/03-tier-3-defer-until-trigger.md#s31--federation-gateway-mcp--fed-0305)); a dedicated repo for a one-row table is ceremony | Architecture council | Changes only when a domain onboards or bumps |
 | Service repos (existing) | Code + (Phase 2) their own `catalog-info.yaml` | Service teams | Unchanged |
 
 This resolves the **version-plane question** from
-[Chapter 01](./01-architecture.md#version-planes): the *Framework* plane becomes the
-`kb-framework` package version that each domain pins — upgrades are explicit,
-per-domain, and testable (`pip install kb-framework==2.1.0`).
+[Chapter 01](./01-architecture.md#version-planes): the four planes collapse to **two**
+([S1.4](./simplification/01-tier-1-cut-outright.md#s14--version-planes-4--2)) —
+the `kb-framework` package semver (which subsumes the CLI, schemas, templates, and the
+OKF contract the generator emits) and a per-domain bundle version. Each domain pins the
+framework explicitly (`pip install kb-framework==2.1.0`); upgrades are per-domain and
+testable.
 
 ### Domain KB Repo Layout (identical shape everywhere)
 
@@ -116,12 +125,12 @@ answered in one table:
 |-------|----------|-----------|
 | **Sources (Layer 1 YAML)** | The domain's `<domain>-kb` repo, under `sources/` | System of record must sit inside the ownership boundary — domain team reviews every change via PR (Backstage model) |
 | **Service descriptors** *(Phase 2 option)* | Each service repo (`catalog-info.yaml` next to code), harvested at ingest | Metadata-next-to-code survives team reorgs; the KB repo becomes an aggregator of truth, not a copy of it |
-| **Markdown bundle (Layer 2)** | Committed in the domain repo **and** published as a versioned artifact by CI (`publish` job → tarball to Artifactory) | Committed = reviewable diffs + sync gate; published artifact = what *consumers* pull. Cross-domain consumers never clone another domain's repo |
+| **Markdown bundle (Layer 2)** | Pages committed in the domain repo **and** published as a versioned artifact by CI (`publish` job → tarball to Artifactory). Chunks are **not** committed — derived at build time and shipped only inside the published artifact ([S1.3](./simplification/01-tier-1-cut-outright.md#s13--stop-committing-chunks-1291-derived-files)) | Committed pages = reviewable diffs + sync gate; published artifact = what *consumers* pull. Cross-domain consumers never clone another domain's repo |
 | **Framework (Layer 3)** | `kb-framework` repo → internal package registry | One implementation, N consumers; semver protects domains from breaking changes |
 | **Registry** | `kb-registry` repo (`registry.yaml`) | Single small file = single source of truth for "what domains exist"; cheap to review |
 | **Golden eval sets** | `eval/` in each domain repo, versioned files | Eval data must version with the content it evaluates ([Chapter 06](./06-freshness-and-evaluation.md)) |
 | **Cross-domain analyses** | `markdown/analysis/` in whichever domain initiated it, cross-linked via `kb://` URIs | Compound-knowledge pattern (Chapter 01) unchanged |
-| **Monitoring data** | Central Postgres (Chapter 06) — one instance, `domain` column | Telemetry is the one thing that *should* be centralized: cross-domain usage comparison is its purpose |
+| **Usage telemetry** | Phase 1: JSONL beside each domain's server + weekly `kb usage-report` ([Chapter 06](./06-freshness-and-evaluation.md#phase-1-usage-telemetry--jsonl-first-zero-docker)); graduates to one central Postgres (`domain` column) when the online judge or real dashboard demand arrives | Slim first ([S2.4](./simplification/02-tier-2-slim-by-default.md#s24--usage-telemetry-as-jsonl--kb-usage-report-before-postgres--grafana)); centralization is the graduation, because cross-domain comparison is its purpose |
 
 **The context-pollution rule that makes this work**: a consumer working inside one domain
 mounts *only that domain's* bundle and MCP server. Cross-domain knowledge enters through
@@ -179,15 +188,19 @@ domains:
     ...
 ```
 
-**Federation CI (in `kb-registry`, runs nightly + on registry PRs):**
+**Federation CI (runs nightly + on registry PRs).** Only FED-01/02 run from day one;
+FED-03…05 are designed but **activate when the 2nd domain onboards**
+([S3.1](./simplification/03-tier-3-defer-until-trigger.md#s31--federation-gateway-mcp--fed-0305)) —
+with one domain there are no cross-domain links to resolve, no version matrix to compare,
+and FED-05's owner-routing duplicates the domain's own weekly audit:
 
-| Check | What It Validates |
-|-------|-------------------|
-| FED-01 | `registry.yaml` schema + referenced repos/artifacts exist |
-| FED-02 | Every domain's published bundle passes OKF conformance (C1–C12) at its declared version |
-| FED-03 | Cross-domain `kb://` links resolve across the current bundle set (AUD-25 promoted) |
-| FED-04 | Each domain's framework version ≥ `framework_min_version` |
-| FED-05 | Freshness SLO met per domain (reads D2 from each bundle's `audit-metrics.json`) — violation notifies that domain's owner, not a shared inbox |
+| Check | What It Validates | Active |
+|-------|-------------------|--------|
+| FED-01 | `registry.yaml` schema + referenced repos/artifacts exist | Day one |
+| FED-02 | Every domain's published bundle passes OKF conformance (C1–C12) at its declared version | Day one |
+| FED-03 | Cross-domain `kb://` links resolve across the current bundle set (AUD-25 promoted) | 2nd domain |
+| FED-04 | Each domain's framework version ≥ `framework_min_version` | 2nd domain |
+| FED-05 | Freshness SLO met per domain (reads D2 from each bundle's `audit-metrics.json`) — violation notifies that domain's owner, not a shared inbox | 2nd domain |
 
 ---
 
@@ -211,8 +224,8 @@ flowchart LR
 
 | Tier | What Runs | Context-Pollution Control |
 |------|-----------|---------------------------|
-| **Per-domain MCP** (exists today) | The current 25-tool server, one per domain, indexing *only* that domain's bundle | Structural: the index simply contains nothing from other domains |
-| **Federation gateway MCP** (new, thin) | `kb_route` (classify query → domain(s) via registry + capability keywords), `kb_federated_search` (fan out to ≤2 domain servers, merge by weighted RRF, return **disclosure lines + URIs only**), `kb_read(uri)` (fetch one concept cross-domain) | Behavioral: disclosure-first — an agent sees one-line hints and *chooses* what to pull, instead of receiving 10 domains of chunks |
+| **Per-domain MCP** (exists today) | The consolidated **9-tool** server ([S1.2](./simplification/01-tier-1-cut-outright.md#s12--collapse-25-mcp-tools-to-9)), one per domain, indexing *only* that domain's bundle | Structural: the index simply contains nothing from other domains |
+| **Federation gateway MCP** (designed, **deferred** — [S3.1](./simplification/03-tier-3-defer-until-trigger.md#s31--federation-gateway-mcp--fed-0305): build when ≥2 domains are active *and* usage logs show cross-domain demand) | `kb_route` (classify query → domain(s) via registry + capability keywords), `kb_federated_search` (fan out to ≤2 domain servers, merge by weighted RRF, return **disclosure lines + URIs only**), `kb_read(uri)` (fetch one concept cross-domain) | Behavioral: disclosure-first — an agent sees one-line hints and *chooses* what to pull, instead of receiving 10 domains of chunks |
 
 The gateway reuses the existing smart-query router (Chapter 03) with one extra, earlier
 classification step: **which domain(s)?** — then delegates. It holds no index of its own.
@@ -244,11 +257,11 @@ central surface that keeps bundles interoperable.
 
 | Step | What | Exit Criteria |
 |------|------|---------------|
-| 1 | **Extract** `kb-framework` from the Commerce repo (scripts, kbcli, graph-mcp, schemas, templates, eval harness) → internal PyPI `v2.0.0` | Commerce repo installs the package and all 6 CI jobs stay green; sync gate proves byte-identical output |
+| 1 | **Extract** `kb-framework` from the Commerce repo (scripts, kbcli, graph-mcp, schemas, templates, eval harness) → internal PyPI `v2.0.0`, **applying the Tier-1 cuts during extraction** ([S1.1–S1.5](./simplification/01-tier-1-cut-outright.md) — the cheapest moment: code is being moved anyway) | Commerce repo installs the package and all CI jobs stay green; sync gate proves byte-identical pages; 9-tool self-test passes |
 | 2 | **Migrate URIs** to `kb://commerce/…` with aliases | Golden retrieval suite unchanged; consumers updated |
-| 3 | **Stand up `kb-registry`** with Commerce as the only entry + FED-01…05 CI | Federation CI green |
-| 4 | **Onboard Customer domain** via `kb init` — the real test of the template | Customer bundle passes C1–C12 + audit ≥ 60 with *zero framework code changes* |
-| 5 | **Onboard Order domain**; deploy the gateway MCP once ≥ 2 domains are active | Cross-domain story generation resolves `kb://` links across bundles |
+| 3 | **Add `registry.yaml`** (inside `kb-framework` for now — [S3.1](./simplification/03-tier-3-defer-until-trigger.md#s31--federation-gateway-mcp--fed-0305)) with Commerce as the only entry + FED-01/02 CI | Federation CI green |
+| 4 | **Onboard Customer domain** via `kb init` — the real test of the template. Promote `registry.yaml` to its own `kb-registry` repo; activate FED-03…05 | Customer bundle passes C1–C12 + audit ≥ 60 with *zero framework code changes* |
+| 5 | **Onboard Order domain**; build the gateway MCP only once usage logs show cross-domain demand ([S3.1](./simplification/03-tier-3-defer-until-trigger.md#s31--federation-gateway-mcp--fed-0305)) | Cross-domain story generation resolves `kb://` links across bundles |
 | 6 | Iterate: remaining domains at their own pace, pinned framework versions | — |
 
 Anything requiring central infrastructure beyond the registry (shared vector index,
@@ -275,12 +288,12 @@ orchestrator, online judges) is **Phase 2** — designed in full in
 | Question | Answer |
 |----------|--------|
 | **"Why not just Confluence + search?"** | Agents burn tokens on wiki markup and can't get deterministic answers. Markdown + frontmatter gives ~10× token efficiency (llms.txt evidence), git-grade governance (PR review, diff, blame, CODEOWNERS), and a *deterministic* graph for exact questions — Confluence remains a **source** we ingest, not the serving layer. |
-| **"Why not buy a vector-DB / enterprise-RAG product?"** | At 1,291 chunks the in-process index hits Recall@5 = 0.98 with zero infrastructure and $0 license. The [zoomcamp curriculum itself](./llm-zoomcamp/02-vector-search/lessons/10-next-steps.md) teaches text-search-first and warns that vector-first advice mostly comes from vector-DB vendors. When scale demands it we adopt pgvector/OpenSearch behind the *same* contract — [Chapter 07](./07-phase-2-target-architecture.md) has the design and the measurable triggers. Nothing is repurchased; nothing is thrown away. |
+| **"Why not buy a vector-DB / enterprise-RAG product?"** | At 1,291 chunks the in-process index needs zero infrastructure and $0 license — the Phase 1 default is keyword-only BM25, and even our own dense tier must earn its place through measured recall deltas ([S2.1](./simplification/02-tier-2-slim-by-default.md#s21--bm25-only-by-default-the-denseonnx-tier-becomes-opt-in)). The [zoomcamp curriculum itself](https://github.com/DataTalksClub/llm-zoomcamp/blob/main/02-vector-search/lessons/10-next-steps.md) teaches text-search-first and warns that vector-first advice mostly comes from vector-DB vendors. When scale demands it we adopt pgvector/OpenSearch behind the *same* contract — [Chapter 07](./07-phase-2-target-architecture.md) has the design and the measurable triggers. Nothing is repurchased; nothing is thrown away. |
 | **"Why MCP instead of our own API?"** | A custom API needs custom client integration in every IDE/agent. MCP is vendor-neutral (Linux Foundation), already spoken by Copilot, Claude, Gemini, and the corporate IDE agents we use — 9,600+ servers in the public registry. Betting on it is betting *with* the industry. |
 | **"Why markdown files instead of a database?"** | OKF's rationale: renders on any git host, reviewable by humans, diffable, portable (tarball/filesystem), zero runtime to read. The *database view* of the same content is derived (chunks, indexes) — Layer 2 is regenerable at will; the knowledge itself is never locked in. |
 | **"Who keeps 10 domains from becoming 10 silos?"** | Federated computational governance (data mesh): a global contract (frontmatter, schemas, conformance) enforced automatically in every domain's CI, a one-file registry, and cross-domain link checking. Central standards, local enforcement — no central bottleneck. |
-| **"What does it cost to run?"** | CI is deterministic — **$0 LLM**. LLM spend is confined to ingest (per changed service) and evaluation (measured: ~$0.06 to generate ground truth per 80 documents, ~$0.25 to judge 395 answers — zoomcamp cost datapoints). Retrieval is CPU-only (in-repo ONNX model, no GPU, no HuggingFace at runtime). |
-| **"Is the no-download constraint a compromise?"** | No — it's the recommended pattern. The vendored-ONNX approach (147 MB runtime: `onnxruntime` + `tokenizers` + `numpy`) is exactly what the zoomcamp [ONNX lesson](./llm-zoomcamp/02-vector-search/lessons/09-onnx-embedder.md) teaches for production: models baked in at build time, runtime never contacts external hubs. |
+| **"What does it cost to run?"** | CI is deterministic — **$0 LLM**. LLM spend is confined to ingest (per changed service) and evaluation (measured: ~$0.06 to generate ground truth per 80 documents, ~$0.25 to judge 395 answers — zoomcamp cost datapoints). Retrieval is CPU-only, no GPU, no HuggingFace at runtime. Phase 1 runs **zero standing infrastructure** — no containers, no databases; usage telemetry is a file ([S2.4](./simplification/02-tier-2-slim-by-default.md#s24--usage-telemetry-as-jsonl--kb-usage-report-before-postgres--grafana)). |
+| **"Is the no-download constraint a compromise?"** | No — it's the recommended pattern. The vendored-ONNX approach (147 MB runtime: `onnxruntime` + `tokenizers` + `numpy`) is exactly what the zoomcamp [ONNX lesson](https://github.com/DataTalksClub/llm-zoomcamp/blob/main/02-vector-search/lessons/09-onnx-embedder.md) teaches for production: models baked in at build time, runtime never contacts external hubs. |
 
 ---
 

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="'Chalkboard SE','Comic Sans MS','Segoe Print',cursive">
+  <rect width="900" height="600" fill="#fdf8ec" rx="20"/>
+  <rect x="14" y="14" width="872" height="572" fill="none" stroke="#33302b" stroke-width="3" rx="14"/>
+
+  <!-- series band -->
+  <rect x="14" y="14" width="872" height="64" fill="#e0533d" rx="14"/>
+  <rect x="14" y="52" width="872" height="26" fill="#e0533d"/>
+  <text x="450" y="56" text-anchor="middle" fill="#fdf8ec" font-size="30" font-weight="700" letter-spacing="2">A Head-First-Style Guide</text>
+
+  <!-- title -->
+  <text x="450" y="140" text-anchor="middle" fill="#33302b" font-size="52" font-weight="700">The Knowledge Base</text>
+  <text x="450" y="188" text-anchor="middle" fill="#e0533d" font-size="26" font-weight="700">Markdown + RAG + MCP, explained to humans</text>
+
+  <!-- character: Maya (architect) -->
+  <g stroke="#33302b" stroke-width="3.5" fill="none" stroke-linecap="round">
+    <circle cx="250" cy="330" r="48" fill="#ffffff"/>
+    <path d="M 205 315 Q 250 268 295 315"/>                      <!-- hair -->
+    <circle cx="234" cy="326" r="3.5" fill="#33302b"/>
+    <circle cx="266" cy="326" r="3.5" fill="#33302b"/>
+    <path d="M 232 350 Q 250 364 268 350"/>                      <!-- smile -->
+    <line x1="250" y1="378" x2="250" y2="470"/>                  <!-- body -->
+    <line x1="250" y1="405" x2="200" y2="440"/>                  <!-- arm L -->
+    <line x1="250" y1="405" x2="310" y2="392"/>                  <!-- arm R points -->
+    <line x1="250" y1="470" x2="220" y2="530"/>
+    <line x1="250" y1="470" x2="280" y2="530"/>
+  </g>
+
+  <!-- book she points at -->
+  <g transform="rotate(-4 430 430)">
+    <rect x="360" y="390" width="140" height="90" fill="#fff3a8" stroke="#33302b" stroke-width="3" rx="8"/>
+    <text x="430" y="428" text-anchor="middle" fill="#33302b" font-size="17" font-weight="700">seed.yaml</text>
+    <text x="430" y="452" text-anchor="middle" fill="#8a6d00" font-size="12">edit ONLY this</text>
+  </g>
+
+  <!-- robot character -->
+  <g stroke="#33302b" stroke-width="3.5" fill="#ffffff" stroke-linecap="round">
+    <rect x="600" y="300" width="96" height="76" rx="12"/>
+    <line x1="648" y1="300" x2="648" y2="278"/>
+    <circle cx="648" cy="270" r="7" fill="#2b7de0"/>
+    <circle cx="628" cy="330" r="6" fill="#2b7de0"/>
+    <circle cx="668" cy="330" r="6" fill="#2b7de0"/>
+    <path d="M 626 354 Q 648 366 670 354" fill="none"/>
+    <rect x="612" y="376" width="72" height="60" rx="10"/>
+    <line x1="612" y1="400" x2="580" y2="428"/>
+    <line x1="684" y1="400" x2="716" y2="428"/>
+    <line x1="630" y1="436" x2="630" y2="480"/>
+    <line x1="666" y1="436" x2="666" y2="480"/>
+  </g>
+
+  <!-- robot speech bubble -->
+  <g>
+    <rect x="560" y="208" width="290" height="76" fill="#ffffff" stroke="#33302b" stroke-width="3" rx="16"/>
+    <polygon points="618,284 638,284 626,308" fill="#ffffff" stroke="#33302b" stroke-width="3"/>
+    <rect x="620" y="280" width="16" height="6" fill="#ffffff"/>
+    <text x="705" y="240" text-anchor="middle" fill="#33302b" font-size="17" font-weight="700">Finally! Docs I can read</text>
+    <text x="705" y="266" text-anchor="middle" fill="#33302b" font-size="17" font-weight="700">without hallucinating.</text>
+  </g>
+
+  <!-- maya label -->
+  <text x="250" y="565" text-anchor="middle" fill="#8a5cc0" font-size="15" font-weight="700">Maya, who built it</text>
+  <text x="648" y="510" text-anchor="middle" fill="#2b7de0" font-size="15" font-weight="700">Botty, who reads it</text>
+
+  <!-- burst -->
+  <g transform="rotate(12 790 130)">
+    <circle cx="790" cy="130" r="0"/>
+    <polygon points="790,86 802,112 830,104 812,126 836,140 806,142 810,170 790,148 770,170 774,142 744,140 768,126 750,104 778,112"
+             fill="#f0a500" stroke="#33302b" stroke-width="2.5"/>
+    <text x="790" y="128" text-anchor="middle" fill="#33302b" font-size="12" font-weight="700">zero</text>
+    <text x="790" y="143" text-anchor="middle" fill="#33302b" font-size="12" font-weight="700">jargon*</text>
+  </g>
+  <text x="770" y="196" text-anchor="middle" fill="#8a8478" font-size="10">*okay, minimal jargon</text>
+
+  <!-- footer -->
+  <text x="450" y="580" text-anchor="middle" fill="#8a8478" font-size="13">Covers: three layers &#x00b7; fact addresses &#x00b7; search &#x00b7; MCP &#x00b7; freshness &#x00b7; evaluation &#x00b7; federation &#x00b7; packing light</text>
+</svg>

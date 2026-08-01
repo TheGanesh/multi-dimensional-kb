@@ -12,44 +12,44 @@
   <rect width="960" height="640" fill="url(#frgrid)" rx="16"/>
 
   <!-- Title -->
-  <text x="480" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#frglow)">Three-Trigger Freshness Model</text>
-  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="10">staleness is change-driven, not age-driven &#x2014; TTL demoted from primary defense to backstop</text>
+  <text x="480" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#frglow)">Freshness Model &#x2014; Detect &#x00b7; Refresh &#x00b7; Backstop</text>
+  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="10">nightly fingerprint scan &#x00b7; zero cross-team CI changes (S2.3) &#x00b7; TTL demoted from primary defense to backstop</text>
 
   <!-- ==================== T1 LANE ==================== -->
   <rect x="24" y="76" width="668" height="140" rx="12" fill="rgba(16,185,129,0.03)" stroke="#10b981" stroke-width="1" stroke-opacity="0.4"/>
-  <text x="44" y="100" fill="#34d399" font-size="13" font-weight="700">T1 &#x2014; EVENT</text>
-  <text x="160" y="100" fill="#475569" font-size="9">change is KNOWN within minutes &#x00b7; ~$0</text>
+  <text x="44" y="100" fill="#34d399" font-size="13" font-weight="700">STEP 1 &#x2014; DETECT</text>
+  <text x="210" y="100" fill="#475569" font-size="9">nightly scan &#x00b7; change KNOWN &#x2264;24h &#x00b7; ~$0 &#x00b7; read-only</text>
 
   <rect x="44" y="118" width="180" height="52" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
-  <text x="134" y="140" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">service repo</text>
-  <text x="134" y="156" text-anchor="middle" fill="#64748b" font-size="8">merge to main (45+ repos)</text>
+  <text x="134" y="140" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">seed.yaml repo list</text>
+  <text x="134" y="156" text-anchor="middle" fill="#64748b" font-size="8">shallow git pull (45+ repos)</text>
 
   <line x1="224" y1="144" x2="264" y2="144" stroke="#10b981" stroke-width="1.2" marker-end="url(#fr2)"/>
 
   <rect x="264" y="118" width="196" height="52" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
-  <text x="362" y="140" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">~5-line CI step</text>
-  <text x="362" y="156" text-anchor="middle" fill="#64748b" font-size="8">repository_dispatch / ADO trigger</text>
+  <text x="362" y="140" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">hash ingest-relevant files</text>
+  <text x="362" y="156" text-anchor="middle" fill="#64748b" font-size="8">controllers &#x00b7; specs &#x00b7; config &#x00b7; pom</text>
 
   <line x1="460" y1="144" x2="500" y2="144" stroke="#10b981" stroke-width="1.2" marker-end="url(#fr2)"/>
 
   <rect x="500" y="118" width="172" height="52" rx="8" fill="#021a12" stroke="#10b981" stroke-width="1.2"/>
-  <text x="586" y="140" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">dirty-list</text>
-  <text x="586" y="156" text-anchor="middle" fill="#64748b" font-size="8">+ shoppingcartms @ ts</text>
+  <text x="586" y="140" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">diff .fingerprints.json</text>
+  <text x="586" y="156" text-anchor="middle" fill="#64748b" font-size="8">&#x2192; changed-service set</text>
 
-  <text x="44" y="200" fill="#475569" font-size="8">not git hooks in 45 repos &#x2014; one outbound notification from each repo's own CI (event-carried state)</text>
+  <text x="44" y="200" fill="#475569" font-size="8">zero changes to service repos &#x2014; deferred upgrade: event dispatch only if the SLO tightens to same-day (S2.3)</text>
 
   <!-- T1 -> T2 arrow -->
   <line x1="586" y1="170" x2="586" y2="240" stroke="#10b981" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#fr2)"/>
 
   <!-- ==================== T2 LANE ==================== -->
   <rect x="24" y="240" width="668" height="168" rx="12" fill="rgba(245,158,11,0.03)" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.4"/>
-  <text x="44" y="264" fill="#fbbf24" font-size="13" font-weight="700">T2 &#x2014; SCHEDULED REFRESH</text>
-  <text x="266" y="264" fill="#475569" font-size="9">nightly &#x00b7; change INGESTED &#x2264;24h &#x00b7; LLM $ for changed services only</text>
+  <text x="44" y="264" fill="#fbbf24" font-size="13" font-weight="700">STEP 2 &#x2014; REFRESH</text>
+  <text x="230" y="264" fill="#475569" font-size="9">same nightly job &#x00b7; change INGESTED &#x2264;24h &#x00b7; LLM $ for changed services only</text>
 
   <rect x="44" y="284" width="150" height="52" rx="8" fill="#1a1400" stroke="#f59e0b" stroke-width="1.2"/>
-  <text x="119" y="303" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">scope = dirty-list</text>
-  <text x="119" y="317" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">&#x222a; fingerprint-changed</text>
-  <text x="119" y="330" text-anchor="middle" fill="#64748b" font-size="8">.fingerprints.json skip</text>
+  <text x="119" y="303" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">scope = changed set</text>
+  <text x="119" y="317" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">from step 1</text>
+  <text x="119" y="330" text-anchor="middle" fill="#64748b" font-size="8">unchanged services skipped</text>
 
   <line x1="194" y1="310" x2="228" y2="310" stroke="#f59e0b" stroke-width="1.2" marker-end="url(#fr3)"/>
 
@@ -66,7 +66,7 @@
   <line x1="522" y1="310" x2="556" y2="310" stroke="#f59e0b" stroke-width="1.2" marker-end="url(#fr3)"/>
 
   <rect x="556" y="284" width="116" height="52" rx="8" fill="#1a1400" stroke="#f59e0b" stroke-width="1.2"/>
-  <text x="614" y="303" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">6 CI gates</text>
+  <text x="614" y="303" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">CI gates (kb check)</text>
   <text x="614" y="317" text-anchor="middle" fill="#64748b" font-size="8">schema &#x00b7; audit &#x2265;60</text>
   <text x="614" y="330" text-anchor="middle" fill="#64748b" font-size="8">C1&#x2013;C12 &#x00b7; sync &#x00b7; E2</text>
 
@@ -81,8 +81,8 @@
 
   <!-- ==================== T3 LANE ==================== -->
   <rect x="24" y="432" width="668" height="130" rx="12" fill="rgba(139,92,246,0.04)" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.4"/>
-  <text x="44" y="456" fill="#a78bfa" font-size="13" font-weight="700">T3 &#x2014; TTL BACKSTOP</text>
-  <text x="230" y="456" fill="#475569" font-size="9">weekly &#x00b7; $0 &#x00b7; should RARELY fire &#x2014; firing means T1/T2 broke</text>
+  <text x="44" y="456" fill="#a78bfa" font-size="13" font-weight="700">STEP 3 &#x2014; TTL BACKSTOP</text>
+  <text x="270" y="456" fill="#475569" font-size="9">weekly &#x00b7; $0 &#x00b7; should RARELY fire &#x2014; firing means detect/refresh broke</text>
 
   <rect x="44" y="474" width="140" height="48" rx="8" fill="#0f0a24" stroke="#8b5cf6" stroke-width="1.2"/>
   <text x="114" y="494" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">stale_after TTL</text>
@@ -97,8 +97,8 @@
   <line x1="358" y1="498" x2="392" y2="498" stroke="#8b5cf6" stroke-width="1.2" marker-end="url(#fr4)"/>
 
   <rect x="392" y="474" width="140" height="48" rx="8" fill="#0f0a24" stroke="#8b5cf6" stroke-width="1.2"/>
-  <text x="462" y="494" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">FED-05 SLO check</text>
-  <text x="462" y="508" text-anchor="middle" fill="#64748b" font-size="8">registry freshness_slo</text>
+  <text x="462" y="494" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">SLO check</text>
+  <text x="462" y="508" text-anchor="middle" fill="#64748b" font-size="8">audit now &#x00b7; FED-05 at 2+ domains</text>
 
   <line x1="532" y1="498" x2="566" y2="498" stroke="#8b5cf6" stroke-width="1.2" marker-end="url(#fr4)"/>
 
@@ -121,21 +121,21 @@
   <rect x="728" y="222" width="192" height="72" rx="8" fill="#0a1628" stroke="#3b82f6" stroke-width="1"/>
   <text x="824" y="244" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">&#x2264; 7 days</text>
   <text x="824" y="260" text-anchor="middle" fill="#94a3b8" font-size="8">service change &#x2192; re-ingested</text>
-  <text x="824" y="276" text-anchor="middle" fill="#475569" font-size="8">dirty-list ts vs last_ingested</text>
+  <text x="824" y="276" text-anchor="middle" fill="#475569" font-size="8">scan-detect ts vs last_ingested</text>
 
   <rect x="728" y="308" width="192" height="72" rx="8" fill="#0a1628" stroke="#3b82f6" stroke-width="1"/>
   <text x="824" y="330" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">&#x2264; 1 day</text>
   <text x="824" y="346" text-anchor="middle" fill="#94a3b8" font-size="8">KB merge &#x2192; bundle republished</text>
   <text x="824" y="362" text-anchor="middle" fill="#475569" font-size="8">CI publish job</text>
 
-  <text x="824" y="410" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">surfaced on Grafana</text>
-  <text x="824" y="426" text-anchor="middle" fill="#64748b" font-size="8">per-domain SLO panel &#x00b7; D2 trend</text>
-  <text x="824" y="440" text-anchor="middle" fill="#64748b" font-size="8">violations &#x2192; FED-05 &#x2192; owner</text>
+  <text x="824" y="410" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">surfaced in weekly report</text>
+  <text x="824" y="426" text-anchor="middle" fill="#64748b" font-size="8">kb usage-report &#x00b7; D2 trend</text>
+  <text x="824" y="440" text-anchor="middle" fill="#64748b" font-size="8">(Grafana at graduation)</text>
 
   <text x="824" y="480" text-anchor="middle" fill="#00f0ff" font-size="9" font-weight="600">these 3 numbers answer:</text>
   <text x="824" y="496" text-anchor="middle" fill="#64748b" font-size="8">"how do we know the common</text>
   <text x="824" y="510" text-anchor="middle" fill="#64748b" font-size="8">KB stays current?"</text>
 
   <!-- footer -->
-  <text x="480" y="600" text-anchor="middle" fill="#475569" font-size="9">T1 precise + cheap &#x2192; T2 does the work &#x2192; T3 catches what slips &#x00b7; corrections #3/#6 from Chapter 06</text>
+  <text x="480" y="600" text-anchor="middle" fill="#475569" font-size="9">detect nightly &#x2192; refresh nightly &#x2192; TTL catches what slips &#x00b7; 7&#x00d7; SLO headroom with zero footprint in other teams' CI</text>
 </svg>

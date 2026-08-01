@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Chalkboard SE','Comic Sans MS','Segoe Print',cursive">
+  <rect width="900" height="520" fill="#fdf8ec" rx="18"/>
+
+  <text x="450" y="40" text-anchor="middle" fill="#33302b" font-size="24" font-weight="700">Pack for the trail you're ON, not the trail you fear</text>
+
+  <!-- hiker with light pack -->
+  <g stroke="#33302b" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="150" cy="180" r="30" fill="#ffffff"/>
+    <circle cx="140" cy="176" r="3" fill="#33302b"/>
+    <circle cx="160" cy="176" r="3" fill="#33302b"/>
+    <path d="M 138 194 Q 150 202 162 194"/>
+    <line x1="150" y1="210" x2="150" y2="300"/>
+    <line x1="150" y1="235" x2="118" y2="270"/>
+    <line x1="150" y1="235" x2="184" y2="262"/>
+    <line x1="184" y1="262" x2="196" y2="242"/>   <!-- walking stick arm -->
+    <line x1="196" y1="242" x2="196" y2="330"/>
+    <line x1="150" y1="300" x2="126" y2="360"/>
+    <line x1="150" y1="300" x2="174" y2="360"/>
+  </g>
+  <!-- small tidy pack -->
+  <rect x="98" y="222" width="44" height="62" fill="#3fa060" stroke="#33302b" stroke-width="3" rx="10"/>
+  <text x="150" y="392" text-anchor="middle" fill="#2a7a48" font-size="13" font-weight="700">the measured pack</text>
+  <g>
+    <rect x="60" y="86" width="220" height="58" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="14"/>
+    <polygon points="138,144 154,144 146,162" fill="#ffffff" stroke="#33302b" stroke-width="2.5"/>
+    <rect x="140" y="141" width="12" height="5" fill="#ffffff"/>
+    <text x="170" y="108" text-anchor="middle" fill="#33302b" font-size="12.5" font-weight="700">"Everything I carry</text>
+    <text x="170" y="128" text-anchor="middle" fill="#33302b" font-size="12.5" font-weight="700">has a number on it."</text>
+  </g>
+
+  <!-- four piles -->
+  <!-- pile 1 -->
+  <g>
+    <rect x="320" y="86" width="260" height="96" fill="#ffe3de" stroke="#e0533d" stroke-width="3" rx="12"/>
+    <text x="450" y="112" text-anchor="middle" fill="#b03621" font-size="15" font-weight="700">&#x1F5D1; LEAVE AT HOME</text>
+    <text x="450" y="134" text-anchor="middle" fill="#b03621" font-size="11.5">16 duplicate menu items &#x00b7; untested backup mode</text>
+    <text x="450" y="152" text-anchor="middle" fill="#b03621" font-size="11.5">1,291 committed derived files &#x00b7; 2 version schemes</text>
+    <text x="450" y="170" text-anchor="middle" fill="#8a8478" font-size="10.5">never earned its weight</text>
+  </g>
+  <!-- pile 2 -->
+  <g>
+    <rect x="610" y="86" width="260" height="96" fill="#ffe9d6" stroke="#f0a500" stroke-width="3" rx="12"/>
+    <text x="740" y="112" text-anchor="middle" fill="#9a6a00" font-size="15" font-weight="700">&#x1F392; PACK THE LIGHT VERSION</text>
+    <text x="740" y="134" text-anchor="middle" fill="#9a6a00" font-size="11.5">keyword search (semantic on the bench)</text>
+    <text x="740" y="152" text-anchor="middle" fill="#9a6a00" font-size="11.5">log file, not dashboards &#x00b7; sniff, not hooks</text>
+    <text x="740" y="170" text-anchor="middle" fill="#8a8478" font-size="10.5">heavy version restores ON EVIDENCE</text>
+  </g>
+  <!-- pile 3 -->
+  <g>
+    <rect x="320" y="206" width="260" height="96" fill="#e9defa" stroke="#8a5cc0" stroke-width="3" rx="12"/>
+    <text x="450" y="232" text-anchor="middle" fill="#6a3fa0" font-size="15" font-weight="700">&#x26FA; BUY AT THE TRAIL STORE</text>
+    <text x="450" y="254" text-anchor="middle" fill="#6a3fa0" font-size="11.5">concierge @ 2+ domains &#x00b7; vector DB @ 50K chunks</text>
+    <text x="450" y="272" text-anchor="middle" fill="#6a3fa0" font-size="11.5">orchestrator @ 3+ domains</text>
+    <text x="450" y="290" text-anchor="middle" fill="#8a8478" font-size="10.5">designed &#x00b7; priced &#x00b7; numeric trigger</text>
+  </g>
+  <!-- pile 4 -->
+  <g>
+    <rect x="610" y="206" width="260" height="96" fill="#dff2e4" stroke="#3fa060" stroke-width="3" rx="12"/>
+    <text x="740" y="232" text-anchor="middle" fill="#2a7a48" font-size="15" font-weight="700">&#x1F4A7; NEVER LEAVE BEHIND</text>
+    <text x="740" y="254" text-anchor="middle" fill="#2a7a48" font-size="11.5">the one rule &#x00b7; addresses &#x00b7; business cards</text>
+    <text x="740" y="272" text-anchor="middle" fill="#2a7a48" font-size="11.5">the exams &#x00b7; the menu &#x00b7; ownership</text>
+    <text x="740" y="290" text-anchor="middle" fill="#8a8478" font-size="10.5">= the map and the water</text>
+  </g>
+
+  <!-- abandoned heavy pack -->
+  <g stroke="#33302b" stroke-width="3" fill="#d8cfc0" stroke-linecap="round">
+    <rect x="330" y="356" width="90" height="110" rx="14"/>
+    <rect x="345" y="336" width="60" height="26" rx="8" fill="#c4b9a6"/>
+    <path d="M 330 390 L 310 380 M 420 390 L 440 380" fill="none"/>
+  </g>
+  <text x="375" y="418" text-anchor="middle" fill="#6f675a" font-size="11">25 tools</text>
+  <text x="375" y="436" text-anchor="middle" fill="#6f675a" font-size="11">4 search modes</text>
+  <text x="375" y="454" text-anchor="middle" fill="#6f675a" font-size="11">3 inspectors&#x2026;</text>
+  <text x="375" y="490" text-anchor="middle" fill="#8a8478" font-size="12" font-weight="700">the 40-kilo draft (retired)</text>
+
+  <!-- winning sentence banner -->
+  <g transform="rotate(-1 660 420)">
+    <rect x="470" y="380" width="390" height="84" fill="#fff3a8" stroke="#d8c04a" stroke-width="3" rx="10"/>
+    <text x="665" y="408" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">"Every heavy component we RUN has a number</text>
+    <text x="665" y="428" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">that justifies it. Every one we DON'T run</text>
+    <text x="665" y="448" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">has a number that would bring it back."</text>
+  </g>
+</svg>

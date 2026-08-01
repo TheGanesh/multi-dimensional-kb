@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Chalkboard SE','Comic Sans MS','Segoe Print',cursive">
+  <rect width="900" height="500" fill="#fdf8ec" rx="18"/>
+
+  <text x="450" y="40" text-anchor="middle" fill="#33302b" font-size="24" font-weight="700">The date tells you it's OLD. The sniff tells you it's BAD.</text>
+
+  <!-- milk carton -->
+  <g stroke="#33302b" stroke-width="3" fill="#ffffff" stroke-linecap="round">
+    <polygon points="120,160 240,160 240,380 120,380" fill="#ffffff"/>
+    <polygon points="120,160 180,110 300,110 240,160" fill="#f2ede0"/>
+    <polygon points="240,160 300,110 300,330 240,380" fill="#e8e2d2"/>
+  </g>
+  <text x="180" y="215" text-anchor="middle" fill="#2b7de0" font-size="20" font-weight="700">KB PAGE</text>
+  <text x="180" y="245" text-anchor="middle" fill="#33302b" font-size="13">shoppingcartms</text>
+  <rect x="134" y="270" width="92" height="30" fill="#ffe9d6" stroke="#e0533d" stroke-width="2" rx="6"/>
+  <text x="180" y="290" text-anchor="middle" fill="#b03621" font-size="11.5" font-weight="700">best before</text>
+  <text x="180" y="330" text-anchor="middle" fill="#b03621" font-size="15" font-weight="700">2026-10-18</text>
+  <text x="180" y="356" text-anchor="middle" fill="#8a8478" font-size="11">(stale_after)</text>
+
+  <!-- speech: the milk lies -->
+  <g>
+    <rect x="60" y="404" width="250" height="58" fill="#fff3a8" stroke="#d8c04a" stroke-width="2.5" rx="8" transform="rotate(-2 185 433)"/>
+    <text x="185" y="430" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">…but the service changed</text>
+    <text x="185" y="450" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">YESTERDAY. Date says fine!</text>
+  </g>
+
+  <!-- sniffer character -->
+  <g stroke="#33302b" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="420" cy="220" r="32" fill="#ffffff"/>
+    <circle cx="409" cy="214" r="3" fill="#33302b"/>
+    <circle cx="431" cy="214" r="3" fill="#33302b"/>
+    <path d="M 418 228 L 428 234"/>                        <!-- big sniffing nose line -->
+    <path d="M 406 238 Q 420 244 434 238"/>
+    <line x1="420" y1="252" x2="420" y2="330"/>
+    <line x1="420" y1="275" x2="384" y2="300"/>
+    <line x1="420" y1="275" x2="458" y2="292"/>
+    <line x1="420" y1="330" x2="400" y2="380"/>
+    <line x1="420" y1="330" x2="440" y2="380"/>
+  </g>
+  <!-- sniff lines toward carton -->
+  <g stroke="#3fa060" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M 384 216 Q 340 208 312 216"/>
+    <path d="M 384 230 Q 344 228 316 236"/>
+  </g>
+  <text x="420" y="404" text-anchor="middle" fill="#2a7a48" font-size="13" font-weight="700">the nightly sniff</text>
+  <text x="420" y="422" text-anchor="middle" fill="#8a8478" font-size="11.5">git pull &#x00b7; hash files &#x00b7; compare fingerprints</text>
+
+  <!-- three-step flow on right -->
+  <g>
+    <rect x="560" y="100" width="290" height="80" fill="#dff2e4" stroke="#3fa060" stroke-width="3" rx="12"/>
+    <text x="705" y="128" text-anchor="middle" fill="#2a7a48" font-size="16" font-weight="700">1 &#x00b7; SNIFF nightly</text>
+    <text x="705" y="150" text-anchor="middle" fill="#2a7a48" font-size="12">visit all 45 repos, no permission needed</text>
+    <text x="705" y="168" text-anchor="middle" fill="#2a7a48" font-size="12">changed hashes = "smells off" list</text>
+  </g>
+  <path d="M 705 180 L 705 204" stroke="#33302b" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="705,210 698,198 712,198" fill="#33302b"/>
+
+  <g>
+    <rect x="560" y="214" width="290" height="80" fill="#ffe9d6" stroke="#f0a500" stroke-width="3" rx="12"/>
+    <text x="705" y="242" text-anchor="middle" fill="#9a6a00" font-size="16" font-weight="700">2 &#x00b7; RESTOCK what's off</text>
+    <text x="705" y="264" text-anchor="middle" fill="#9a6a00" font-size="12">re-ingest ONLY changed services</text>
+    <text x="705" y="282" text-anchor="middle" fill="#9a6a00" font-size="12">auto-PR &#x2192; all gates &#x2192; merged by morning</text>
+  </g>
+  <path d="M 705 294 L 705 318" stroke="#33302b" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="705,324 698,312 712,312" fill="#33302b"/>
+
+  <g>
+    <rect x="560" y="328" width="290" height="80" fill="#e9defa" stroke="#8a5cc0" stroke-width="3" rx="12"/>
+    <text x="705" y="356" text-anchor="middle" fill="#6a3fa0" font-size="16" font-weight="700">3 &#x00b7; EXPIRY DATE backstop</text>
+    <text x="705" y="378" text-anchor="middle" fill="#6a3fa0" font-size="12">if dates start passing, the SNIFF broke</text>
+    <text x="705" y="396" text-anchor="middle" fill="#6a3fa0" font-size="12">&#x2192; page a human (rare by design)</text>
+  </g>
+
+  <!-- SLO badge -->
+  <g transform="rotate(6 820 70)">
+    <polygon points="820,38 830,58 852,54 840,72 858,84 834,86 836,110 820,92 804,110 806,86 782,84 800,72 788,54 810,58"
+             fill="#f0a500" stroke="#33302b" stroke-width="2.5"/>
+    <text x="820" y="72" text-anchor="middle" fill="#33302b" font-size="10.5" font-weight="700">&#x2264;24h real</text>
+    <text x="820" y="86" text-anchor="middle" fill="#33302b" font-size="10.5" font-weight="700">&#x2264;7d promised</text>
+  </g>
+
+  <text x="705" y="452" text-anchor="middle" fill="#8a8478" font-size="12.5">no hooks in other teams' repos &#x2014; the KB does its own sniffing</text>
+</svg>

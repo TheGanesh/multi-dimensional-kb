@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Chalkboard SE','Comic Sans MS','Segoe Print',cursive">
+  <rect width="900" height="500" fill="#fdf8ec" rx="18"/>
+
+  <text x="450" y="40" text-anchor="middle" fill="#33302b" font-size="24" font-weight="700">The Knowledge Base sits its exams</text>
+
+  <!-- desk with KB taking exam -->
+  <g stroke="#33302b" stroke-width="3" fill="none" stroke-linecap="round">
+    <rect x="90" y="270" width="200" height="14" fill="#c9a06a" stroke="#33302b"/>
+    <line x1="105" y1="284" x2="105" y2="340"/>
+    <line x1="275" y1="284" x2="275" y2="340"/>
+  </g>
+  <!-- KB character: a stack of pages with a face -->
+  <g stroke="#33302b" stroke-width="3" fill="#ffffff">
+    <rect x="140" y="190" width="100" height="80" rx="8"/>
+    <line x1="140" y1="212" x2="240" y2="212" stroke-width="2" stroke="#d8cfc0"/>
+    <line x1="140" y1="232" x2="240" y2="232" stroke-width="2" stroke="#d8cfc0"/>
+    <circle cx="172" cy="248" r="3.5" fill="#33302b" stroke="none"/>
+    <circle cx="208" cy="248" r="3.5" fill="#33302b" stroke="none"/>
+    <path d="M 174 260 Q 190 266 206 260" fill="none"/>
+  </g>
+  <text x="190" y="180" text-anchor="middle" fill="#33302b" font-size="14" font-weight="700">the KB (nervous)</text>
+  <!-- exam paper on desk -->
+  <g transform="rotate(-3 320 250)">
+    <rect x="290" y="228" width="70" height="46" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="4"/>
+    <line x1="298" y1="242" x2="352" y2="242" stroke="#8a8478" stroke-width="2"/>
+    <line x1="298" y1="254" x2="352" y2="254" stroke="#8a8478" stroke-width="2"/>
+    <line x1="298" y1="266" x2="336" y2="266" stroke="#8a8478" stroke-width="2"/>
+  </g>
+
+  <!-- judge character -->
+  <g stroke="#33302b" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="190" cy="410 " r="0"/>
+  </g>
+
+  <!-- five exams list -->
+  <g>
+    <rect x="430" y="76" width="440" height="60" fill="#dff2e4" stroke="#3fa060" stroke-width="3" rx="12"/>
+    <text x="446" y="101" fill="#2a7a48" font-size="14" font-weight="700">EXAM 1 &#x00b7; write the test from the answer key</text>
+    <text x="446" y="123" fill="#2a7a48" font-size="12">5 questions per page &#x00b7; PARAPHRASE, don't quote (no cheating!)</text>
+  </g>
+  <g>
+    <rect x="430" y="146" width="440" height="60" fill="#cfe6ff" stroke="#2b7de0" stroke-width="3" rx="12"/>
+    <text x="446" y="171" fill="#1d4e89" font-size="14" font-weight="700">EXAM 2 &#x00b7; did search bring the right book?</text>
+    <text x="446" y="193" fill="#1d4e89" font-size="12">Recall@5 + MRR &#x00b7; every PR &#x00b7; $0 &#x00b7; red build on regression</text>
+  </g>
+  <g>
+    <rect x="430" y="216" width="440" height="60" fill="#ffe9d6" stroke="#f0a500" stroke-width="3" rx="12"/>
+    <text x="446" y="241" fill="#9a6a00" font-size="14" font-weight="700">EXAM 3 &#x00b7; was the answer good? (AI judge)</text>
+    <text x="446" y="263" fill="#9a6a00" font-size="12">judge writes REASONS before verdicts &#x00b7; humans calibrate the judge</text>
+  </g>
+  <g>
+    <rect x="430" y="286" width="440" height="60" fill="#e9defa" stroke="#8a5cc0" stroke-width="3" rx="12"/>
+    <text x="446" y="311" fill="#6a3fa0" font-size="14" font-weight="700">EXAM 4 &#x00b7; is the textbook itself right?</text>
+    <text x="446" y="333" fill="#6a3fa0" font-size="12">parse specs deterministically &#x00b7; quarterly human spot-check of 5 services</text>
+  </g>
+  <g>
+    <rect x="430" y="356" width="440" height="60" fill="#ffe3de" stroke="#e0533d" stroke-width="3" rx="12"/>
+    <text x="446" y="381" fill="#b03621" font-size="14" font-weight="700">EXAM 5 &#x00b7; did Botty use the library well?</text>
+    <text x="446" y="403" fill="#b03621" font-size="12">tool calls logged today &#x00b7; graded when Botty starts choosing freely</text>
+  </g>
+
+  <!-- red flag: perfect score -->
+  <g transform="rotate(-4 190 420)">
+    <rect x="70" y="380" width="250" height="86" fill="#ffe3de" stroke="#e0533d" stroke-width="3" rx="10"/>
+    <text x="195" y="408" text-anchor="middle" fill="#b03621" font-size="15" font-weight="700">&#x26A0; SCORED 100%?</text>
+    <text x="195" y="432" text-anchor="middle" fill="#b03621" font-size="12.5">that's not excellence,</text>
+    <text x="195" y="452" text-anchor="middle" fill="#b03621" font-size="12.5">that's a test that can't fail you</text>
+  </g>
+
+  <!-- grade slip -->
+  <g transform="rotate(4 355 130)">
+    <rect x="300" y="86" width="110" height="84" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="6"/>
+    <text x="355" y="110" text-anchor="middle" fill="#33302b" font-size="12" font-weight="700">REPORT CARD</text>
+    <text x="355" y="132" text-anchor="middle" fill="#2a7a48" font-size="11.5">Recall@5: 0.9x</text>
+    <text x="355" y="150" text-anchor="middle" fill="#2a7a48" font-size="11.5">MRR: 0.8x</text>
+    <text x="355" y="164" text-anchor="middle" fill="#8a8478" font-size="9.5">honest &gt; perfect</text>
+  </g>
+</svg>

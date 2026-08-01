@@ -81,6 +81,8 @@ kb serve                                     # starts MCP on http://localhost:87
 | **[05 — Scaling & Federation](./05-scaling-and-federation.md)** | Multi-domain federation (customer, order, …), ownership model, registry, gateway MCP, leadership defense with industry citations |
 | **[06 — Freshness, CI/CD & Evaluation](./06-freshness-and-evaluation.md)** | Corrections to the original design, three-trigger freshness model, five-layer evaluation stack, monitoring stack |
 | **[07 — Phase 2 Target Architecture](./07-phase-2-target-architecture.md)** | Central pgvector tier, retrieval v2, orchestration, online judge, migration triggers |
+| **[Simplification](./simplification/README.md)** | Minimum viable framework — tiered cut list (cut outright / slim by default / defer until trigger / do not cut), each recommendation with proof |
+| **[Head-First-Style Book](./head-first-design/README.md)** | The friendly companion: the whole framework in 9 visual, conversational chapters — for new joiners and leadership |
 
 ---
 

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Chalkboard SE','Comic Sans MS','Segoe Print',cursive">
+  <rect width="900" height="500" fill="#fdf8ec" rx="18"/>
+
+  <text x="450" y="40" text-anchor="middle" fill="#33302b" font-size="24" font-weight="700">Every fact gets an address (and a business card)</text>
+
+  <!-- envelope -->
+  <g>
+    <rect x="70" y="100" width="330" height="200" fill="#ffffff" stroke="#33302b" stroke-width="3" rx="10"/>
+    <path d="M 70 105 L 235 210 L 400 105" stroke="#33302b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- stamp -->
+    <rect x="330" y="118" width="52" height="60" fill="#cfe6ff" stroke="#33302b" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="356" y="152" text-anchor="middle" fill="#1d4e89" font-size="11" font-weight="700">kb://</text>
+  </g>
+  <!-- address lines on envelope -->
+  <text x="110" y="238" fill="#33302b" font-size="16" font-weight="700">kb://commerce</text>
+  <text x="128" y="262" fill="#33302b" font-size="16">/shoppingcartms</text>
+  <text x="146" y="286" fill="#33302b" font-size="16">/api-catalog/addItemsToCart</text>
+
+  <!-- annotations for address parts -->
+  <g stroke="#e0533d" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M 195 232 Q 240 200 300 195" stroke-dasharray="6 5"/>
+  </g>
+  <text x="310 " y="198" fill="#e0533d" font-size="13" font-weight="700">the city (domain)</text>
+  <g stroke="#3fa060" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M 250 268 Q 330 268 380 330" stroke-dasharray="6 5"/>
+  </g>
+  <text x="330" y="352" fill="#3fa060" font-size="13" font-weight="700">the street (entity)</text>
+  <g stroke="#8a5cc0" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M 300 292 Q 320 320 300 380" stroke-dasharray="6 5"/>
+  </g>
+  <text x="240" y="400" fill="#8a5cc0" font-size="13" font-weight="700">the house (what kind of thing)</text>
+
+  <!-- business card -->
+  <g transform="rotate(3 660 210)">
+    <rect x="490" y="110" width="340" height="200" fill="#ffffff" stroke="#33302b" stroke-width="3" rx="12"/>
+    <rect x="490" y="110" width="340" height="42" fill="#ffd9c4" stroke="#33302b" stroke-width="3" rx="12"/>
+    <rect x="490" y="134" width="340" height="18" fill="#ffd9c4"/>
+    <text x="660" y="138" text-anchor="middle" fill="#9a4a1e" font-size="16" font-weight="700">ShoppingCartMs &#x2014; service</text>
+    <text x="510" y="178" fill="#33302b" font-size="13">"Cart lifecycle &#x2014; 22 APIs, 16 downstream,</text>
+    <text x="510" y="198" fill="#33302b" font-size="13">Cassandra, 3 Kafka topics"</text>
+    <text x="510" y="230" fill="#8a8478" font-size="12.5">best before: 2026-10-18</text>
+    <text x="510" y="254" fill="#8a8478" font-size="12.5">trust: </text>
+    <rect x="562" y="240" width="118" height="20" fill="#dff2e4" stroke="#3fa060" stroke-width="2" rx="10"/>
+    <text x="621" y="255" text-anchor="middle" fill="#2a7a48" font-size="12" font-weight="700">authoritative</text>
+    <text x="510" y="288" fill="#2b7de0" font-size="12" font-weight="700">&#x2192; read the card, THEN decide to read the page</text>
+  </g>
+  <text x="660" y="340" text-anchor="middle" fill="#8a8478" font-size="13">the frontmatter = a business card stapled to every page</text>
+
+  <!-- Botty reading cards -->
+  <g stroke="#33302b" stroke-width="3" fill="#ffffff" stroke-linecap="round">
+    <rect x="620" y="380" width="64" height="52" rx="10"/>
+    <line x1="652" y1="380" x2="652" y2="366"/>
+    <circle cx="652" cy="360" r="5" fill="#2b7de0"/>
+    <circle cx="638" cy="400" r="4" fill="#2b7de0"/>
+    <circle cx="666" cy="400" r="4" fill="#2b7de0"/>
+    <path d="M 638 416 Q 652 424 666 416" fill="none"/>
+  </g>
+  <g>
+    <rect x="700" y="368" width="180" height="76" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="14"/>
+    <polygon points="700,404 700,420 684,410" fill="#ffffff" stroke="#33302b" stroke-width="2.5"/>
+    <rect x="698" y="402" width="5" height="16" fill="#ffffff"/>
+    <text x="790" y="392" text-anchor="middle" fill="#33302b" font-size="12.5" font-weight="700">10 cards read,</text>
+    <text x="790" y="412" text-anchor="middle" fill="#33302b" font-size="12.5" font-weight="700">2 pages opened.</text>
+    <text x="790" y="432" text-anchor="middle" fill="#8a8478" font-size="11.5">my context thanks you</text>
+  </g>
+
+  <!-- trust ladder sticky -->
+  <g transform="rotate(-3 160 430)">
+    <rect x="50" y="380" width="240" height="96" fill="#fff3a8" stroke="#d8c04a" stroke-width="2.5" rx="6"/>
+    <text x="170" y="404" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">TRUST, IN THREE FLAVORS</text>
+    <text x="66" y="426" fill="#2a7a48" font-size="12" font-weight="700">authoritative</text>
+    <text x="185" y="426" fill="#6b5900" font-size="11.5">= signed contract</text>
+    <text x="66" y="446" fill="#1d4e89" font-size="12" font-weight="700">curated</text>
+    <text x="185" y="446" fill="#6b5900" font-size="11.5">= edited article</text>
+    <text x="66" y="466" fill="#b03621" font-size="12" font-weight="700">inferred</text>
+    <text x="185" y="466" fill="#6b5900" font-size="11.5">= heard at lunch</text>
+  </g>
+</svg>

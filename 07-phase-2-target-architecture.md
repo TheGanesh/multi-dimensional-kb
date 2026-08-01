@@ -8,22 +8,25 @@
 
 ## Phase 1 vs Phase 2 at a Glance
 
-Phase 1 (Chapters 01–06) is per-domain, in-process, zero-infra except monitoring. Phase 2
-adds shared infrastructure **only where scale creates a real problem**, and every component
-keeps the same contracts (OKF bundle, `kb://` URIs, MCP tools) so consumers never change.
+Phase 1 (Chapters 01–06) is per-domain, in-process, and runs **zero standing
+infrastructure** — usage telemetry is JSONL files
+([S2.4](./simplification/02-tier-2-slim-by-default.md#s24--usage-telemetry-as-jsonl--kb-usage-report-before-postgres--grafana)).
+Phase 2 adds shared infrastructure **only where scale creates a real problem**, and every
+component keeps the same contracts (OKF bundle, `kb://` URIs, MCP tools) so consumers
+never change.
 
 | Component | Phase 1 (today) | Phase 2 (target) | Upgrade Trigger | Docker Image |
 |---|---|---|---|---|
-| Dense index | In-process numpy per domain (`.kb_index/`) | Central **pgvector** with HNSW, all domains | Corpus > ~50K chunks, or startup > 30 s, or cross-domain queries become routine | `pgvector/pgvector:pg17` |
+| Dense index | **BM25-only default**; ONNX dense opt-in per domain via `[embeddings]`, restored as default only on a measured E2 win ([S2.1](./simplification/02-tier-2-slim-by-default.md#s21--bm25-only-by-default-the-denseonnx-tier-becomes-opt-in)) | Central **pgvector** with HNSW, all domains | Corpus > ~50K chunks, or startup > 30 s, or cross-domain queries become routine | `pgvector/pgvector:pg17` |
 | Keyword search | In-process BM25 (`rank_bm25`) per domain | Same (stays local!) — or OpenSearch BM25 if the central tier grows | Only if per-domain memory becomes a problem | `opensearchproject/opensearch` (optional) |
-| Merge/rerank | Weighted RRF in-process | Same algorithm, fed by local BM25 + central dense lists | Follows the dense index | — |
+| Merge/rerank | Weighted RRF in-process (active only when the dense tier is enabled) | Same algorithm, fed by local BM25 + central dense lists | Follows the dense index | — |
 | Query understanding | Rule-based classifier | + LLM query rewriting on zero-result retry | Zero-result rate > ~10% on the dashboard | — |
-| Ingest orchestration | CI cron + dirty-list (T1/T2) | **Kestra** flows (or ADO pipelines as constrained alternative) | > 3 domains, or flow count makes CI YAML unmanageable | `kestra/kestra:v1.3.21` + `postgres` |
+| Ingest orchestration | Nightly detect-and-refresh in CI cron ([Chapter 06](./06-freshness-and-evaluation.md#the-freshness-model--detect-refresh-backstop)) | **Kestra** flows (or ADO pipelines as constrained alternative) | > 3 domains, or flow count makes CI YAML unmanageable | `kestra/kestra:v1.3.21` + `postgres` |
 | Bundle distribution | Artifactory tarballs from CI publish | Same, plus registry-driven auto-pull into central index | With the central index | — |
-| Answer evaluation | Offline judge per release | + **Online judge**, async, 1-in-10 sample | As soon as real traffic exists (cheap; do early in Phase 2) | — |
+| Answer evaluation | Offline judge per release | + **Online judge**, async, 1-in-10 sample | As soon as real traffic exists — **the first Phase 2 component**; it brings the Postgres graduation with it | — |
 | Feedback | — | Thumbs UI in consumer workflows → `feedback` table | With online judge | — |
-| Monitoring | Postgres + Grafana (from Phase 1) | Same, plus cost/judge panels | Already running | `postgres:17`, `grafana/grafana` |
-| Embedding model | Vendored MiniLM ONNX 384d in repo | Same model, baked into a **build-time docker layer**; optionally larger ONNX (bge-base 768d) if E2 metrics justify | Recall gap attributable to embedding quality | internal base image |
+| Monitoring | JSONL + weekly `kb usage-report` ([S2.4](./simplification/02-tier-2-slim-by-default.md#s24--usage-telemetry-as-jsonl--kb-usage-report-before-postgres--grafana)) | Postgres + Grafana, judge/cost panels; JSONL history backfilled by loader | Online judge starts, or real dashboard demand | `postgres:17`, `grafana/grafana` |
+| Embedding model | Vendored MiniLM ONNX 384d, delivered by the framework package (opt-in) | Same model, baked into a **build-time docker layer**; optionally larger ONNX (bge-base 768d) if E2 metrics justify | Recall gap attributable to embedding quality | internal base image |
 
 All images above are standard Docker Hub images that corporate registries commonly mirror —
 no HuggingFace, no model downloads at runtime, satisfying the Phase 1 constraint even in
@@ -124,7 +127,7 @@ query ──▶ gateway: domain routing (registry + capability keywords)
               ├─▶ central pgvector dense (domain-filtered SQL) ──▶ ranked list B
               │
               ▼
-        weighted RRF, ID-keyed on kb:// URI, k=60   (same algorithm as Phase 1)
+        weighted RRF, ID-keyed on kb:// URI, k=60   (the framework's existing algorithm)
               ▼
         lexical rerank (entity/section/disclosure)  (unchanged)
               ▼
@@ -145,7 +148,7 @@ query ──▶ gateway: domain routing (registry + capability keywords)
 
 ## 3. Orchestration Tier (Kestra)
 
-Phase 1's T1/T2 freshness triggers run in CI cron. Past ~3 domains, the flow count
+Phase 1's detect-and-refresh cycle runs in CI cron. Past ~3 domains, the flow count
 (per-domain nightly refresh, bundle loads, weekly audits, eval runs) outgrows CI YAML.
 Kestra is the reference orchestrator (zoomcamp module 3 stack); ADO scheduled pipelines
 are the corporate-constrained fallback with identical flow design.
@@ -163,7 +166,7 @@ services:
 
 | Flow | Trigger | Steps |
 |------|---------|-------|
-| `refresh-<domain>` | Nightly cron + dirty-list non-empty | dirty ∪ fingerprint-changed → `/lifecycle-kb --refresh` → auto-PR (gates in domain CI, not here) |
+| `refresh-<domain>` | Nightly cron | fingerprint scan → changed set → `/lifecycle-kb --refresh` → auto-PR (gates in domain CI, not here) |
 | `load-bundle` | New artifact version in registry | download → embed (vendored ONNX) → upsert pgvector → FED-03 link re-check |
 | `weekly-audit` | Cron Monday 06:00 | `kb audit` all domains → SLO evaluation → notify owners (FED-05) |
 | `eval-suite` | On framework release + monthly | E1 regen (if content moved) → E2 metrics → E3 offline judge → E5 trajectory sample → publish scorecard |
@@ -175,10 +178,11 @@ referenced as `{{ secret('…') }}`); LLM credentials never live in flow YAML.
 
 ## 4. Online Evaluation Loop
 
-Cheapest Phase 2 component — adopt first (it only needs the Phase 1 monitoring stack plus
-one async worker):
+Cheapest Phase 2 component — adopt first. It carries the telemetry graduation with it:
+stand up Postgres + Grafana ([Chapter 06 graduation](./06-freshness-and-evaluation.md#graduation--postgres--grafana-triggered-not-default)),
+backfill the Phase 1 JSONL history via the loader, then add one async worker:
 
-1. Every gateway/MCP answer logs to `conversations` (Phase 1 behavior).
+1. Every gateway/MCP answer logs to `conversations` (same fields Phase 1 wrote to JSONL).
 2. An async worker samples **1-in-10**, runs the relevance judge
    (`RELEVANT | PARTLY_RELEVANT | NON_RELEVANT` + explanation), writes to `feedback`
    with `source='judge'`. Never in the answer path; judge cost tracked separately.
@@ -198,7 +202,7 @@ gaps** — continuously, at ~10% of the judging cost of full coverage.
 |---------|------------------|
 | Federation gateway MCP | As designed in [Chapter 05](./05-scaling-and-federation.md#mcp-topology--scoped-servers--one-gateway), now backed by the central dense tier; per-domain MCP servers unchanged for in-domain work |
 | Bundle pinning | Consumers (story gen, scaffold) may pin `commerce@7.1.0` like a package version — reproducible generation runs, auditable "which knowledge produced this story" |
-| Trajectory logging | Gateway logs the tool-call sequence per session (`tool_name`, arguments-hash) → E5 trajectory eval runs on real sessions, not synthetic ones |
+| Trajectory logging | Gateway logs the tool-call sequence per session (`tool_name`, arguments-hash) → E5 trajectory *judging* activates here, per its trigger ([S3.3](./simplification/03-tier-3-defer-until-trigger.md#s33--e5-trajectory-evaluation)): consumers are now genuinely agentic, and the rubric runs on real sessions, not synthetic ones |
 | Draft-TDD generation | The Chapter 04 "future" stage becomes viable here: cross-domain context (gateway) + pinned bundles + online judge = the feedback loop TDD drafting needs |
 
 ---
@@ -210,7 +214,7 @@ provides every number:
 
 | Trigger (measured) | Component to Adopt |
 |---|---|
-| Real traffic exists at all | Online judge + thumbs (do first, it's nearly free) |
+| Real traffic exists at all | Online judge + thumbs (do first — includes the Postgres/Grafana graduation from JSONL) |
 | Cross-domain queries appear in `conversations` logs | Gateway MCP (thin version, no central index yet) |
 | > 3 domains active in `registry.yaml` | Kestra orchestration |
 | Corpus > ~50K chunks · or index startup > 30 s · or gateway fan-out latency unacceptable | Central pgvector tier |

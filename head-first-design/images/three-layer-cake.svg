@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Chalkboard SE','Comic Sans MS','Segoe Print',cursive">
+  <rect width="900" height="520" fill="#fdf8ec" rx="18"/>
+
+  <text x="450" y="40" text-anchor="middle" fill="#33302b" font-size="24" font-weight="700">The Three-Layer Cake</text>
+
+  <!-- recipe card floating left -->
+  <g transform="rotate(-4 165 130)">
+    <rect x="70" y="85" width="190" height="96" fill="#fff3a8" stroke="#d8c04a" stroke-width="2.5" rx="8"/>
+    <text x="165" y="115" text-anchor="middle" fill="#6b5900" font-size="16" font-weight="700">THE RECIPE</text>
+    <text x="165" y="140" text-anchor="middle" fill="#6b5900" font-size="15" font-weight="700">seed.yaml</text>
+    <text x="165" y="164" text-anchor="middle" fill="#8a6d00" font-size="12">the ONLY file you edit</text>
+  </g>
+  <path d="M 265 140 Q 330 150 380 190" stroke="#e0533d" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="7 6"/>
+  <polygon points="380,190 366,182 372,196" fill="#e0533d"/>
+
+  <!-- cake plate -->
+  <ellipse cx="480" cy="435" rx="250" ry="24" fill="#ffffff" stroke="#33302b" stroke-width="3"/>
+
+  <!-- bottom layer: sources -->
+  <rect x="290" y="330" width="380" height="96" fill="#cfe6ff" stroke="#33302b" stroke-width="3" rx="14"/>
+  <text x="480" y="368" text-anchor="middle" fill="#1d4e89" font-size="18" font-weight="700">LAYER 1: sources/  (the ingredients)</text>
+  <text x="480" y="394" text-anchor="middle" fill="#1d4e89" font-size="13">structured YAML scanned from real code by an LLM</text>
+  <text x="480" y="414" text-anchor="middle" fill="#1d4e89" font-size="13">APIs &#x00b7; Kafka topics &#x00b7; dependencies &#x00b7; flows</text>
+
+  <!-- top layer: markdown -->
+  <rect x="320" y="200" width="320" height="92" fill="#ffd9c4" stroke="#33302b" stroke-width="3" rx="14"/>
+  <text x="480" y="236" text-anchor="middle" fill="#9a4a1e" font-size="18" font-weight="700">LAYER 2: markdown/  (the cake)</text>
+  <text x="480" y="260" text-anchor="middle" fill="#9a4a1e" font-size="13">cross-linked pages people + robots read</text>
+  <text x="480" y="280" text-anchor="middle" fill="#9a4a1e" font-size="13">NEVER edited by hand</text>
+
+  <!-- candle -->
+  <line x1="480" y1="200" x2="480" y2="168" stroke="#33302b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 480 168 Q 472 154 480 142 Q 488 154 480 168" fill="#f0a500" stroke="#33302b" stroke-width="2"/>
+
+  <!-- the boring script between layers -->
+  <g>
+    <rect x="672" y="288" width="196" height="76" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="12"/>
+    <text x="770" y="314" text-anchor="middle" fill="#33302b" font-size="14" font-weight="700">kb generate</text>
+    <text x="770" y="334" text-anchor="middle" fill="#8a8478" font-size="11.5">a gloriously BORING script</text>
+    <text x="770" y="352" text-anchor="middle" fill="#8a8478" font-size="11.5">same input = identical cake</text>
+  </g>
+  <path d="M 700 330 Q 660 320 648 300" stroke="#3fa060" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <polygon points="648,300 654,314 662,304" fill="#3fa060"/>
+  <text x="700 " y="284" text-anchor="middle" fill="#3fa060" font-size="12" font-weight="700">bakes L1 &#x2192; L2</text>
+
+  <!-- cake police -->
+  <g stroke="#33302b" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="130" cy="330" r="30" fill="#ffffff"/>
+    <path d="M 102 320 L 158 320 L 130 296 Z" fill="#2b7de0" stroke="#33302b" stroke-width="2.5"/> <!-- hat -->
+    <circle cx="120" cy="332" r="3" fill="#33302b"/>
+    <circle cx="140" cy="332" r="3" fill="#33302b"/>
+    <line x1="120" y1="348" x2="140" y2="348"/>
+    <line x1="130" y1="360" x2="130" y2="420"/>
+    <line x1="130" y1="378" x2="104" y2="360"/>
+    <line x1="130" y1="378" x2="160" y2="392"/>
+    <line x1="130" y1="420" x2="112" y2="462"/>
+    <line x1="130" y1="420" x2="148" y2="462"/>
+  </g>
+  <g>
+    <rect x="30" y="215" width="212" height="58" fill="#ffffff" stroke="#33302b" stroke-width="2.5" rx="14"/>
+    <polygon points="120,273 138,273 128,294" fill="#ffffff" stroke="#33302b" stroke-width="2.5"/>
+    <rect x="122" y="270" width="14" height="5" fill="#ffffff"/>
+    <text x="136" y="238" text-anchor="middle" fill="#33302b" font-size="13" font-weight="700">Sync gate: if your cake</text>
+    <text x="136" y="258" text-anchor="middle" fill="#33302b" font-size="13" font-weight="700">differs, the build FAILS.</text>
+  </g>
+  <text x="130" y="486" text-anchor="middle" fill="#2b7de0" font-size="13" font-weight="700">the cake police (CI)</text>
+
+  <!-- no-touching sign on layer 2 -->
+  <g transform="rotate(6 700 210)">
+    <rect x="650" y="182" width="120" height="52" fill="#ffe3de" stroke="#e0533d" stroke-width="2.5" rx="8"/>
+    <text x="710" y="204" text-anchor="middle" fill="#b03621" font-size="13" font-weight="700">NO TOUCHING</text>
+    <text x="710" y="223" text-anchor="middle" fill="#b03621" font-size="11">regenerate instead</text>
+  </g>
+</svg>

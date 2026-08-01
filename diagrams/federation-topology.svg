@@ -98,6 +98,7 @@
   <text x="360" y="584" fill="#94a3b8" font-size="8">FED-03 cross-domain kb:// links resolve</text>
   <text x="360" y="598" fill="#94a3b8" font-size="8">FED-04 framework version floor</text>
   <text x="360" y="612" fill="#94a3b8" font-size="8">FED-05 freshness SLO &#x2192; notify owner</text>
+  <text x="360" y="626" fill="#475569" font-size="7">FED-03&#x2026;05 activate at 2nd domain &#x00b7; registry.yaml lives in kb-framework until then (S3.1)</text>
 
   <text x="660" y="540" fill="#e2e8f0" font-size="10" font-weight="600">bundle artifacts (Artifactory)</text>
   <text x="660" y="556" fill="#94a3b8" font-size="8">commerce@7.1.0</text>
@@ -115,7 +116,7 @@
   <text x="550" y="690" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">kb-gateway MCP (cross-domain only)</text>
   <text x="550" y="706" text-anchor="middle" fill="#94a3b8" font-size="8">kb_route: classify &#x2192; domain(s) &#x00b7; kb_federated_search: fan-out &#x2264;2 &#x2192; W-RRF merge</text>
   <text x="550" y="720" text-anchor="middle" fill="#94a3b8" font-size="8">returns disclosure lines + kb:// URIs first &#x2014; agent pulls full pages deliberately</text>
-  <text x="550" y="736" text-anchor="middle" fill="#475569" font-size="8">no index of its own &#x00b7; reads registry.yaml &#x00b7; proxies domain MCP servers</text>
+  <text x="550" y="736" text-anchor="middle" fill="#475569" font-size="8">no index of its own &#x00b7; deferred (S3.1): build at &#x2265;2 domains + logged cross-domain demand</text>
 
   <line x1="270" y1="706" x2="330" y2="706" stroke="#f59e0b" stroke-width="1.2" marker-end="url(#ft4)"/>
   <text x="300" y="698" text-anchor="middle" fill="#64748b" font-size="7">x-domain</text>
