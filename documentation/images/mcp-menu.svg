@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <rect width="960" height="560" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">Don&#8217;t let robots into the kitchen &#8212; give them a menu</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">MCP: a Linux Foundation standard every major AI vendor&#8217;s agents already speak</text>
+
+  <!-- menu card -->
+  <rect x="50" y="88" width="420" height="430" fill="#ffffff" stroke="#2f2c26" stroke-width="2.5" rx="14"/>
+  <rect x="50" y="88" width="420" height="40" fill="#fff3b8" stroke="#2f2c26" stroke-width="2.5" rx="14"/>
+  <text x="260" y="114" text-anchor="middle" fill="#6b5900" font-size="15" font-weight="700">&#127860;  THE MENU &#8212; 9 dishes  (was 25)</text>
+
+  <g font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12.5">
+    <text x="72" y="156" fill="#8a8478" font-size="11" font-family="'Avenir Next','Trebuchet MS',sans-serif" font-weight="700">ENUMERATE &#38; FETCH</text>
+    <text x="72" y="178" fill="#1d4e89" font-weight="700">kb_list(type)</text><text x="250" y="178" fill="#6b6455">what exists?</text>
+    <text x="72" y="200" fill="#1d4e89" font-weight="700">kb_get(type, name)</text><text x="250" y="200" fill="#6b6455">one thing, fully</text>
+
+    <text x="72" y="230" fill="#8a8478" font-size="11" font-family="'Avenir Next','Trebuchet MS',sans-serif" font-weight="700">SEARCH</text>
+    <text x="72" y="252" fill="#9a4a1e" font-weight="700">kb_smart_query(q)</text><text x="250" y="252" fill="#6b6455">&#8220;just handle it&#8221;</text>
+    <text x="72" y="274" fill="#9a4a1e" font-weight="700">kb_search(q, mode)</text><text x="250" y="274" fill="#6b6455">ranked chunks</text>
+
+    <text x="72" y="304" fill="#8a8478" font-size="11" font-family="'Avenir Next','Trebuchet MS',sans-serif" font-weight="700">ANALYSIS</text>
+    <text x="72" y="326" fill="#53379e" font-weight="700">kb_impact(name)</text><text x="250" y="326" fill="#6b6455">what breaks?</text>
+    <text x="72" y="348" fill="#53379e" font-weight="700">kb_compare(a, b)</text><text x="250" y="348" fill="#6b6455">side by side</text>
+
+    <text x="72" y="378" fill="#8a8478" font-size="11" font-family="'Avenir Next','Trebuchet MS',sans-serif" font-weight="700">OKF NAVIGATION</text>
+    <text x="72" y="400" fill="#216b40" font-weight="700">kb_navigate(path)</text><text x="250" y="400" fill="#6b6455">browse shelves</text>
+    <text x="72" y="422" fill="#216b40" font-weight="700">kb_read_concept(id)</text><text x="250" y="422" fill="#6b6455">one page + card</text>
+
+    <text x="72" y="452" fill="#8a8478" font-size="11" font-family="'Avenir Next','Trebuchet MS',sans-serif" font-weight="700">OPS</text>
+    <text x="72" y="474" fill="#b03621" font-weight="700">kb_health()</text><text x="250" y="474" fill="#6b6455">kitchen open?</text>
+  </g>
+  <text x="260" y="504" text-anchor="middle" fill="#8a8478" font-size="11">16 near-duplicate dishes folded into kb_list / kb_get(type=&#8230;)</text>
+
+  <!-- robot ordering -->
+  <g stroke="#2f2c26" stroke-width="2.5" fill="#ffffff">
+    <rect x="520" y="120" width="54" height="44" rx="8"/>
+    <circle cx="536" cy="140" r="5" fill="#2f2c26" stroke="none"/>
+    <circle cx="558" cy="140" r="5" fill="#2f2c26" stroke="none"/>
+  </g>
+  <text x="596" y="136" fill="#2f2c26" font-size="13" font-weight="700">Botty orders from the menu &#8212;</text>
+  <text x="596" y="154" fill="#8a8478" font-size="12">no drawer-rummaging, no context clutter</text>
+
+  <!-- what comes back -->
+  <rect x="520" y="184" width="400" height="150" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2.5" rx="12"/>
+  <text x="720" y="210" text-anchor="middle" fill="#216b40" font-size="14" font-weight="700">Every answer comes back structured</text>
+  <g fill="#216b40" font-size="12">
+    <text x="540" y="236">&#8226; typed fields, not prose to re-parse</text>
+    <text x="540" y="258">&#8226; stamped with its kb:// address</text>
+    <text x="540" y="280">&#8226; carries its trust label (authoritative / curated / inferred)</text>
+    <text x="540" y="302">&#8226; staleness warning included if past stale_after</text>
+  </g>
+  <text x="720" y="326" text-anchor="middle" fill="#216b40" font-size="11.5" font-weight="700">the menu never bluffs about freshness</text>
+
+  <!-- server internals -->
+  <rect x="520" y="354" width="400" height="164" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="12"/>
+  <text x="540" y="380" fill="#2f2c26" font-size="13" font-weight="700">Under the hood: graph-mcp/server.py</text>
+  <g fill="#6b6455" font-size="11.5" font-family="'SF Mono',Menlo,Consolas,monospace">
+    <text x="540" y="404">startup: YAML &#8594; memory &#8594; derive chunks</text>
+    <text x="540" y="422">        &#8594; BM25 index &#8594; ONNX embeds</text>
+    <text x="540" y="440">        &#8594; cache in .kb_index/</text>
+    <text x="540" y="462">warm &#60;2s &#183; cold ~20s &#183; fully local</text>
+  </g>
+  <text x="540" y="488" fill="#8a8478" font-size="11.5">shared kblib engine powers the MCP server AND the kb CLI</text>
+  <text x="540" y="506" fill="#8a8478" font-size="11.5" font-family="'SF Mono',Menlo,monospace">kb serve &#8594; SSE :8787  |  --stdio for IDEs</text>
+</svg>

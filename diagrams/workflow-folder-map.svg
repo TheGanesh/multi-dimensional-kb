@@ -82,7 +82,7 @@
   <text x="25" y="304" fill="#64748b" font-size="9">~30s for full corpus</text>
   <text x="225" y="272" fill="#fca5a5" font-size="10">markdown/services/ (45) · api-catalog/ (45)</text>
   <text x="225" y="286" fill="#fca5a5" font-size="10">capability-flow/ (127) · impact/ (45)</text>
-  <text x="225" y="300" fill="#fbbf24" font-size="10" font-weight="600">markdown/chunks/ (1,291 RAG) · Summary.md</text>
+  <text x="225" y="300" fill="#fbbf24" font-size="10" font-weight="600">1,291 derived RAG chunks · Summary.md</text>
   <text x="520" y="272" fill="#6ee7b7" font-size="10">All sources/**/*.yaml (YAML is authoritative)</text>
   <text x="520" y="286" fill="#6ee7b7" font-size="10">wiki-crawled/ · bruno-parsed/ · graph-metadata/</text>
   <text x="520" y="300" fill="#6ee7b7" font-size="9">seed.yaml declares versions + kb-version tag</text>
@@ -102,7 +102,7 @@
   <text x="225" y="333" fill="#fca5a5" font-size="10">features/{ID}/stories/{story-id}.md</text>
   <text x="225" y="348" fill="#fca5a5" font-size="9">features/{ID}/feature-execution-summary.md</text>
   <text x="520" y="333" fill="#6ee7b7" font-size="10">Commerce-Services-Summary.md → KB markdown</text>
-  <text x="520" y="348" fill="#6ee7b7" font-size="9">MCP: graph_get_service / graph_get_api_contract</text>
+  <text x="520" y="348" fill="#6ee7b7" font-size="9">MCP: kb_get(type='service') / kb_get(type='api')</text>
   <text x="520" y="360" fill="#fbbf24" font-size="9">TDD/LLD (mandatory, source of truth)</text>
   <text x="820" y="340" fill="#94a3b8" font-size="8">N stories (1 per endpoint)</text>
   <text x="820" y="355" fill="#94a3b8" font-size="8">GHERKIN Given/When/Then ACs</text>
@@ -115,7 +115,7 @@
   <text x="225" y="383" fill="#fca5a5" font-size="10">{repo}/docs/{JIRA}/execution-plan.md</text>
   <text x="225" y="398" fill="#fca5a5" font-size="8">scope · design · impl · test · config · PR · risk</text>
   <text x="520" y="383" fill="#6ee7b7" font-size="10">Stories + KB markdown + service repo code</text>
-  <text x="520" y="398" fill="#6ee7b7" font-size="9">MCP: graph_get_service, graph_get_api_detail</text>
+  <text x="520" y="398" fill="#6ee7b7" font-size="9">MCP: kb_get(type='service'), kb_get(type='api')</text>
   <text x="820" y="391" fill="#94a3b8" font-size="8">1 execution plan per service</text>
 
   <!-- Row 8: /scaffold-dev -->
@@ -128,7 +128,7 @@
   <text x="225" y="456" fill="#fca5a5" font-size="9">application.yml · openapi changes</text>
   <text x="520" y="429" fill="#6ee7b7" font-size="10">Execution plan (7-section template)</text>
   <text x="520" y="444" fill="#6ee7b7" font-size="9">KB coding patterns + service repo</text>
-  <text x="520" y="456" fill="#6ee7b7" font-size="9">MCP: graph_semantic_search (RAG context)</text>
+  <text x="520" y="456" fill="#6ee7b7" font-size="9">MCP: kb_search (RAG context)</text>
   <text x="820" y="436" fill="#94a3b8" font-size="8">Java src + Spock tests + config</text>
   <text x="820" y="451" fill="#34d399" font-size="8">Build gate after each section</text>
 

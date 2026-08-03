@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <defs>
+    <marker id="arrFr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#6b6455"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">The milk carton principle: dates measure age, not change</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">a service can change the day after ingest and stay &#8220;fresh&#8221; by the label for 89 more days &#8212; so lead with the nose</text>
+
+  <!-- milk carton -->
+  <g transform="rotate(-2 130 200)">
+    <path d="M 80 160 L 180 160 L 180 300 L 80 300 Z" fill="#ffffff" stroke="#2f2c26" stroke-width="2.5"/>
+    <path d="M 80 160 L 130 122 L 180 160" fill="#d9e9fb" stroke="#2f2c26" stroke-width="2.5"/>
+    <text x="130" y="198" text-anchor="middle" fill="#2f2c26" font-size="14" font-weight="700">MILK</text>
+    <text x="130" y="226" text-anchor="middle" fill="#8a8478" font-size="10.5" font-family="'SF Mono',Menlo,monospace">stale_after:</text>
+    <text x="130" y="242" text-anchor="middle" fill="#b03621" font-size="11" font-family="'SF Mono',Menlo,monospace">2026-10-18</text>
+    <text x="130" y="274" text-anchor="middle" fill="#8a8478" font-size="10">the label knows</text>
+    <text x="130" y="288" text-anchor="middle" fill="#8a8478" font-size="10">OLD, not BAD</text>
+  </g>
+
+  <!-- three moves -->
+  <g font-size="12">
+    <rect x="240" y="110" width="680" height="80" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2.5" rx="12"/>
+    <text x="262" y="138" fill="#216b40" font-size="15" font-weight="700">1. SNIFF (detect) &#8212; nightly, ~$0, zero cooperation needed</text>
+    <text x="262" y="160" fill="#216b40">read-only git pull of all 45 declared repos &#8594; hash ingest-relevant files</text>
+    <text x="262" y="178" fill="#216b40" font-family="'SF Mono',Menlo,monospace">diff vs .fingerprints.json &#8594; changed-service set   (minutes)</text>
+
+    <rect x="240" y="204" width="680" height="80" fill="#e9e1fb" stroke="#8a6fd0" stroke-width="2.5" rx="12"/>
+    <text x="262" y="232" fill="#53379e" font-size="15" font-weight="700">2. RESTOCK (refresh) &#8212; same night, LLM cost scales with change</text>
+    <text x="262" y="254" fill="#53379e" font-family="'SF Mono',Menlo,monospace">/lifecycle-kb --refresh over changed set only &#8594; auto-PR</text>
+    <text x="262" y="272" fill="#53379e">must pass EVERY gate (schema &#183; audit &#8805; 60 &#183; conformance &#183; sync &#183; retrieval)</text>
+
+    <rect x="240" y="298" width="680" height="80" fill="#ffe3de" stroke="#e0533d" stroke-width="2.5" rx="12"/>
+    <text x="262" y="326" fill="#b03621" font-size="15" font-weight="700">3. EXPIRY CHECK (backstop) &#8212; weekly, should rarely fire</text>
+    <text x="262" y="348" fill="#b03621">stale_after TTLs + weekly audit &#8594; D2 freshness metric &#8594; owner notified</text>
+    <text x="262" y="366" fill="#b03621">if this fires, the milk isn&#8217;t bad &#8212; the SNIFFING broke. someone gets paged.</text>
+  </g>
+  <g stroke="#6b6455" stroke-width="2.5" fill="none">
+    <line x1="580" y1="190" x2="580" y2="200" marker-end="url(#arrFr)"/>
+    <line x1="580" y1="284" x2="580" y2="294" marker-end="url(#arrFr)"/>
+  </g>
+
+  <!-- timeline -->
+  <rect x="60" y="400" width="860" height="72" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="12"/>
+  <text x="80" y="424" fill="#2f2c26" font-size="13" font-weight="700">Timeline of one change:</text>
+  <g font-size="12" fill="#6b6455">
+    <text x="80" y="448">Mon 3 PM &#8212; service merges a new endpoint (KB knows nothing; fine)</text>
+    <text x="80" y="466">Tue ~2 AM &#8212; sniff spots changed hashes &#8594; re-ingest &#8594; auto-PR &#8594; gates &#8594; republished by morning</text>
+    <text x="700" y="448" fill="#b03621" font-weight="700">the expiry date alone?</text>
+    <text x="700" y="466" fill="#b03621" font-weight="700">would have caught it in October.</text>
+  </g>
+
+  <!-- SLO footer -->
+  <rect x="60" y="486" width="860" height="46" fill="#f4eeda" stroke="#c9bfa4" stroke-width="1.5" rx="10"/>
+  <text x="490" y="505" text-anchor="middle" fill="#6b6455" font-size="12.5">SLOs: change ingested &#8804; 24 h typical, &#8804; 7 days promised (7&#215; headroom) &#183; pages within TTL &#8805; 95% &#183; republish &#8804; 1 day</text>
+  <text x="490" y="524" text-anchor="middle" fill="#6b6455" font-size="12">the event-driven variant (hooks in 45 repos owned by other teams) was designed &#8212; and deliberately NOT built. restore trigger: SLO tightens to same-day.</text>
+</svg>

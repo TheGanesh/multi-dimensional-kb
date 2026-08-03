@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <defs>
+    <marker id="arrOp" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#6b6455"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">Two tool ecosystems &#8212; only one costs money</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">workflows produce knowledge (LLM) &#183; the CLI does everything else (deterministic, $0)</text>
+
+  <!-- workflows column -->
+  <rect x="50" y="88" width="420" height="212" fill="#e9e1fb" stroke="#8a6fd0" stroke-width="2.5" rx="14"/>
+  <text x="260" y="116" text-anchor="middle" fill="#53379e" font-size="15" font-weight="700">Workflows &#8212; IDE chat, LLM, costs $</text>
+  <g font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" fill="#53379e">
+    <text x="74" y="144">/ingest-service   /ingest-wiki</text>
+    <text x="74" y="164">/ingest-bruno     /ingest-auxiliary</text>
+    <text x="74" y="188">/generate-kb      /explain-impact</text>
+    <text x="74" y="212">/lifecycle-kb --bootstrap | --refresh</text>
+    <text x="74" y="232">/audit-kb</text>
+  </g>
+  <text x="260" y="262" text-anchor="middle" fill="#53379e" font-size="12">scan code &#183; crawl wiki &#183; parse .bru &#8594; write sources/ YAML</text>
+  <text x="260" y="284" text-anchor="middle" fill="#8a6fd0" font-size="11.5" font-weight="700">the ONLY place an LLM runs &#8212; never in CI</text>
+
+  <!-- CLI column -->
+  <rect x="490" y="88" width="420" height="212" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2.5" rx="14"/>
+  <text x="700" y="116" text-anchor="middle" fill="#216b40" font-size="15" font-weight="700">kb CLI &#8212; terminal, deterministic, $0</text>
+  <g font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" fill="#216b40">
+    <text x="514" y="144">kb generate   kb validate   kb audit</text>
+    <text x="514" y="164">kb conformance   kb check   kb stats</text>
+    <text x="514" y="188">kb search "q"   kb context "topic"</text>
+    <text x="514" y="212">kb index   kb viz   kb serve</text>
+    <text x="514" y="232">17 subcommands total</text>
+  </g>
+  <text x="700" y="262" text-anchor="middle" fill="#216b40" font-size="12">validate &#183; generate &#183; audit &#183; search &#8212; offline, no server</text>
+  <text x="700" y="284" text-anchor="middle" fill="#4aa06a" font-size="11.5" font-weight="700">what CI runs &#8212; all six jobs</text>
+
+  <!-- arrow down to CI -->
+  <line x1="480" y1="304" x2="480" y2="336" stroke="#6b6455" stroke-width="2.5" marker-end="url(#arrOp)"/>
+
+  <!-- CI pipeline -->
+  <rect x="50" y="340" width="860" height="126" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="14"/>
+  <text x="70" y="368" fill="#2f2c26" font-size="14" font-weight="700">The CI pipeline &#8212; 6 jobs, 3 triggers (PR &#183; push to main &#183; Monday 06:00), $0 LLM</text>
+
+  <g font-size="11.5" text-anchor="middle">
+    <rect x="70" y="384" width="126" height="62" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2" rx="8"/>
+    <text x="133" y="404" fill="#216b40" font-weight="700">1 validate</text>
+    <text x="133" y="420" fill="#216b40">kb check +</text>
+    <text x="133" y="436" fill="#216b40">SYNC GATE</text>
+
+    <rect x="206" y="384" width="126" height="62" fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2" rx="8"/>
+    <text x="269" y="404" fill="#1d4e89" font-weight="700">2 mcp-tests</text>
+    <text x="269" y="420" fill="#1d4e89">9-tool self-test</text>
+    <text x="269" y="436" fill="#1d4e89">golden recall</text>
+
+    <rect x="342" y="384" width="126" height="62" fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2" rx="8"/>
+    <text x="405" y="404" fill="#1d4e89" font-weight="700">3 cli-smoke</text>
+    <text x="405" y="420" fill="#1d4e89">17 subcommands</text>
+    <text x="405" y="436" fill="#1d4e89">search + context</text>
+
+    <rect x="478" y="384" width="126" height="62" fill="#ffe1cc" stroke="#d98d5a" stroke-width="2" rx="8"/>
+    <text x="541" y="404" fill="#9a4a1e" font-weight="700">4 pr-comment</text>
+    <text x="541" y="420" fill="#9a4a1e">score on PR</text>
+    <text x="541" y="436" fill="#9a4a1e">&#128994;&#8805;80 &#128993;&#8805;60 &#128308;&#60;60</text>
+
+    <rect x="614" y="384" width="126" height="62" fill="#ffe1cc" stroke="#d98d5a" stroke-width="2" rx="8"/>
+    <text x="677" y="404" fill="#9a4a1e" font-weight="700">5 publish</text>
+    <text x="677" y="420" fill="#9a4a1e">audit + metrics</text>
+    <text x="677" y="436" fill="#9a4a1e">+ viz artifacts</text>
+
+    <rect x="750" y="384" width="140" height="62" fill="#fff3b8" stroke="#d8bc4a" stroke-width="2" rx="8"/>
+    <text x="820" y="404" fill="#6b5900" font-weight="700">6 weekly-audit</text>
+    <text x="820" y="420" fill="#6b5900">Monday full audit</text>
+    <text x="820" y="436" fill="#6b5900">issue on failure</text>
+  </g>
+
+  <!-- gates footer -->
+  <rect x="50" y="482" width="860" height="48" fill="#f4eeda" stroke="#c9bfa4" stroke-width="1.5" rx="10"/>
+  <text x="480" y="502" text-anchor="middle" fill="#6b6455" font-size="12">gates: 6 JSON schemas pass &#183; audit score &#8805; 60 with 0 errors &#183; OKF C1&#8211;C12 pass &#183; sync gate: regenerate + diff = no difference</text>
+  <text x="480" y="520" text-anchor="middle" fill="#6b6455" font-size="12">retrieval: no regression on golden queries &#183; classifier &#62; 85% &#8212; a red build blocks the knowledge, not just the code</text>
+</svg>

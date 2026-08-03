@@ -106,7 +106,7 @@
   <text x="619" y="494" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="600">notify OWNER</text>
   <text x="619" y="508" text-anchor="middle" fill="#64748b" font-size="8">CODEOWNERS, not inbox</text>
 
-  <text x="44" y="546" fill="#475569" font-size="8">MCP graph_read_concept keeps flagging pages past stale_after &#x2014; consumers see staleness even if humans ignore it</text>
+  <text x="44" y="546" fill="#475569" font-size="8">MCP kb_read_concept keeps flagging pages past stale_after &#x2014; consumers see staleness even if humans ignore it</text>
 
   <!-- ==================== SLO PANEL ==================== -->
   <rect x="712" y="76" width="224" height="486" rx="12" fill="rgba(0,240,255,0.03)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.5"/>

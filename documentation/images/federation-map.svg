@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <defs>
+    <marker id="arrFd" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#6b6455"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">One neighborhood, many houses &#8212; same blueprint</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">federation, not centralization: standards are global, enforcement is local, ownership follows the repo</text>
+
+  <!-- blueprint -->
+  <rect x="290" y="84" width="380" height="88" fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2.5" rx="12"/>
+  <text x="480" y="110" text-anchor="middle" fill="#1d4e89" font-size="15" font-weight="700">&#128208; the blueprint &#8212; kb-framework package</text>
+  <text x="480" y="132" text-anchor="middle" fill="#1d4e89" font-size="11.5" font-family="'SF Mono',Menlo,monospace">scripts/ kbcli/ graph-mcp/ schemas/ templates/ eval/</text>
+  <text x="480" y="154" text-anchor="middle" fill="#1d4e89" font-size="12">semver to internal PyPI &#183; each domain pins its version</text>
+
+  <!-- pins -->
+  <g stroke="#6b6455" stroke-width="2" fill="none">
+    <line x1="380" y1="172" x2="215" y2="222" marker-end="url(#arrFd)"/>
+    <line x1="480" y1="172" x2="480" y2="222" marker-end="url(#arrFd)"/>
+    <line x1="580" y1="172" x2="745" y2="222" marker-end="url(#arrFd)"/>
+  </g>
+  <rect x="300" y="192" width="222" height="18" fill="#fbf7ec"/>
+  <text x="308" y="205" fill="#8a8478" font-size="11" font-family="'SF Mono',Menlo,monospace">pip install kb-framework==2.1.0</text>
+
+  <!-- houses -->
+  <g font-size="11.5">
+    <g>
+      <path d="M 95 258 L 215 258 L 215 386 L 95 386 Z" fill="#ffffff" stroke="#2f2c26" stroke-width="2.5"/>
+      <path d="M 85 258 L 155 218 L 225 258" fill="#ffe1cc" stroke="#2f2c26" stroke-width="2.5"/>
+      <text x="155" y="282" text-anchor="middle" fill="#9a4a1e" font-size="13" font-weight="700">commerce-kb</text>
+      <text x="155" y="304" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">seed.yaml</text>
+      <text x="155" y="322" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">sources/ markdown/</text>
+      <text x="155" y="340" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">eval/ CODEOWNERS</text>
+      <text x="155" y="362" text-anchor="middle" fill="#216b40" font-weight="700" font-size="10.5">own CI &#183; own on-call</text>
+      <text x="155" y="380" text-anchor="middle" fill="#53379e" font-family="'SF Mono',Menlo,monospace">MCP :8787</text>
+    </g>
+    <g>
+      <path d="M 420 258 L 540 258 L 540 386 L 420 386 Z" fill="#ffffff" stroke="#2f2c26" stroke-width="2.5"/>
+      <path d="M 410 258 L 480 218 L 550 258" fill="#ddf2e2" stroke="#2f2c26" stroke-width="2.5"/>
+      <text x="480" y="282" text-anchor="middle" fill="#216b40" font-size="13" font-weight="700">customer-kb</text>
+      <text x="480" y="304" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">seed.yaml</text>
+      <text x="480" y="322" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">sources/ markdown/</text>
+      <text x="480" y="340" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">eval/ CODEOWNERS</text>
+      <text x="480" y="362" text-anchor="middle" fill="#216b40" font-weight="700" font-size="10.5">same gates, own CI</text>
+      <text x="480" y="380" text-anchor="middle" fill="#53379e" font-family="'SF Mono',Menlo,monospace">MCP :8788</text>
+    </g>
+    <g>
+      <path d="M 745 258 L 865 258 L 865 386 L 745 386 Z" fill="#ffffff" stroke="#2f2c26" stroke-width="2.5"/>
+      <path d="M 735 258 L 805 218 L 875 258" fill="#e9e1fb" stroke="#2f2c26" stroke-width="2.5"/>
+      <text x="805" y="282" text-anchor="middle" fill="#53379e" font-size="13" font-weight="700">order-kb</text>
+      <text x="805" y="304" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">seed.yaml</text>
+      <text x="805" y="322" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">sources/ markdown/</text>
+      <text x="805" y="340" text-anchor="middle" fill="#6b6455" font-family="'SF Mono',Menlo,monospace" font-size="10">eval/ CODEOWNERS</text>
+      <text x="805" y="362" text-anchor="middle" fill="#216b40" font-weight="700" font-size="10.5">onboard: kb init</text>
+      <text x="805" y="380" text-anchor="middle" fill="#53379e" font-family="'SF Mono',Menlo,monospace">MCP :8789</text>
+    </g>
+  </g>
+
+  <!-- publish arrows -->
+  <g stroke="#6b6455" stroke-width="2" fill="none">
+    <line x1="155" y1="390" x2="300" y2="446" marker-end="url(#arrFd)"/>
+    <line x1="480" y1="390" x2="480" y2="442" marker-end="url(#arrFd)"/>
+    <line x1="805" y1="390" x2="660" y2="446" marker-end="url(#arrFd)"/>
+  </g>
+  <text x="560" y="420" fill="#8a8478" font-size="11">publish versioned bundle artifacts</text>
+
+  <!-- registry -->
+  <rect x="250" y="448" width="460" height="82" fill="#fff3b8" stroke="#d8bc4a" stroke-width="2.5" rx="12"/>
+  <text x="480" y="472" text-anchor="middle" fill="#6b5900" font-size="14" font-weight="700">&#127963; city hall &#8212; registry.yaml (one reviewable file)</text>
+  <text x="480" y="493" text-anchor="middle" fill="#8a6d00" font-size="11.5">who exists &#183; who owns it &#183; bundle version &#183; MCP endpoint &#183; freshness SLO</text>
+  <text x="480" y="513" text-anchor="middle" fill="#8a6d00" font-size="11.5">FED-01/02 from day one &#183; FED-03&#8230;05 activate at the 2nd domain</text>
+
+  <!-- concierge (deferred) -->
+  <g>
+    <rect x="740" y="448" width="180" height="82" fill="#ffffff" stroke="#8a6fd0" stroke-width="2.5" stroke-dasharray="7 5" rx="12"/>
+    <text x="830" y="472" text-anchor="middle" fill="#53379e" font-size="13" font-weight="700">&#128110; the concierge</text>
+    <text x="830" y="491" text-anchor="middle" fill="#8a6fd0" font-size="10.5">gateway MCP &#8212; designed,</text>
+    <text x="830" y="506" text-anchor="middle" fill="#8a6fd0" font-size="10.5">deliberately unbuilt until</text>
+    <text x="830" y="521" text-anchor="middle" fill="#8a6fd0" font-size="10.5">2+ domains AND logged demand</text>
+  </g>
+
+  <!-- pollution note -->
+  <rect x="40" y="448" width="180" height="82" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="12"/>
+  <text x="130" y="472" text-anchor="middle" fill="#2f2c26" font-size="12" font-weight="700">no context pollution:</text>
+  <text x="130" y="491" text-anchor="middle" fill="#6b6455" font-size="10.5">each index holds only its</text>
+  <text x="130" y="506" text-anchor="middle" fill="#6b6455" font-size="10.5">own domain; cross-domain =</text>
+  <text x="130" y="521" text-anchor="middle" fill="#6b6455" font-size="10.5">headlines first, then 1 page</text>
+</svg>

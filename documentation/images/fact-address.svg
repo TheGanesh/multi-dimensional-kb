@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <rect width="960" height="540" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">Every fact gets an address &#8212; and a business card</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">you can&#8217;t test what you can&#8217;t name</text>
+
+  <!-- URI anatomy -->
+  <rect x="80" y="92" width="800" height="96" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="12"/>
+  <text x="480" y="132" text-anchor="middle" fill="#2f2c26" font-size="22" font-family="'SF Mono',Menlo,Consolas,monospace">
+    <tspan fill="#8a8478">kb://</tspan><tspan fill="#1d4e89" font-weight="700">commerce</tspan><tspan fill="#8a8478">/</tspan><tspan fill="#9a4a1e" font-weight="700">shoppingcartms</tspan><tspan fill="#8a8478">/</tspan><tspan fill="#216b40" font-weight="700">service</tspan>
+  </text>
+  <g font-size="12" font-weight="700">
+    <text x="345" y="168" text-anchor="middle" fill="#1d4e89">the domain (city)</text>
+    <text x="520" y="168" text-anchor="middle" fill="#9a4a1e">the entity (street)</text>
+    <text x="672" y="168" text-anchor="middle" fill="#216b40">the type (house)</text>
+  </g>
+  <text x="480" y="212" text-anchor="middle" fill="#8a8478" font-size="12.5">contents change &#183; addresses don&#8217;t &#8212; evaluation, cross-domain links, and clean updates all lean on this</text>
+
+  <!-- business card -->
+  <g transform="rotate(-2 260 360)">
+    <rect x="70" y="248" width="380" height="222" fill="#ffffff" stroke="#2f2c26" stroke-width="2.5" rx="12"/>
+    <rect x="70" y="248" width="380" height="34" fill="#fff3b8" stroke="#2f2c26" stroke-width="2.5" rx="12"/>
+    <text x="260" y="271" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">THE BUSINESS CARD  (frontmatter)</text>
+    <g font-size="12" font-family="'SF Mono',Menlo,Consolas,monospace">
+      <text x="90" y="306" fill="#8a8478">type: <tspan fill="#2f2c26">service</tspan></text>
+      <text x="90" y="328" fill="#8a8478">title: <tspan fill="#2f2c26">"ShoppingCartMs"</tspan></text>
+      <text x="90" y="350" fill="#8a8478">stale_after: <tspan fill="#b03621">2026-10-18</tspan></text>
+      <text x="90" y="372" fill="#8a8478">confidence: <tspan fill="#216b40">authoritative</tspan></text>
+      <text x="90" y="394" fill="#8a8478">disclosure: <tspan fill="#1d4e89">"Cart lifecycle &#8212;</tspan></text>
+      <text x="90" y="414" fill="#1d4e89">  22 APIs, 16 downstream, 3 topics"</text>
+    </g>
+    <text x="260" y="448" text-anchor="middle" fill="#8a8478" font-size="11.5">six lines that save two thousand words</text>
+  </g>
+
+  <!-- trust ladder -->
+  <rect x="510" y="248" width="380" height="222" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="12"/>
+  <text x="700" y="276" text-anchor="middle" fill="#2f2c26" font-size="14" font-weight="700">Three levels of trust</text>
+  <rect x="530" y="292" width="340" height="44" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2" rx="8"/>
+  <text x="546" y="311" fill="#216b40" font-size="12.5" font-weight="700" font-family="'SF Mono',Menlo,monospace">authoritative</text>
+  <text x="546" y="328" fill="#216b40" font-size="11">deterministic, from code-scanned data &#8212; a signed contract</text>
+  <rect x="530" y="344" width="340" height="44" fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2" rx="8"/>
+  <text x="546" y="363" fill="#1d4e89" font-size="12.5" font-weight="700" font-family="'SF Mono',Menlo,monospace">curated</text>
+  <text x="546" y="380" fill="#1d4e89" font-size="11">written or reviewed by a human &#8212; an edited article</text>
+  <rect x="530" y="396" width="340" height="44" fill="#ffe3de" stroke="#e0533d" stroke-width="2" rx="8"/>
+  <text x="546" y="415" fill="#b03621" font-size="12.5" font-weight="700" font-family="'SF Mono',Menlo,monospace">inferred</text>
+  <text x="546" y="432" fill="#b03621" font-size="11">LLM&#8217;s best guess &#8212; something overheard at lunch</text>
+  <text x="700" y="460" text-anchor="middle" fill="#8a8478" font-size="11.5">inferred facts never win arguments (&#9888; KB-INFERRED downstream)</text>
+
+  <!-- TTL footer -->
+  <rect x="70" y="490" width="820" height="34" fill="#f4eeda" stroke="#c9bfa4" stroke-width="1.5" rx="8"/>
+  <text x="480" y="512" text-anchor="middle" fill="#6b6455" font-size="12">freshness TTLs by type &#8212; API catalog: 60d &#183; service / impact: 90d &#183; flow / NFR: 180d &#183; ADR: 365d &#8212; expired pages carry a warning at read time</text>
+</svg>

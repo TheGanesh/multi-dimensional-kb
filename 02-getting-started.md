@@ -29,7 +29,7 @@ kb index                                        # warm RAG cache (~20s, cached t
 ### Install Profiles
 
 ```bash
-pip install -e "multi-dimensional-kb/"              # Minimal — CLI only (LSA fallback)
+pip install -e "multi-dimensional-kb/"              # Minimal — CLI only (BM25-only fallback)
 pip install -e "multi-dimensional-kb/[embeddings]"  # + Dense RAG (MiniLM ONNX, no downloads)
 pip install -e "multi-dimensional-kb/[mcp]"         # + MCP server only
 pip install -e "multi-dimensional-kb/[all]"         # Everything (recommended)
@@ -106,7 +106,7 @@ kb viz [--out=PATH]                     # interactive dependency graph
 kb stats                                # quick summary from audit-metrics.json
 
 # Search & Context (no MCP server needed)
-kb search "query" --top 5 [--type service] [--mode hybrid|bm25|dense|lsa] [--json]
+kb search "query" --top 5 [--type service] [--mode hybrid|bm25|dense] [--json]
 kb context "topic" --tokens 4000        # ready-to-paste markdown with citations
 kb index                                # rebuild .kb_index/ caches
 
@@ -259,7 +259,7 @@ Each `/ingest-service` extracts:
 │   │   ├── impact/ · adrs/ · nfrs/ · metadata/ · wiki-content/
 │   │   ├── chunks/*.md                 ← 1,291 RAG chunks
 │   │   └── log.md · CHANGELOG.md
-│   ├── graph-mcp/server.py             ← MCP server (25 tools)
+│   ├── graph-mcp/server.py             ← MCP server (9 unified tools)
 │   ├── kbcli/cli.py                    ← Unified kb CLI
 │   ├── scripts/                        ← Python generation + validation
 │   ├── all-MiniLM-L6-v2/              ← ONNX model (committed in-repo)

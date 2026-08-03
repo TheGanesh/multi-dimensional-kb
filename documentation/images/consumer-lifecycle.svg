@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <defs>
+    <marker id="arrCl" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#6b6455"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">Botty gets a job &#8212; the feature lifecycle</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">given one ADO feature number, the pipeline writes stories, plans, code, and PRs &#8212; the KB keeps it honest</text>
+
+  <!-- pipeline stages -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="40" y="96" width="130" height="66" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="10"/>
+    <text x="105" y="120" fill="#2f2c26" font-weight="700">ADO Feature</text>
+    <text x="105" y="138" fill="#8a8478">+ TDD (human)</text>
+    <text x="105" y="154" fill="#8a8478">manual</text>
+
+    <rect x="200" y="96" width="130" height="66" fill="#e9e1fb" stroke="#8a6fd0" stroke-width="2" rx="10"/>
+    <text x="265" y="120" fill="#53379e" font-weight="700">Stories</text>
+    <text x="265" y="138" fill="#53379e">one per endpoint</text>
+    <text x="265" y="154" fill="#8a6fd0">/create-stories</text>
+
+    <rect x="360" y="96" width="130" height="66" fill="#e9e1fb" stroke="#8a6fd0" stroke-width="2" rx="10"/>
+    <text x="425" y="120" fill="#53379e" font-weight="700">Plans</text>
+    <text x="425" y="138" fill="#53379e">7 sections each</text>
+    <text x="425" y="154" fill="#8a6fd0">/dev-companion</text>
+
+    <rect x="520" y="96" width="130" height="66" fill="#e9e1fb" stroke="#8a6fd0" stroke-width="2" rx="10"/>
+    <text x="585" y="120" fill="#53379e" font-weight="700">Code</text>
+    <text x="585" y="138" fill="#53379e">Java + Spock tests</text>
+    <text x="585" y="154" fill="#8a6fd0">/scaffold</text>
+
+    <rect x="680" y="96" width="130" height="66" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2" rx="10"/>
+    <text x="745" y="120" fill="#216b40" font-weight="700">Test gates</text>
+    <text x="745" y="138" fill="#216b40">compile / build</text>
+    <text x="745" y="154" fill="#216b40">per section</text>
+
+    <rect x="840" y="96" width="80" height="66" fill="#ffe1cc" stroke="#d98d5a" stroke-width="2" rx="10"/>
+    <text x="880" y="124" fill="#9a4a1e" font-weight="700">PRs</text>
+    <text x="880" y="142" fill="#9a4a1e">1 per repo</text>
+  </g>
+  <g stroke="#6b6455" stroke-width="2.5" fill="none">
+    <line x1="170" y1="129" x2="196" y2="129" marker-end="url(#arrCl)"/>
+    <line x1="330" y1="129" x2="356" y2="129" marker-end="url(#arrCl)"/>
+    <line x1="490" y1="129" x2="516" y2="129" marker-end="url(#arrCl)"/>
+    <line x1="650" y1="129" x2="676" y2="129" marker-end="url(#arrCl)"/>
+    <line x1="810" y1="129" x2="836" y2="129" marker-end="url(#arrCl)"/>
+  </g>
+
+  <!-- KB feeding the stages -->
+  <rect x="290" y="222" width="380" height="86 " fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2.5" rx="14"/>
+  <text x="480" y="250" text-anchor="middle" fill="#1d4e89" font-size="15" font-weight="700">THE KNOWLEDGE BASE</text>
+  <text x="480" y="272" text-anchor="middle" fill="#1d4e89" font-size="12">service profiles &#183; API contracts &#183; flows &#183; error codes</text>
+  <text x="480" y="292" text-anchor="middle" fill="#1d4e89" font-size="12">dependencies &#183; architecture layers &#183; code patterns</text>
+  <g stroke="#5b8ec4" stroke-width="2" stroke-dasharray="5 4" fill="none">
+    <line x1="380" y1="220" x2="272" y2="166"/>
+    <line x1="440" y1="220" x2="428" y2="166"/>
+    <line x1="530" y1="220" x2="580" y2="166"/>
+  </g>
+  <rect x="158" y="174" width="644" height="22" fill="#fbf7ec"/>
+  <text x="480" y="189" text-anchor="middle" fill="#8a8478" font-size="11.5" font-family="'SF Mono',Menlo,monospace">/commerce-end-to-end-feature-implementor 2181283 &#8594; chains all stages, fans out per repo</text>
+
+  <!-- three channels -->
+  <g font-size="11.5" text-anchor="middle">
+    <rect x="40" y="330" width="280" height="76" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="10"/>
+    <text x="180" y="352" fill="#2f2c26" font-weight="700">Channel 1 &#8212; markdown crawling</text>
+    <text x="180" y="370" fill="#6b6455">recursive reads from the summary page</text>
+    <text x="180" y="388" fill="#216b40" font-weight="700">always works (offline floor)</text>
+
+    <rect x="340" y="330" width="280" height="76" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="10"/>
+    <text x="480" y="352" fill="#2f2c26" font-weight="700">Channel 1.5 &#8212; RAG enrichment</text>
+    <text x="480" y="370" fill="#6b6455" font-family="'SF Mono',Menlo,monospace">kb context &#183; kb search (no server)</text>
+    <text x="480" y="388" fill="#216b40" font-weight="700">offline semantic search</text>
+
+    <rect x="640" y="330" width="280" height="76" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="10"/>
+    <text x="780" y="352" fill="#2f2c26" font-weight="700">Channel 2 &#8212; MCP tools</text>
+    <text x="780" y="370" fill="#6b6455" font-family="'SF Mono',Menlo,monospace">kb_get &#183; kb_impact &#183; kb_search</text>
+    <text x="780" y="388" fill="#216b40" font-weight="700">richest (needs running server)</text>
+  </g>
+
+  <!-- precedence banner -->
+  <rect x="40" y="430" width="880" height="46" fill="#fff3b8" stroke="#d8bc4a" stroke-width="2.5" rx="10"/>
+  <text x="480" y="450" text-anchor="middle" fill="#6b5900" font-size="14" font-weight="700">THE PRECEDENCE RULE:  TDD  &#62;  exact KB/MCP contract  &#62;  markdown prose  &#62;  RAG enrichment</text>
+  <text x="480" y="468" text-anchor="middle" fill="#8a6d00" font-size="11.5">the KB enriches but never overrides the human design document</text>
+
+  <!-- tags footer -->
+  <rect x="40" y="490" width="880" height="42" fill="#f4eeda" stroke="#c9bfa4" stroke-width="1.5" rx="8"/>
+  <text x="480" y="508" text-anchor="middle" fill="#6b6455" font-size="12">(no tag) = from TDD &#183; &#9888; KB-INFERRED = in KB but not TDD, reviewer verifies &#183; GAP: [&#8230;] = in neither, architect resolves</text>
+  <text x="480" y="526" text-anchor="middle" fill="#6b6455" font-size="12">nothing silent, nothing sneaky &#8212; every non-TDD fact is visibly tagged</text>
+</svg>

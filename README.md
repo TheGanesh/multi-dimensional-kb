@@ -1,6 +1,6 @@
 # Commerce Multi-Dimensional Knowledge Base — Documentation
 
-> **Version**: 9.0.0 | **Domain**: Commerce (apm0045079) | **Stack**: Python 3.10+, PyYAML, FastMCP, numpy
+> **Version**: 2.0.0 (`kb-framework`) | **Domain**: Commerce (apm0045079) | **Stack**: Python 3.10+, PyYAML, FastMCP, numpy
 >
 > **Standards**: OKF v0.2 knowledge bundle + LLM-Wiki three-layer architecture
 
@@ -22,8 +22,8 @@ cross-linked Markdown knowledge base** that both humans and AI agents can naviga
 | Capability Flows | 127 (1 primary + 115 Bruno + 11 curated groupings) |
 | ADRs | 5 architecture decisions |
 | NFR Profiles | 45 |
-| RAG Chunks | 1,291 (BM25 + dense MiniLM-ONNX 384d, LSA fallback) |
-| MCP Tools | 25 structured query tools |
+| RAG Chunks | 1,291 derived at index time (BM25 + dense MiniLM-ONNX 384d, BM25-only fallback) |
+| MCP Tools | 9 unified query tools |
 
 ---
 
@@ -40,7 +40,7 @@ kb generate (deterministic Python)     ← no LLM — pure template rendering
     ↓
 {KB_ROOT}/markdown/                    ← Final Markdown KB (read-only, fully cross-linked)
     ↓
-graph-mcp/server.py                    ← 25 MCP tools, hybrid search, in-memory
+graph-mcp/server.py                    ← 9 unified MCP tools, hybrid search, in-memory
 ```
 
 **One rule**: edit `seed.yaml` → run workflows → everything else is derived.
@@ -76,7 +76,7 @@ kb serve                                     # starts MCP on http://localhost:87
 |---------|---------------|
 | **[01 — Architecture & Data Model](./01-architecture.md)** | Three-layer architecture, OKF/LLM-Wiki patterns, data flow, seed.yaml, schemas, frontmatter contract |
 | **[02 — Setup & Daily Operations](./02-getting-started.md)** | Prerequisites, install, bootstrap, `kb` CLI reference, workflows, recipes, FAQ |
-| **[03 — MCP, Search & CI](./03-mcp-and-retrieval.md)** | 25 MCP tools, hybrid retrieval pipeline, CI pipeline, quality gates |
+| **[03 — MCP, Search & CI](./03-mcp-and-retrieval.md)** | 9 unified MCP tools, hybrid retrieval pipeline, CI pipeline, quality gates |
 | **[04 — Consumer Workflows](./04-consumer-workflows.md)** | Story generation, execution plans, scaffold, E2E feature implementor, evaluation |
 | **[05 — Scaling & Federation](./05-scaling-and-federation.md)** | Multi-domain federation (customer, order, …), ownership model, registry, gateway MCP, leadership defense with industry citations |
 | **[06 — Freshness, CI/CD & Evaluation](./06-freshness-and-evaluation.md)** | Corrections to the original design, three-trigger freshness model, five-layer evaluation stack, monitoring stack |
@@ -117,7 +117,7 @@ All diagrams are in [`./diagrams/`](./diagrams/):
 | `scripts/validate_catalog.py` | Schema validation + cross-ref integrity |
 | `scripts/audit_kb.py` | Full KB health audit (AUD-01…25 + D1–D10) |
 | `scripts/okf_conformance_check.py` | OKF v0.2 conformance (C1–C12) |
-| `graph-mcp/server.py` | MCP server (25 tools, hybrid search) |
+| `graph-mcp/server.py` | MCP server (9 unified tools, hybrid search) |
 | `kbcli/cli.py` | Unified `kb` CLI entry point |
 | `.devin/workflows/multi-dimensional-kb/` | 10 workflow definitions |
 | `.github/workflows/kb-validation.yml` | CI pipeline (6 jobs) |

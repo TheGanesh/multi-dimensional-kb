@@ -45,9 +45,9 @@
   <text x="302" y="121" fill="#fb923c" font-size="9">/create-stories</text>
   <text x="302" y="135" fill="#34d399" font-size="8">✓ automated</text>
   <text x="302" y="153" fill="#64748b" font-size="8">KB tools used:</text>
-  <text x="302" y="166" fill="#94a3b8" font-size="8">graph_get_service</text>
-  <text x="302" y="179" fill="#94a3b8" font-size="8">graph_get_api_contract</text>
-  <text x="302" y="192" fill="#94a3b8" font-size="8">graph_semantic_search</text>
+  <text x="302" y="166" fill="#94a3b8" font-size="8">kb_get('service')</text>
+  <text x="302" y="179" fill="#94a3b8" font-size="8">kb_get(type='api')</text>
+  <text x="302" y="192" fill="#94a3b8" font-size="8">kb_search</text>
 
   <line x1="400" y1="140" x2="420" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
 
@@ -58,9 +58,9 @@
   <text x="432" y="121" fill="#fb923c" font-size="9">/compare-dev</text>
   <text x="432" y="135" fill="#34d399" font-size="8">✓ automated</text>
   <text x="432" y="153" fill="#64748b" font-size="8">KB tools used:</text>
-  <text x="432" y="166" fill="#94a3b8" font-size="8">graph_get_api_detail</text>
-  <text x="432" y="179" fill="#94a3b8" font-size="8">graph_find_service_</text>
-  <text x="432" y="192" fill="#94a3b8" font-size="8">dependencies</text>
+  <text x="432" y="166" fill="#94a3b8" font-size="8">kb_get(type='api')</text>
+  <text x="432" y="179" fill="#94a3b8" font-size="8">kb_impact</text>
+  <text x="432" y="192" fill="#94a3b8" font-size="8">(dependencies)</text>
 
   <line x1="530" y1="140" x2="550" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
 
@@ -71,7 +71,7 @@
   <text x="562" y="121" fill="#fb923c" font-size="9">/scaffold-dev</text>
   <text x="562" y="135" fill="#34d399" font-size="8">✓ automated</text>
   <text x="562" y="153" fill="#64748b" font-size="8">KB tools used:</text>
-  <text x="562" y="166" fill="#94a3b8" font-size="8">graph_semantic_search</text>
+  <text x="562" y="166" fill="#94a3b8" font-size="8">kb_search</text>
   <text x="562" y="179" fill="#94a3b8" font-size="8">(RAG context for</text>
   <text x="562" y="192" fill="#94a3b8" font-size="8">code patterns)</text>
 
@@ -84,7 +84,7 @@
   <text x="692" y="121" fill="#60a5fa" font-size="9">Build gates</text>
   <text x="692" y="135" fill="#34d399" font-size="8">✓ automated</text>
   <text x="692" y="153" fill="#64748b" font-size="8">Spock unit tests</text>
-  <text x="692" y="167" fill="#64748b" font-size="8">WireMock component</text>
+  <text x="692" y="167" fill="#64748b" font-size="8">WireMock comp.</text>
   <text x="692" y="181" fill="#64748b" font-size="8">tests included</text>
 
   <line x1="770" y1="140" x2="790" y2="140" stroke="#64748b" stroke-width="2" marker-end="url(#a4)"/>
@@ -97,12 +97,12 @@
   <text x="802" y="135" fill="#34d399" font-size="8">✓ automated</text>
   <text x="802" y="153" fill="#64748b" font-size="8">Multi-service</text>
   <text x="802" y="167" fill="#64748b" font-size="8">fans out to</text>
-  <text x="802" y="181" fill="#64748b" font-size="8">parallel sessions</text>
+  <text x="802" y="181" fill="#64748b" font-size="8">parallel runs</text>
 
   <!-- KB bar below -->
   <rect x="160" y="230" width="540" height="60" rx="8" fill="rgba(52,211,153,0.08)" stroke="#059669" stroke-width="1.5"/>
   <text x="430" y="252" text-anchor="middle" fill="#6ee7b7" font-size="13" font-weight="700">Commerce Knowledge Base</text>
-  <text x="430" y="268" text-anchor="middle" fill="#94a3b8" font-size="10">45 services · 686 API contracts · 127 flows · 1,291 RAG chunks · 25 MCP tools</text>
+  <text x="430" y="268" text-anchor="middle" fill="#94a3b8" font-size="10">45 services · 686 API contracts · 127 flows · 1,291 RAG chunks · 9 unified MCP tools</text>
   <text x="430" y="282" text-anchor="middle" fill="#64748b" font-size="9">BM25 + Dense MiniLM-L6-v2 384d · W-RRF α=0.4 β=0.6 · no GPU · in-memory</text>
 
   <!-- Vertical connectors from KB to stages 3-5 -->

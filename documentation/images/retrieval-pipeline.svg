@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <defs>
+    <marker id="arrRt" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#6b6455"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">The librarian at the front desk (smart-query routing)</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">deterministic first, search second &#8212; rule-based classifier, &#62;95% accurate, no AI</text>
+
+  <!-- incoming query -->
+  <rect x="40" y="96" width="180" height="56" fill="#fff3b8" stroke="#d8bc4a" stroke-width="2.5" rx="10"/>
+  <text x="130" y="120" text-anchor="middle" fill="#6b5900" font-size="13" font-weight="700">a question arrives</text>
+  <text x="130" y="140" text-anchor="middle" fill="#8a6d00" font-size="11" font-family="'SF Mono',Menlo,monospace">kb_smart_query(q)</text>
+
+  <line x1="220" y1="124" x2="286" y2="124" stroke="#6b6455" stroke-width="2.5" marker-end="url(#arrRt)"/>
+
+  <!-- librarian -->
+  <g stroke="#2f2c26" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <circle cx="330" cy="112" r="18" fill="#ffffff"/>
+    <circle cx="324" cy="109" r="2.5" fill="#2f2c26" stroke="none"/>
+    <circle cx="336" cy="109" r="2.5" fill="#2f2c26" stroke="none"/>
+    <path d="M 323 120 Q 330 125 337 120"/>
+    <line x1="330" y1="130" x2="330" y2="158"/>
+  </g>
+  <rect x="286" y="160" width="90" height="24" fill="#ffffff" stroke="#2f2c26" stroke-width="2" rx="6"/>
+  <text x="331" y="177" text-anchor="middle" fill="#2f2c26" font-size="11.5" font-weight="700">the librarian</text>
+
+  <!-- routes -->
+  <g stroke="#6b6455" stroke-width="2" fill="none">
+    <path d="M 376 124 Q 450 110 512 110" marker-end="url(#arrRt)"/>
+    <path d="M 376 140 Q 450 168 512 172" marker-end="url(#arrRt)"/>
+    <path d="M 366 152 Q 448 226 512 234" marker-end="url(#arrRt)"/>
+    <path d="M 360 158 Q 440 288 512 296" marker-end="url(#arrRt)"/>
+  </g>
+
+  <!-- route cards -->
+  <g font-size="12">
+    <rect x="516" y="88" width="404" height="46" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2" rx="8"/>
+    <text x="530" y="107" fill="#216b40" font-weight="700">NAVIGATIONAL  &#8220;list APIs of X&#8221;</text>
+    <text x="530" y="124" fill="#216b40">&#8594; deterministic catalog lookup &#8212; O(1), exact, complete</text>
+
+    <rect x="516" y="150" width="404" height="46" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2" rx="8"/>
+    <text x="530" y="169" fill="#216b40" font-weight="700">FACTUAL  contains service name / operationId</text>
+    <text x="530" y="186" fill="#216b40">&#8594; deterministic detail lookup &#8212; O(1)</text>
+
+    <rect x="516" y="212" width="404" height="46" fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2" rx="8"/>
+    <text x="530" y="231" fill="#1d4e89" font-weight="700">ANALYTICAL  &#8220;impact of X&#8221;, &#8220;blast radius&#8221;</text>
+    <text x="530" y="248" fill="#1d4e89">&#8594; graph traversal of dependencies + impact chunks</text>
+
+    <rect x="516" y="274" width="404" height="46" fill="#ffe1cc" stroke="#d98d5a" stroke-width="2" rx="8"/>
+    <text x="530" y="293" fill="#9a4a1e" font-weight="700">EXPLORATORY  &#8220;how&#8221;, &#8220;why&#8221;, open-ended</text>
+    <text x="530" y="310" fill="#9a4a1e">&#8594; the ONLY route that pays for a real search &#8595;</text>
+  </g>
+
+  <!-- hybrid pipeline -->
+  <rect x="40" y="348" width="880" height="130" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="12"/>
+  <text x="60" y="374" fill="#2f2c26" font-size="14" font-weight="700">The hybrid search pipeline (for exploratory queries only)</text>
+
+  <rect x="60" y="390" width="150" height="66" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2" rx="8"/>
+  <text x="135" y="412" text-anchor="middle" fill="#216b40" font-size="12.5" font-weight="700">BM25  (&#945;=0.4)</text>
+  <text x="135" y="430" text-anchor="middle" fill="#216b40" font-size="10.5">exact terms, labels</text>
+  <text x="135" y="446" text-anchor="middle" fill="#216b40" font-size="10.5">the default workhorse</text>
+
+  <rect x="230" y="390" width="180" height="66" fill="#e9e1fb" stroke="#8a6fd0" stroke-width="2" rx="8"/>
+  <text x="320" y="412" text-anchor="middle" fill="#53379e" font-size="12.5" font-weight="700">Dense  (&#946;=0.6)</text>
+  <text x="320" y="430" text-anchor="middle" fill="#53379e" font-size="10.5">MiniLM ONNX 384d, CPU</text>
+  <text x="320" y="446" text-anchor="middle" fill="#53379e" font-size="10.5">opt-in &#8212; must earn its spot</text>
+
+  <line x1="410" y1="423" x2="466" y2="423" stroke="#6b6455" stroke-width="2.5" marker-end="url(#arrRt)"/>
+
+  <rect x="470" y="390" width="170" height="66" fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2" rx="8"/>
+  <text x="555" y="412" text-anchor="middle" fill="#1d4e89" font-size="12.5" font-weight="700">Weighted RRF</text>
+  <text x="555" y="430" text-anchor="middle" fill="#1d4e89" font-size="10.5" font-family="'SF Mono',Menlo,monospace">&#945;/(60+rA) + &#946;/(60+rB)</text>
+  <text x="555" y="446" text-anchor="middle" fill="#1d4e89" font-size="10.5">ID-keyed on kb:// URI</text>
+
+  <line x1="640" y1="423" x2="696" y2="423" stroke="#6b6455" stroke-width="2.5" marker-end="url(#arrRt)"/>
+
+  <rect x="700" y="390" width="200" height="66" fill="#ffe1cc" stroke="#d98d5a" stroke-width="2" rx="8"/>
+  <text x="800" y="412" text-anchor="middle" fill="#9a4a1e" font-size="12.5" font-weight="700">Lexical rerank &#8594; Top-K</text>
+  <text x="800" y="430" text-anchor="middle" fill="#9a4a1e" font-size="10.5">entity / section / disclosure</text>
+  <text x="800" y="446" text-anchor="middle" fill="#9a4a1e" font-size="10.5">chunks &#8804; 8 KB, addressed</text>
+
+  <!-- metrics footer -->
+  <rect x="40" y="494" width="880" height="36" fill="#f4eeda" stroke="#c9bfa4" stroke-width="1.5" rx="8"/>
+  <text x="480" y="517" text-anchor="middle" fill="#6b6455" font-size="12.5">gated in CI on the golden suite &#8212; Recall@5 = 0.982 (&#8805; 0.90) &#183; Recall@10 = 1.0 (&#8805; 0.95) &#183; MRR = 0.912 (&#8805; 0.80) &#183; BM25-only fallback if ONNX unavailable</text>
+</svg>

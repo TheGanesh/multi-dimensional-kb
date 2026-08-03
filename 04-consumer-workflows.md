@@ -30,7 +30,7 @@ Consumer workflows access the KB through **three complementary channels**:
 |-------|---------|-----------|-------------|
 | **1** | Markdown Crawling | Recursive `read_file` from `Commerce-Services-Summary.md` | Always (offline) |
 | **1.5** | RAG Enrichment | `kb context` / `kb search` over 1,291 chunks | Always (offline, no server) |
-| **2** | MCP Tools | `graph_get_service`, `graph_get_api_detail`, etc. | Requires running server |
+| **2** | MCP Tools | `kb_get(type='service')`, `kb_get(type='api')`, etc. | Requires running server |
 
 **Precedence**: TDD > exact KB/MCP contract > markdown prose > RAG enrichment.
 RAG results are tagged `⚠️ KB-INFERRED` — never override TDD or MCP data.
@@ -64,10 +64,10 @@ Start at `Commerce-Services-Summary.md` → follow links recursively through `ma
 
 | Tool | Provides |
 |------|---------|
-| `graph_get_service` | Full service profile |
-| `graph_get_api_detail` | Contract with scenarios, schemas |
-| `graph_find_service_dependencies` | Upstream + downstream deps |
-| `graph_semantic_search` | RAG context for open-ended questions |
+| `kb_get(type='service')` | Full service profile |
+| `kb_get(type='api')` | Contract with scenarios, schemas |
+| `kb_impact` | Upstream + downstream deps |
+| `kb_search` | RAG context for open-ended questions |
 
 ### Key Rules
 
@@ -122,7 +122,7 @@ Takes execution plan → **production-grade Java code + Spock tests**:
 ```
 
 Processes the plan **section by section** with compile/build gates between each.
-Uses `graph_semantic_search` to find similar patterns in other services.
+Uses `kb_search` to find similar patterns in other services.
 
 ---
 
@@ -166,9 +166,9 @@ golden-dataset/
 
 | Stage | KB Data Used | Key MCP Tools |
 |-------|-------------|---------------|
-| **Stories** | Service profiles, API schemas, flows, error codes + RAG chunks | `graph_get_service`, `graph_get_api_detail` |
-| **Plans** | Architecture layers, dependencies, implementations | `graph_find_service_dependencies`, `graph_semantic_search` |
-| **Code** | Coding patterns, field schemas, test patterns | `graph_get_architecture_layers`, `graph_semantic_search` |
+| **Stories** | Service profiles, API schemas, flows, error codes + RAG chunks | `kb_get(type='service')`, `kb_get(type='api')` |
+| **Plans** | Architecture layers, dependencies, implementations | `kb_impact`, `kb_search` |
+| **Code** | Coding patterns, field schemas, test patterns | `kb_get(type='architecture-layers')`, `kb_search` |
 | **Evaluation** | Same as Stories (regeneration) | Same as Stories |
 
 ---

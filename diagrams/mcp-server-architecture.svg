@@ -10,7 +10,7 @@
   <rect width="900" height="560" fill="url(#grid2)" rx="16"/>
 
   <text x="450" y="32" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glow2)">MCP Server &amp; Hybrid Search</text>
-  <text x="450" y="50" text-anchor="middle" fill="#475569" font-size="10">graph-mcp/server.py — 25 tools · BM25 + Dense MiniLM (LSA fallback) · no GPU</text>
+  <text x="450" y="50" text-anchor="middle" fill="#475569" font-size="10">graph-mcp/server.py — 9 unified kb_* tools · BM25 + Dense MiniLM (BM25-only fallback) · no GPU</text>
 
   <!-- DATA IN -->
   <rect x="28" y="68" width="172" height="162" rx="10" fill="#0f0a24" stroke="#8b5cf6" stroke-width="1.5"/>
@@ -40,17 +40,17 @@
 
   <line x1="412" y1="148" x2="442" y2="148" stroke="#475569" stroke-width="1.5" marker-end="url(#a2)"/>
 
-  <!-- 25 TOOLS -->
+  <!-- 9 TOOLS -->
   <rect x="442" y="68" width="202" height="162" rx="10" fill="#0a1628" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="543" y="90" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">25 TOOLS</text>
+  <text x="543" y="90" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">9 UNIFIED TOOLS</text>
   <line x1="454" y1="98" x2="632" y2="98" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.3"/>
-  <text x="454" y="114" fill="#3b82f6" font-size="8">Services (5): list get deps layers compare</text>
-  <text x="454" y="128" fill="#3b82f6" font-size="8">APIs (4): list get detail find-by-path</text>
-  <text x="454" y="142" fill="#3b82f6" font-size="8">Flows (2): list get</text>
-  <text x="454" y="156" fill="#3b82f6" font-size="8">ADR/Meta (4): list+get adrs metadata</text>
-  <text x="454" y="170" fill="#3b82f6" font-size="8">Docs (4): nfr wiki bruno service-wiki</text>
-  <text x="454" y="186" fill="#fbbf24" font-size="8" font-weight="600">Search (4): semantic smart navigate read</text>
-  <text x="454" y="202" fill="#475569" font-size="8">+ health + impact</text>
+  <text x="454" y="114" fill="#3b82f6" font-size="8">Enumerate/fetch (2): kb_list · kb_get</text>
+  <text x="454" y="128" fill="#fbbf24" font-size="8" font-weight="600">Search (2): kb_search · kb_smart_query</text>
+  <text x="454" y="142" fill="#3b82f6" font-size="8">Analysis (2): kb_impact · kb_compare</text>
+  <text x="454" y="156" fill="#3b82f6" font-size="8">OKF (2): kb_navigate · kb_read_concept</text>
+  <text x="454" y="170" fill="#3b82f6" font-size="8">Ops (1): kb_health</text>
+  <text x="454" y="186" fill="#475569" font-size="8">Closed type enums on kb_list/kb_get</text>
+  <text x="454" y="202" fill="#475569" font-size="8">(services, flows, adrs, apis, docs…)</text>
   <text x="454" y="222" fill="#475569" font-size="8">+ 3 resources · 3 prompt templates</text>
 
   <line x1="644" y1="148" x2="674" y2="148" stroke="#475569" stroke-width="1.5" marker-end="url(#a2)"/>
@@ -69,7 +69,7 @@
 
   <!-- Search pipeline -->
   <rect x="28" y="252" width="842" height="280" rx="12" fill="rgba(0,240,255,0.02)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.3"/>
-  <text x="48" y="276" fill="#00f0ff" font-size="12" font-weight="700" filter="url(#glow2)">graph_semantic_search() — Hybrid BM25 + Dense Pipeline</text>
+  <text x="48" y="276" fill="#00f0ff" font-size="12" font-weight="700" filter="url(#glow2)">kb_search() — Hybrid BM25 + Dense Pipeline</text>
   <text x="48" y="292" fill="#475569" font-size="9">ONNX model committed in-repo · no downloads · no GPU · 1,291 chunks indexed in-memory</text>
 
   <!-- Query -->
@@ -95,10 +95,10 @@
   <text x="276" y="420" text-anchor="middle" fill="#00f0ff" font-size="8">β = 0.6 · semantic (primary)</text>
   <line x1="182" y1="355" x2="192" y2="388" stroke="#475569" stroke-width="1.2"/>
 
-  <!-- LSA fallback -->
+  <!-- BM25-only fallback -->
   <rect x="192" y="434" width="168" height="28" rx="6" fill="#0f0a24" stroke="#6d28d9" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="276" y="444" text-anchor="middle" fill="#7c3aed" font-size="8">LSA fallback (128d SVD)</text>
-  <text x="276" y="456" text-anchor="middle" fill="#475569" font-size="7">when ONNX unavailable</text>
+  <text x="276" y="444" text-anchor="middle" fill="#7c3aed" font-size="8">BM25-only fallback</text>
+  <text x="276" y="456" text-anchor="middle" fill="#475569" font-size="7">when ONNX unavailable (startup notice)</text>
 
   <!-- Merge to W-RRF -->
   <line x1="360" y1="327" x2="420" y2="375" stroke="#3b82f6" stroke-width="1.2" marker-end="url(#a2c)"/>
@@ -127,7 +127,6 @@
   <text x="290" y="494" fill="#475569" font-size="9">(lexical)</text>
   <text x="352" y="494" fill="#00f0ff" font-size="9" font-weight="700">dense</text>
   <text x="392" y="494" fill="#475569" font-size="9">(MiniLM)</text>
-  <text x="456" y="494" fill="#7c3aed" font-size="9" font-weight="700">lsa</text>
-  <text x="476" y="494" fill="#475569" font-size="9">(fallback)</text>
+  <text x="456" y="494" fill="#7c3aed" font-size="9">fallback: BM25-only when dense unavailable</text>
   <text x="68" y="512" fill="#475569" font-size="8">Entity filter restricts before scoring: entity_type = "service" | "flow" | "api-catalog" | "impact" | "service-overview"</text>
 </svg>

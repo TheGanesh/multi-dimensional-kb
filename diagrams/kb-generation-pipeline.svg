@@ -34,7 +34,7 @@
   <text x="286" y="164" fill="#94a3b8" font-size="9">→ services/ (45 pages)</text>
   <text x="286" y="180" fill="#94a3b8" font-size="9">→ api-catalog/ (45)</text>
   <text x="286" y="196" fill="#94a3b8" font-size="9">→ capability-flow/ (127)</text>
-  <text x="286" y="212" fill="#00f0ff" font-size="9" font-weight="600">→ chunks/ (1,291 RAG)</text>
+  <text x="286" y="212" fill="#00f0ff" font-size="9" font-weight="600">→ 1,291 RAG chunks (derived)</text>
   <text x="286" y="242" fill="#94a3b8" font-size="9">→ Summary.md (index)</text>
 
   <line x1="468" y1="165" x2="506" y2="165" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
@@ -46,7 +46,7 @@
   <text x="604" y="116" text-anchor="middle" fill="#475569" font-size="9">MCP Server · no GPU</text>
   <line x1="520" y1="124" x2="688" y2="124" stroke="#10b981" stroke-width="0.5" stroke-opacity="0.3"/>
   <text x="520" y="144" fill="#10b981" font-size="10">graph-mcp/server.py</text>
-  <text x="520" y="162" fill="#94a3b8" font-size="9">25 tools · SSE :8787</text>
+  <text x="520" y="162" fill="#94a3b8" font-size="9">9 unified tools · SSE :8787</text>
   <text x="520" y="178" fill="#00f0ff" font-size="9" font-weight="600">BM25 + Dense MiniLM</text>
   <text x="520" y="194" fill="#94a3b8" font-size="9">384d ONNX · in-repo</text>
   <text x="520" y="210" fill="#94a3b8" font-size="9">1,291 chunks indexed</text>
@@ -93,7 +93,7 @@
   <text x="270" y="470" fill="#475569" font-size="9">flows</text>
   <text x="370" y="452" fill="#00f0ff" font-size="24" font-weight="700">1,291</text>
   <text x="370" y="470" fill="#475569" font-size="9">RAG chunks</text>
-  <text x="500" y="452" fill="#00f0ff" font-size="24" font-weight="700">25</text>
+  <text x="500" y="452" fill="#00f0ff" font-size="24" font-weight="700">9</text>
   <text x="500" y="470" fill="#475569" font-size="9">MCP tools</text>
   <text x="590" y="452" fill="#00f0ff" font-size="24" font-weight="700">384d</text>
   <text x="590" y="470" fill="#475569" font-size="9">Dense vectors</text>

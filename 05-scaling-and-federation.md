@@ -229,7 +229,7 @@ flowchart LR
 
 The gateway reuses the existing smart-query router (Chapter 03) with one extra, earlier
 classification step: **which domain(s)?** — then delegates. It holds no index of its own.
-Deterministic tools (`graph_get_service`, …) stay domain-scoped; the gateway only ever
+Deterministic tools (`kb_get(type='service')`, …) stay domain-scoped; the gateway only ever
 proxies them with an explicit `domain=` argument.
 
 ---

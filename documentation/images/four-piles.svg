@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'Avenir Next','Trebuchet MS',Verdana,sans-serif">
+  <rect width="960" height="560" fill="#fbf7ec" rx="16"/>
+  <text x="480" y="40" text-anchor="middle" fill="#2f2c26" font-size="24" font-weight="700">Pack light: every item justifies its weight, or stays home</text>
+  <text x="480" y="63" text-anchor="middle" fill="#8a8478" font-size="13">the 40-kilo pack was real: 25 tools, 4 search modes, 4 version schemes, 3 quality checkers, 1,291 committed files&#8230;</text>
+
+  <!-- four piles -->
+  <g font-size="11.5">
+    <rect x="40" y="88" width="212" height="200" fill="#ffe3de" stroke="#e0533d" stroke-width="2.5" rx="12"/>
+    <text x="146" y="114" text-anchor="middle" fill="#b03621" font-size="14" font-weight="700">&#128465; Pile 1 &#8212; leave at home</text>
+    <text x="146" y="132" text-anchor="middle" fill="#e0533d" font-size="10.5" font-style="italic">was never earning its place</text>
+    <text x="56" y="156" fill="#b03621">&#8226; 16 of 25 MCP tools (folded)</text>
+    <text x="56" y="176" fill="#b03621">&#8226; uncertified backup search mode</text>
+    <text x="56" y="196" fill="#b03621">&#8226; 3 checkers &#8594; one kb check</text>
+    <text x="56" y="216" fill="#b03621">&#8226; 2 of 4 version schemes</text>
+    <text x="56" y="236" fill="#b03621">&#8226; 1,291 committed derived files</text>
+    <text x="56" y="264" fill="#e0533d" font-weight="700">cut outright, with proof</text>
+
+    <rect x="272" y="88" width="212" height="200" fill="#fff3b8" stroke="#d8bc4a" stroke-width="2.5" rx="12"/>
+    <text x="378" y="114" text-anchor="middle" fill="#6b5900" font-size="14" font-weight="700">&#127890; Pile 2 &#8212; light version</text>
+    <text x="378" y="132" text-anchor="middle" fill="#8a6d00" font-size="10.5" font-style="italic">heavy one restores on evidence</text>
+    <text x="288" y="156" fill="#6b5900">&#8226; BM25-only default; dense</text>
+    <text x="288" y="174" fill="#6b5900">&#160;&#160;benched until it wins the exam</text>
+    <text x="288" y="194" fill="#6b5900">&#8226; telemetry = JSONL + weekly</text>
+    <text x="288" y="212" fill="#6b5900">&#160;&#160;report (not Postgres/Grafana)</text>
+    <text x="288" y="232" fill="#6b5900">&#8226; nightly sniff, not 45 CI hooks</text>
+    <text x="288" y="264" fill="#8a6d00" font-weight="700">restore conditions written down</text>
+
+    <rect x="504" y="88" width="212" height="200" fill="#d9e9fb" stroke="#5b8ec4" stroke-width="2.5" rx="12"/>
+    <text x="610" y="114" text-anchor="middle" fill="#1d4e89" font-size="14" font-weight="700">&#127956; Pile 3 &#8212; trail store</text>
+    <text x="610" y="132" text-anchor="middle" fill="#5b8ec4" font-size="10.5" font-style="italic">designed, priced, trigger-gated</text>
+    <text x="520" y="156" fill="#1d4e89">&#8226; gateway MCP: 2+ domains</text>
+    <text x="520" y="174" fill="#1d4e89">&#160;&#160;+ logged cross-domain demand</text>
+    <text x="520" y="194" fill="#1d4e89">&#8226; pgvector: ~50K chunks</text>
+    <text x="520" y="212" fill="#1d4e89">&#160;&#160;or startup &#62; 30 s</text>
+    <text x="520" y="232" fill="#1d4e89">&#8226; Kestra: &#62; 3 domains</text>
+    <text x="520" y="264" fill="#5b8ec4" font-weight="700">numeric triggers, not meetings</text>
+
+    <rect x="736" y="88" width="184" height="200" fill="#ddf2e2" stroke="#4aa06a" stroke-width="2.5" rx="12"/>
+    <text x="828" y="114" text-anchor="middle" fill="#216b40" font-size="14" font-weight="700">&#9978; Pile 4 &#8212; never cut</text>
+    <text x="828" y="132" text-anchor="middle" fill="#4aa06a" font-size="10.5" font-style="italic">the map and the water</text>
+    <text x="752" y="156" fill="#216b40">&#8226; the one rule (3 layers)</text>
+    <text x="752" y="176" fill="#216b40">&#8226; kb:// addresses</text>
+    <text x="752" y="196" fill="#216b40">&#8226; frontmatter cards</text>
+    <text x="752" y="216" fill="#216b40">&#8226; exams + answer keys</text>
+    <text x="752" y="236" fill="#216b40">&#8226; MCP menu &#183; ownership</text>
+    <text x="828" y="264" text-anchor="middle" fill="#4aa06a" font-weight="700">cut these = you&#8217;re lost</text>
+  </g>
+
+  <!-- the test -->
+  <rect x="40" y="308" width="880" height="54" fill="#ffffff" stroke="#c9bfa4" stroke-width="2" rx="12"/>
+  <text x="480" y="330" text-anchor="middle" fill="#2f2c26" font-size="13" font-weight="700">the tell for Pile 4: if removing it makes a measurement impossible, an owner unreachable, or provenance unverifiable &#8212;</text>
+  <text x="480" y="350" text-anchor="middle" fill="#2f2c26" font-size="13" font-weight="700">it&#8217;s water, not gear.</text>
+
+  <!-- winning sentence -->
+  <g transform="rotate(-1 480 420)">
+    <rect x="120" y="384" width="720" height="72" fill="#fff3b8" stroke="#d8bc4a" stroke-width="3" rx="12"/>
+    <text x="480" y="414" text-anchor="middle" fill="#6b5900" font-size="15" font-weight="700">&#8220;Every heavy component we run has a number that justifies it,</text>
+    <text x="480" y="438" text-anchor="middle" fill="#6b5900" font-size="15" font-weight="700">and every one we don&#8217;t run has a number that would bring it back.&#8221;</text>
+  </g>
+  <text x="480" y="478" text-anchor="middle" fill="#8a8478" font-size="12">&#8212; the sentence that wins the architecture review</text>
+
+  <!-- footer -->
+  <rect x="40" y="494" width="880" height="38" fill="#f4eeda" stroke="#c9bfa4" stroke-width="1.5" rx="10"/>
+  <text x="480" y="518" text-anchor="middle" fill="#6b6455" font-size="12">non-goals, permanently: GPU inference &#183; downloaded models at runtime &#183; replacing markdown with a database (the bundle IS the product)</text>
+</svg>

@@ -18,7 +18,7 @@ industry patterns:
 The framework runs entirely on corporate-network-compatible Python libraries (`PyYAML`,
 `numpy`, `rank-bm25`, `FastMCP`, `onnxruntime`, `tokenizers`). The dense embedding model
 (`all-MiniLM-L6-v2` ONNX) is **committed in-repo** and runs on CPU; retrieval falls back
-to LSA (numpy SVD) when ONNX dependencies are unavailable.
+to BM25-only retrieval (with a startup notice) when ONNX dependencies are unavailable.
 
 ![Three-Layer Architecture](./diagrams/okf-three-layer.svg)
 
@@ -46,9 +46,9 @@ The generated `markdown/` tree is a conformant **OKF v0.2 knowledge bundle**, en
 
 > **OKF principle**: Answer exact questions from an authoritative store, not similarity search.
 
-`graph_smart_query` routes factual and navigational queries to **deterministic graph
-lookups** (`graph_get_service`, `graph_list_api_contracts`, `graph_get_api_detail`). Hybrid
-search (BM25 + dense MiniLM embeddings, LSA fallback) is the **fallback**, not the default.
+`kb_smart_query` routes factual and navigational queries to **deterministic graph
+lookups** (`kb_get(type='service')`, `kb_list(type='api-contracts')`, `kb_get(type='api')`). Hybrid
+search (BM25 + dense MiniLM embeddings, BM25-only fallback) is the **fallback**, not the default.
 This ensures reproducible, exact answers for structured queries ("list APIs of
 shoppingcartms") while still supporting open-ended exploration ("how does payment
 processing work?").
@@ -117,7 +117,7 @@ index.md (bundle root, okf_version: "0.2")
     → services/shoppingcartms.md (full service deep-dive)
 ```
 
-Via MCP: `graph_navigate('')` → `graph_navigate('services')` → `graph_read_concept('services/shoppingcartms')`.
+Via MCP: `kb_navigate('')` → `kb_navigate('services')` → `kb_read_concept('services/shoppingcartms')`.
 
 Every chunk carries a `disclosure` one-liner so agents can decide relevance without reading
 the body — like a search snippet.
@@ -132,7 +132,7 @@ the body — like a search snippet.
 | `curated` | Flows, ADRs, metadata authored or merged by humans | `human-reviewed` |
 | `inferred` | KB-inferred values not confirmed by primary source | `unverified` |
 
-Pages older than **90 days** are flagged `stale` by the MCP server's `graph_read_concept`.
+Pages older than **90 days** are flagged `stale` by the MCP server's `kb_read_concept`.
 
 ### Pattern 6: One Concept Per Chunk
 
@@ -237,7 +237,7 @@ adequately at the current scale (45 services, 1,291 chunks):
 | ML-based query classifier | Rule-based classifier reaches **>95% accuracy** on labeled cases (`test_smart_query.py`) with zero dependencies and full determinism |
 | Git hooks across 45 service repos | Replaced by scheduled refresh + fingerprint skip via `/lifecycle-kb --refresh` |
 | Blanket re-chunking | Only oversized outliers are split; human-readable pages are preserved unchanged |
-| GPU inference | The 6-layer MiniLM ONNX model embeds the full 1,291-chunk corpus in ~20s on CPU (cached thereafter; queries embed in ~20ms). LSA via numpy Truncated SVD remains the zero-dependency fallback |
+| GPU inference | The 6-layer MiniLM ONNX model embeds the full 1,291-chunk corpus in ~20s on CPU (cached thereafter; queries embed in ~20ms). BM25-only lexical retrieval is the zero-dependency fallback |
 
 ---
 
@@ -515,18 +515,18 @@ Five layers keep the KB trustworthy over time:
 
 ## Version Planes
 
-Four independent version planes exist; they are bumped for different reasons and must not
-be conflated:
+Two version planes exist ([S1.4](./simplification/01-tier-1-cut-outright.md#s14--version-planes-4--2)) — one for the machinery, one for the content:
 
 | Plane | Where declared | Current | Bump when |
 |---|---|---|---|
-| **OKF frontmatter contract** | `KB-SCHEMA.md` header (`OKF version`) | 0.2 | The generated-Markdown frontmatter contract changes (new/renamed keys, semantics) |
-| **Framework** | `KB-SCHEMA.md` header (`Framework version`) | 9.0.0 | Governance/framework rules change (templates, hard-stops, source-of-truth rules) |
-| **KB content / generator actor** | `templates/seed.yaml` → `kb.version` (rendered as `generated.by: commerce-kb-generator/<version>`) | 7.1.0 | Significant source-content changes; stamped into every generated page |
-| **`kb` CLI** | `pyproject.toml` → `version` | 1.0.0 | The `kbcli` command-line tool itself changes |
+| **Framework** (`kb-framework`) | `pyproject.toml` → `version` (echoed in the `KB-SCHEMA.md` header) | 2.0.0 | Anything about the machinery changes: scripts, `kb` CLI, MCP server, JSON Schemas, templates, or the emitted OKF frontmatter contract (a frontmatter contract change is a breaking — major — framework bump) |
+| **Domain bundle** | `templates/seed.yaml` → `kb.version` (rendered as `generated.by: commerce-kb-generator/<version>`) | 7.1.0 | Significant source-content changes; stamped into every generated page |
 
-The JSON Schemas under `templates/schema/*.schema.json` are versioned implicitly through
-the Framework plane — a breaking schema change requires a Framework version bump.
+The OKF frontmatter contract keeps its own label (`OKF version: 0.2` in `KB-SCHEMA.md`)
+as documentation of the emitted format, but it is versioned *through* the framework
+plane — changing the contract requires a major framework bump, not a separate plane.
+The JSON Schemas under `templates/schema/*.schema.json` are likewise versioned through
+the framework plane.
 
 ---
 

@@ -31,34 +31,34 @@
   <!-- KB TRAVERSAL — expanded for tri-channel -->
   <rect x="250" y="70" width="380" height="415" rx="10" fill="#172554" stroke="#2563eb" stroke-width="1.5"/>
   <text x="440" y="95" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">KB TRAVERSAL — TRI-CHANNEL</text>
-  <text x="440" y="112" text-anchor="middle" fill="#94a3b8" font-size="10">Phase 1 (Markdown) · Phase 1.5 (RAG) · Phase 2 (MCP) — independently resilient</text>
+  <text x="440" y="112" text-anchor="middle" fill="#94a3b8" font-size="9">Phase 1 Markdown · Phase 1.5 RAG · Phase 2 MCP (each resilient)</text>
 
   <!-- Phase 1 — Markdown -->
   <rect x="268" y="125" width="344" height="115" rx="8" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="1.2"/>
   <text x="278" y="144" fill="#93c5fd" font-size="11" font-weight="700">Phase 1 — Markdown (always runs, offline-capable)</text>
   <text x="278" y="161" fill="#94a3b8" font-size="10">Start: Commerce-Services-Summary.md (master index)</text>
-  <text x="278" y="177" fill="#94a3b8" font-size="10">Follow links → markdown/services/ · capability-flow/ · adrs/</text>
+  <text x="278" y="177" fill="#94a3b8" font-size="10">Follow links → services/ · capability-flow/ · adrs/</text>
   <text x="278" y="193" fill="#f87171" font-size="10" font-weight="600">Recursive: follow all linked pages until none remain</text>
-  <text x="278" y="209" fill="#94a3b8" font-size="10">Collects: API schemas · Kafka topics · outbound deps · flows</text>
+  <text x="278" y="209" fill="#94a3b8" font-size="10">Collects: API schemas · Kafka topics · deps · flows</text>
   <text x="278" y="224" fill="#64748b" font-size="9">No external dependency — runs even if MCP server is down</text>
 
   <!-- Phase 1.5 — RAG Enrichment (NEW) -->
   <rect x="268" y="249" width="344" height="80" rx="8" fill="rgba(250,204,21,0.07)" stroke="#f59e0b" stroke-width="1.2"/>
-  <text x="278" y="268" fill="#fcd34d" font-size="11" font-weight="700">Phase 1.5 — RAG Enrichment (offline · no server · kb CLI)</text>
-  <text x="278" y="284" fill="#fbbf24" font-size="9">kb context "{service} inbound APIs outbound architecture" --tokens 4000 --type service</text>
-  <text x="278" y="299" fill="#fbbf24" font-size="9">kb search "{scenario} {service}" --top 10 --type api-catalog --json</text>
-  <text x="278" y="314" fill="#64748b" font-size="9">Semantic discovery across 1,291 chunks · −37% KB-INFERRED vs markdown-only</text>
-  <text x="278" y="327" fill="#64748b" font-size="9">Step 0.4 pre-flight · Step 2.3.5 enrichment · 50k-token budget guard · HS-16</text>
+  <text x="278" y="268" fill="#fcd34d" font-size="11" font-weight="700">Phase 1.5 — RAG Enrichment (offline · kb CLI)</text>
+  <text x="278" y="284" fill="#fbbf24" font-size="9">kb context "{service} inbound outbound arch" --tokens 4000</text>
+  <text x="278" y="299" fill="#fbbf24" font-size="9">kb search "{scenario} {service}" --type api-catalog --json</text>
+  <text x="278" y="314" fill="#64748b" font-size="9">Semantic discovery across 1,291 chunks · −37% KB-INFERRED</text>
+  <text x="278" y="327" fill="#64748b" font-size="9">Step 0.4 pre-flight · Step 2.3.5 · 50k-token budget · HS-16</text>
 
   <!-- Phase 2 — MCP Enrichment (shifted down) -->
   <rect x="268" y="340" width="344" height="130" rx="8" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1.2"/>
-  <text x="278" y="359" fill="#6ee7b7" font-size="11" font-weight="700">Phase 2 — MCP Enrichment (mandatory attempt, graceful fallback)</text>
-  <text x="278" y="376" fill="#34d399" font-size="10">graph_get_service(name) → full service profile</text>
-  <text x="278" y="392" fill="#34d399" font-size="10">graph_get_api_detail(service, operationId) → field schemas + scenarios</text>
-  <text x="278" y="408" fill="#34d399" font-size="10">graph_find_service_dependencies(name) → dependency graph</text>
-  <text x="278" y="424" fill="#34d399" font-size="10">graph_semantic_search(query) → MCP-hosted RAG chunks</text>
-  <text x="278" y="441" fill="#64748b" font-size="9">Structured JSON; −49% KB-INFERRED cumulative · attestation: "unreachable" if down</text>
-  <text x="278" y="454" fill="#64748b" font-size="9">If MCP down → Markdown + RAG fallback; stories still generated</text>
+  <text x="278" y="359" fill="#6ee7b7" font-size="11" font-weight="700">Phase 2 — MCP Enrichment (graceful fallback)</text>
+  <text x="278" y="376" fill="#34d399" font-size="10">kb_get(type='service', name) → full service profile</text>
+  <text x="278" y="392" fill="#34d399" font-size="10">kb_get(type='api') → field schemas + scenarios</text>
+  <text x="278" y="408" fill="#34d399" font-size="10">kb_impact(name) → dependency graph</text>
+  <text x="278" y="424" fill="#34d399" font-size="10">kb_search(query) → MCP-hosted RAG chunks</text>
+  <text x="278" y="441" fill="#64748b" font-size="9">Structured JSON · −49% KB-INFERRED cumulative</text>
+  <text x="278" y="454" fill="#64748b" font-size="9">If MCP down → Markdown + RAG fallback; stories still built</text>
 
   <!-- Arrow to Output -->
   <line x1="630" y1="250" x2="660" y2="250" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
@@ -79,7 +79,7 @@
   <text x="678" y="264" fill="#64748b" font-size="9">+ feature-execution-summary.md</text>
 
   <!-- Precedence rule -->
-  <rect x="660" y="300" width="205" height="62" rx="8" fill="rgba(148,163,184,0.05)" stroke="#334155" stroke-width="1"/>
+  <rect x="660" y="300" width="205" height="74" rx="8" fill="rgba(148,163,184,0.05)" stroke="#334155" stroke-width="1"/>
   <text x="670" y="318" fill="#94a3b8" font-size="9" font-weight="600">Precedence:</text>
   <text x="670" y="333" fill="#fbbf24" font-size="9">TDD > MCP contract</text>
   <text x="670" y="348" fill="#94a3b8" font-size="9">> markdown prose</text>
@@ -88,7 +88,7 @@
   <!-- TDD Primacy rule -->
   <rect x="30" y="500" width="840" height="50" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6"/>
   <text x="50" y="520" fill="#fde68a" font-size="12" font-weight="700">Key Rule: TDD Always Wins</text>
-  <text x="50" y="538" fill="#94a3b8" font-size="10">If TDD and KB disagree on a value (flag name, error code, API path, field type) — TDD wins, no exceptions. KB-only values are tagged <tspan fill="#f87171" font-weight="600">⚠️ KB-INFERRED</tspan>.</text>
+  <text x="50" y="538" fill="#94a3b8" font-size="10">If TDD and KB disagree (flag name, error code, API path, field type) — TDD wins. KB-only values are tagged <tspan fill="#f87171" font-weight="600">⚠️ KB-INFERRED</tspan>.</text>
 
   <!-- GAP rule -->
   <rect x="30" y="560" width="840" height="68" rx="8" fill="rgba(255,255,255,0.02)" stroke="#334155" stroke-width="1"/>

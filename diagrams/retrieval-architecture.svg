@@ -11,7 +11,7 @@
 
   <!-- Title -->
   <text x="480" y="34" text-anchor="middle" fill="#00f0ff" font-size="18" font-weight="700" filter="url(#glow)">Retrieval Architecture</text>
-  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="10">graph_smart_query &#x2014; rule-based classifier &#x2192; deterministic-first &#x2192; hybrid BM25 + Dense</text>
+  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="10">kb_smart_query &#x2014; rule-based classifier &#x2192; deterministic-first &#x2192; hybrid BM25 + Dense</text>
 
   <!-- TOP SECTION: Classifier + Routes (all below y=70) -->
 
@@ -61,10 +61,10 @@
   <rect x="700" y="74" width="236" height="150" rx="10" fill="rgba(0,240,255,0.03)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.5"/>
   <text x="818" y="96" text-anchor="middle" fill="#00f0ff" font-size="11" font-weight="700">Deterministic Results</text>
   <text x="718" y="116" fill="#64748b" font-size="9">O(1) dict lookups</text>
-  <text x="718" y="133" fill="#94a3b8" font-size="9">graph_get_service</text>
-  <text x="718" y="149" fill="#94a3b8" font-size="9">graph_list_api_contracts</text>
-  <text x="718" y="165" fill="#94a3b8" font-size="9">graph_get_api_detail</text>
-  <text x="718" y="181" fill="#94a3b8" font-size="9">graph_get_impact</text>
+  <text x="718" y="133" fill="#94a3b8" font-size="9">kb_get(type='service')</text>
+  <text x="718" y="149" fill="#94a3b8" font-size="9">kb_list(type='api-contracts')</text>
+  <text x="718" y="165" fill="#94a3b8" font-size="9">kb_get(type='api')</text>
+  <text x="718" y="181" fill="#94a3b8" font-size="9">kb_impact</text>
   <text x="718" y="210" fill="#00f0ff" font-size="8">OKF: exact answers first</text>
   <line x1="650" y1="144" x2="700" y2="144" stroke="#00f0ff" stroke-width="1" marker-end="url(#ra2)"/>
 
@@ -97,10 +97,10 @@
   <text x="281" y="458" text-anchor="middle" fill="#00f0ff" font-size="8">&#x03b2; = 0.6 &#x00b7; semantic (primary)</text>
   <line x1="182" y1="376" x2="196" y2="426" stroke="#00f0ff" stroke-width="1.2"/>
 
-  <!-- LSA fallback -->
+  <!-- BM25-only fallback -->
   <rect x="196" y="480" width="170" height="36" rx="8" fill="#0f0a24" stroke="#6d28d9" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="281" y="496" text-anchor="middle" fill="#7c3aed" font-size="9" font-weight="600">LSA fallback (128d SVD)</text>
-  <text x="281" y="508" text-anchor="middle" fill="#475569" font-size="7">Used when ONNX unavailable</text>
+  <text x="281" y="496" text-anchor="middle" fill="#7c3aed" font-size="9" font-weight="600">BM25-only fallback</text>
+  <text x="281" y="508" text-anchor="middle" fill="#475569" font-size="7">when ONNX unavailable (startup notice)</text>
 
   <!-- W-RRF Fusion -->
   <rect x="428" y="370" width="178" height="84" rx="8" fill="#021a12" stroke="#00f0ff" stroke-width="2"/>
@@ -134,7 +134,7 @@
   <text x="280" y="638" fill="#94a3b8" font-size="9">Recall@5 = 0.982 &#x00b7; Recall@10 = 1.0 &#x00b7; MRR = 0.912 &#x00b7; 1,291 chunks</text>
   <text x="68" y="656" fill="#00f0ff" font-size="10" font-weight="600">Dense tier:</text>
   <text x="160" y="656" fill="#94a3b8" font-size="9">MiniLM-L6-v2 ONNX &#x00b7; 384d &#x00b7; in-repo &#x00b7; CPU-only</text>
-  <text x="500" y="656" fill="#7c3aed" font-size="9">LSA fallback:</text>
-  <text x="600" y="656" fill="#475569" font-size="8">128d SVD &#x2014; when onnxruntime unavailable</text>
+  <text x="500" y="656" fill="#7c3aed" font-size="9">Fallback:</text>
+  <text x="600" y="656" fill="#475569" font-size="8">BM25-only &#x2014; when onnxruntime unavailable</text>
   <text x="68" y="674" fill="#475569" font-size="9">routeTrace: classification &#x00b7; retrieval stages &#x00b7; candidates &#x00b7; fallback flag</text>
 </svg>
